@@ -8,23 +8,22 @@ guid: http://blog.findemor.es/?p=521
 permalink: /2018/02/empezando-con-machine-learning-en-python/
 image: /wp-content/uploads/2018/02/kmeans.gif
 categories:
-  - machine-learning
-  - python
+  - Desarrollo
+  - Cursos
 tags:
-  - AI
-  - estadística
-  - machine-learning
-  - python
+  - Inteligencia Artificial
+  - Machine Learning
+  - Python
 ---
-Actualmente ha empezado a hablarse mucho de machine learning en televisión, en la radio, y en general en programas y fuentes no especializados, que por lo tanto hacen una definición del aprendizaje automático simplificada o &#8220;traducida&#8221; al lenguaje específico que entienda su audiencia&#8230; esto genera el efecto de que mucha gente crea que el aprendizaje automático es lo mismo que enseñar a una máquina a pensar como una persona, que un ordenador se comporte como un niño pequeño, o incluso cosas más locas.
+Actualmente ha empezado a hablarse mucho de machine learning en televisión, en la radio, y en general en programas y fuentes no especializados, que por lo tanto hacen una definición del aprendizaje automático simplificada o “traducida”; al lenguaje específico que entienda su audiencia... esto genera el efecto de que mucha gente crea que el aprendizaje automático es lo mismo que enseñar a una máquina a pensar como una persona, que un ordenador se comporte como un niño pequeño, o incluso cosas más locas.
 
-Cuando entendemos algo del tema o empezamos a trabajarlo en serio, enseguida nos damos cuenta de que realmente el aprendizaje automático es mucho más &#8220;simple&#8221;. De hecho, su forma más básica consiste en la aplicación de los algoritmos que hemos visto en los posts anteriores, y desde ahí se avanza y profundiza hasta desarrollar algoritmos mucho más complejos (basados en conceptos matemáticos similares) y más específicos para la resolución de un problema concreto.
+Cuando entendemos algo del tema o empezamos a trabajarlo en serio, enseguida nos damos cuenta de que realmente el aprendizaje automático es mucho más “simple”;. De hecho, su forma más básica consiste en la aplicación de los algoritmos que hemos visto en los posts anteriores, y desde ahí se avanza y profundiza hasta desarrollar algoritmos mucho más complejos (basados en conceptos matemáticos similares) y más específicos para la resolución de un problema concreto.
 
 En este post vamos a conocer algunos de estos algoritmos, empeando el lenguaje Python.
 
 <!--more-->
 
-Como en posts anteriores, veremos que el machine learning consiste basicamente en el diseño y algoritmos capaces de generar modelos que &#8220;aprenden&#8221; de los datos observados, y por lo tanto nos permiten hacer predicciones de como se comportaria en los casos que no forman parte de nuestro conjunto de observación.
+Como en posts anteriores, veremos que el machine learning consiste basicamente en el diseño y algoritmos capaces de generar modelos que “aprenden”; de los datos observados, y por lo tanto nos permiten hacer predicciones de como se comportaria en los casos que no forman parte de nuestro conjunto de observación.
 
 Como el post me ha quedado un poco largo, aquí tenéis el índice para navegar rápidamente:
 
@@ -40,8 +39,8 @@ Como el post me ha quedado un poco largo, aquí tenéis el índice para navegar 
 
 Podemos hacer distintos tipos de clasificaciones de algoritmos de aprendizaje automático, pero la más tipica es distinguirlos por aprendizaje supervisado y no supervisado.
 
-  * **Algoritmos de aprendizaje no supervisado**: entrenaremos el modelo con datos que no tienen &#8220;respuestas&#8221; a nuestras preguntas, pero podremos extraerlas del conjunto observado. Por ejemplo, podemos entrenar un modelo con fotografias de perros y de arboles, y el algoritmo, al darle una nueva foto, nos dira si pertenece a uno u otro conjunto, pero no sabrá de qué se trata o qué contiene la foto&#8230; esa semántica debemos aportarla nosotros. Este tipo de algoritmo puede emplearse, por ejemplo, para descubrir clasificaciones que no conocíamos que existian en nuestros datos, ya que en principio no sabemos qué estamos buscando, sino que el algoritmo descubrirá por si mismo las variables subyacentes.
-  * **Algoritmos de aprendizaje supervisado**: en este caso nuestro algoritmo será entrenado con datos que vienen con la respuesta correcta a nuestras preguntas&#8230; de este modo, podemos preguntarle cual sería la respuesta para un nuevo dato que no habíamos observado. Por ejemplo, podemos entrenar un algoritmo con los precios de las viviendas usando datos historicos, donde cada observación tendrá las características de las viviendas y también el precio (que es la respuesta). De este modo, para una nueva vivienda, a partir de sus características obtendríamos el precio apropiado que se ajusta a nuestro modelo.
+  * **Algoritmos de aprendizaje no supervisado**: entrenaremos el modelo con datos que no tienen “respuestas”; a nuestras preguntas, pero podremos extraerlas del conjunto observado. Por ejemplo, podemos entrenar un modelo con fotografias de perros y de arboles, y el algoritmo, al darle una nueva foto, nos dira si pertenece a uno u otro conjunto, pero no sabrá de qué se trata o qué contiene la foto... esa semántica debemos aportarla nosotros. Este tipo de algoritmo puede emplearse, por ejemplo, para descubrir clasificaciones que no conocíamos que existian en nuestros datos, ya que en principio no sabemos qué estamos buscando, sino que el algoritmo descubrirá por si mismo las variables subyacentes.
+  * **Algoritmos de aprendizaje supervisado**: en este caso nuestro algoritmo será entrenado con datos que vienen con la respuesta correcta a nuestras preguntas... de este modo, podemos preguntarle cual sería la respuesta para un nuevo dato que no habíamos observado. Por ejemplo, podemos entrenar un algoritmo con los precios de las viviendas usando datos historicos, donde cada observación tendrá las características de las viviendas y también el precio (que es la respuesta). De este modo, para una nueva vivienda, a partir de sus características obtendríamos el precio apropiado que se ajusta a nuestro modelo.
 
 Los algoritmos supervisados pueden, además, **ser evaluados** para ver como de preciso resulta nuestro modelo a la hora de predecir nuevos valores. Para ello, una técnica generalmente aplicada consiste en dividir el conjunto de datos en dos subconjuntos (training y test):
 
@@ -54,9 +53,9 @@ Aún así, esta iteración entre entrenamiento y test podría arrojar malos resu
 
 Veamos un ejemplo de todo esto:
 
-[python]  
-\# Preparamos un conjunto de datos de numero de productos vendidos  
-\# en funcion de su precio  
+```python  
+# Preparamos un conjunto de datos de numero de productos vendidos  
+# en funcion de su precio  
 %matplotlib inline  
 import numpy as np  
 from pylab import *
@@ -66,24 +65,24 @@ np.random.seed(1)
 itemPrice = np.random.normal(3.0, 1.0, 100)  
 itemBuyTimes = np.random.normal(50.0, 30.0, 100) / itemPrice
 
-\# Cogemos dos conjuntos aleatorios, el 80% sera e entrenamiento y el 20% de test  
-\# No hace falta hacer "shuffle" porque ya estan aleatoriamente generados  
+# Cogemos dos conjuntos aleatorios, el 80% sera e entrenamiento y el 20% de test  
+# No hace falta hacer "shuffle" porque ya estan aleatoriamente generados  
 trainX = itemPrice[:80] #del primero al 80  
 testX = itemPrice[80:] #a partir del 80
 
 trainY = itemBuyTimes[:80]  
 testY = itemBuyTimes[80:]
 
-\# calculamos la función polinómica (de octavo grado)  
-\# que se ajusta a nuestras observaciones  
+# calculamos la función polinómica (de octavo grado)  
+# que se ajusta a nuestras observaciones  
 x = np.array(trainX)  
 y = np.array(trainY)
 
 p4 = np.poly1d(np.polyfit(x, y, 8))
 
-\# Representamos la función contra nuestros conjuntos de datos
+# Representamos la función contra nuestros conjuntos de datos
 
-\## Primero el conjunto de entrenamiento  
+## Primero el conjunto de entrenamiento  
 import matplotlib.pyplot as plt
 
 xp = np.linspace(0, 7, 100)  
@@ -91,10 +90,10 @@ axes = plt.axes()
 axes.set_xlim([0,7])  
 axes.set_ylim([0, 200])  
 plt.scatter(x, y)  
-plt.plot(xp, p4(xp), c=&#8217;r&#8217;)  
+plt.plot(xp, p4(xp), c='r')  
 plt.show()
 
-\## Y ahora el conjunto de test  
+## Y ahora el conjunto de test  
 testx = np.array(testX)  
 testy = np.array(testY)
 
@@ -102,10 +101,11 @@ axes = plt.axes()
 axes.set_xlim([0,7])  
 axes.set_ylim([0, 200])  
 plt.scatter(testx, testy)  
-plt.plot(xp, p4(xp), c=&#8217;r&#8217;)  
+plt.plot(xp, p4(xp), c='r')  
 plt.show()
 
-[/python]
+```
+
 
 Conjunto Train (entrenamiento): podemos observar como una función polinómica demasiado compleja ha generado un problema de overfitting, ya que ha incluido un ajuste en los outliers.
 
@@ -117,19 +117,20 @@ Conjunto de entrenamiento: es demasiado pequeño para un caso real, pero sirve p
 
 &nbsp;
 
-[python]  
-\# Calculamos el error R^2 del conjunto de test  
+```python  
+# Calculamos el error R^2 del conjunto de test  
 from sklearn.metrics import r2_score  
 r2 = r2_score(testy, p4(testx))  
 print(r2)  
-\## OUT: 0.10904 &#8211; el error es elevadisimo
+## OUT: 0.10904 - el error es elevadisimo
 
-\# Calculamos el error R^2 del conjunto de entrenamiento  
+# Calculamos el error R^2 del conjunto de entrenamiento  
 from sklearn.metrics import r2_score  
 r2 = r2_score(np.array(trainY), p4(np.array(trainX)))  
 print(r2)  
-\## OUT: 0.48944 &#8211; es mas alto  
-[/python]
+## OUT: 0.48944 - es mas alto  
+```
+
 
 Observamos que el score calculado en el conjunto de test es muy bajo, lo que significa un error muy alto, probablemente debido al overfitting de usar una función de 8 grado. Además, en el score del conjunto de entrenamiento, debería ser cercano a 1, ya que es el conjunto con el que precisamente hemos generado el modelo también es absurdamente bajo.
 
@@ -141,56 +142,61 @@ Un ejemplo clásico cuando se habla de aprendizaje automático, es el de crear 
 
 Si empleamos la formula que explicaba en ese post anterior, quedaría algo así:
 
-> P(Spam|Gratis) =  P(Spam)*P(Gratis|Spam) / P(Gratis)
+```
+ 
+P(Spam|Gratis) =  P(Spam)*P(Gratis|Spam) / P(Gratis)
+```
+
 
 Donde:
 
   * P(Spam) es la probabilidad de que sea spam.
-  * P(Gratis|Spam) es la probabilidad de que contenga la palabra gratis siendo spam.
+  * P(Gratis\|Spam) es la probabilidad de que contenga la palabra gratis siendo spam.
   * El numerador completo por lo tanto, es la probabilidad de que un mensaje sea spam conteniendo la palabra Gratis.
   * El denominador es la probabilidad de que un email contenga la palabra gratis.
-  * P(Spam|Gratis) es por lo tanto el porcentaje de emails con la palabra Gratis que son spam.
+  * P(Spam\|Gratis) es por lo tanto el porcentaje de emails con la palabra Gratis que son spam.
 
-Como podemos imaginar, con este índice no tendremos suficiente, ya que no podemos deciri completamente si un email es spam o no basándonos en la aparición de una sola palabra. Por esta razón, lo que haremos será analizar la probabilidad de que sea spam, como hemos hecho con la palabra Gratis, pero con cada una de las palabras &#8220;significativas&#8221; que contenga el email (significativa es que eliminaremos articulos, preposiciones, etc.). Multiplicando la probabilidad de que sea spam para cada una de ellas, obtendremos un índice muy completo que nos permite ver si se trata de spam o no.
+Como podemos imaginar, con este índice no tendremos suficiente, ya que no podemos deciri completamente si un email es spam o no basándonos en la aparición de una sola palabra. Por esta razón, lo que haremos será analizar la probabilidad de que sea spam, como hemos hecho con la palabra Gratis, pero con cada una de las palabras “significativas”; que contenga el email (significativa es que eliminaremos articulos, preposiciones, etc.). Multiplicando la probabilidad de que sea spam para cada una de ellas, obtendremos un índice muy completo que nos permite ver si se trata de spam o no.
 
-Este mecanismos e llama Naive Bayes o Bayes ingenuo ya que asume que las palabras son independientes entre si, algo que por supuesto no deberíamos asumir, ya que probablemente no lo sean&#8230; pero no lo tiene en cuenta. Veamoslo en marcha.
+Este mecanismos e llama Naive Bayes o Bayes ingenuo ya que asume que las palabras son independientes entre si, algo que por supuesto no deberíamos asumir, ya que probablemente no lo sean... pero no lo tiene en cuenta. Veamoslo en marcha.
 
-[python]
+```python
 
-\# Primero deberíamos cargar un DataFrame con dos propiedades,  
-\# un array de mensajes de cada email (su contenido)  
-\# y un array de etiquetas, spam o nospam en funcion de si lo son o no  
-\# como esta parte no es relevante, la resumo así  
-data = DataFrame({&#8216;message&#8217;: ["xxx", "yyy", &#8230;], &#8216;class&#8217;: ["spam", "nospam", "&#8230;"]})
+# Primero deberíamos cargar un DataFrame con dos propiedades,  
+# un array de mensajes de cada email (su contenido)  
+# y un array de etiquetas, spam o nospam en funcion de si lo son o no  
+# como esta parte no es relevante, la resumo así  
+data = DataFrame({'message': ["xxx", "yyy", ...], 'class': ["spam", "nospam", "..."]})
 
-\# Despues, tokenizamos los mensajes, lo que nos permite saber en cada mensaje  
-\# cuantas veces aparece cada palabra  
+# Despues, tokenizamos los mensajes, lo que nos permite saber en cada mensaje  
+# cuantas veces aparece cada palabra  
 vectorizer = CountVectorizer()  
-counts = vectorizer.fit_transform(data[&#8216;message&#8217;].values)
+counts = vectorizer.fit_transform(data['message'].values)
 
-\# Ahora utilizamos esos contadores, y la lista de etiquetas de email spam o nospam  
-\# para entrenar el modelo Naive Bayes  
+# Ahora utilizamos esos contadores, y la lista de etiquetas de email spam o nospam  
+# para entrenar el modelo Naive Bayes  
 classifier = MultinomialNB()  
-targets = data[&#8216;class&#8217;].values  
+targets = data['class'].values  
 classifier.fit(counts, targets)
 
-\# Finalmente, probamos que funciona con dos emails de ejemplo, uno que parece spam  
-\# y otro que no  
-examples = [&#8216;Get Free Viagra!!!&#8217;, "Hello Findemor, do you want to play some videogames this weekend?"]
+# Finalmente, probamos que funciona con dos emails de ejemplo, uno que parece spam  
+# y otro que no  
+examples = ['Get Free Viagra!!!', "Hello Findemor, do you want to play some videogames this weekend?"]
 
-\## aplicamos las mismas transformaciones que a los datos de entrenamiento  
+## aplicamos las mismas transformaciones que a los datos de entrenamiento  
 example_counts = vectorizer.transform(examples)  
 predictions = classifier.predict(example_counts)
 
 predictions  
-\# OUT: array([&#8216;spam&#8217;, &#8216;nospam&#8217;])  
-[/python]
+# OUT: array(['spam', 'nospam'])  
+```
+
 
 Como vemos en el ejemplo, es fácil detectar con bastante precisión si se trata de un mensaje de spam o no, en la mayoría de los casos.
 
 ## Clusterización K-Means {#sec03}
 
-El ejemplo anterior era un caso de algoritmo supervisado&#8230; ahora vamos a ver uno no supervisado.
+El ejemplo anterior era un caso de algoritmo supervisado... ahora vamos a ver uno no supervisado.
 
 Los algoritmos de clusterización como K-Means permiten identificar agrupaciones en principio desconocidas de nuestros datos. Por ejemplo, podríamos agrupar un conjunto de peliculas por su genero, valoración, nacionalidad, etc.
 
@@ -207,11 +213,11 @@ Por supuesto éste método no es infalible y tiene numerosos aspectos por los qu
   * Por ejemplo, no es adecuado para trabajar con datos geográficos, para lo que hay soluciones más apropiadas (OPTICS DBSCAN).
   * Elegir el número de clusters tampoco es sencillo, y generalmente es necesario ir probando cada vez con un valor superior de K hasta que veamos que el error no disminuye notablemente.
   * Enfrentarse a minimos locales tambien es un problema, ya que si en la posición aleatoria inicial de los centroides coincide que hemos dado con mínimos locales, no se moverán. Para ello podemos por ejemplo inicializar aleatoriamente varias veces y ver que resultados tienen mejores precisiones globales.
-  * Dar significados a los clusters es un problema sin solución en este algoritmo, ya que sabemos agrupar la información pero desconocemos en principio el significado de las variables latentes que se tuvieron en cuenta para esa asignación&#8230; dado que es un algoritmo no supervisado y no tenemos etiquetas.
+  * Dar significados a los clusters es un problema sin solución en este algoritmo, ya que sabemos agrupar la información pero desconocemos en principio el significado de las variables latentes que se tuvieron en cuenta para esa asignación... dado que es un algoritmo no supervisado y no tenemos etiquetas.
 
 Veamos como hacerlo en Python.
 
-[python]  
+```python  
 %matplotlib inline
 
 from sklearn.cluster import KMeans  
@@ -219,34 +225,35 @@ import matplotlib.pyplot as plt
 from sklearn.preprocessing import scale  
 from numpy import random, float
 
-\# Primero tendriamos que crear un conjunto de coordenadas aleatorias  
-\# Si tienen algun tipo de "clusterización" pues mejor, por supuesto  
+# Primero tendriamos que crear un conjunto de coordenadas aleatorias  
+# Si tienen algun tipo de "clusterización" pues mejor, por supuesto  
 data = createSomeRandomValues(); 
 
-\## Lo dibujamos para ver nuestros datos  
+## Lo dibujamos para ver nuestros datos  
 plt.scatter(data[:,0], data[:, 1])  
 plt.show()  
-[/python]
+```
+
 
 <a href="http://blog.findemor.es/wp-content/uploads/2018/02/kmeans1.png" rel="attachment wp-att-528"><img class="aligncenter size-full wp-image-528" src="http://blog.findemor.es/wp-content/uploads/2018/02/kmeans1.png" alt="kmeans1" width="372" height="252" srcset="http://blog.findemor.es/wp-content/uploads/2018/02/kmeans1-300x203.png 300w, http://blog.findemor.es/wp-content/uploads/2018/02/kmeans1.png 372w" sizes="(max-width: 372px) 100vw, 372px" /></a>
 
-a
 
-[python]  
-\# Creamos el modelo de KMeans, un valor 5 para K, por ejemplo&#8230;  
-\# no hay un valor bueno salvo que conozcamos lo que estamos buscando  
-\# o hagamos pruebas  
+```python  
+# Creamos el modelo de KMeans, un valor 5 para K, por ejemplo...  
+# no hay un valor bueno salvo que conozcamos lo que estamos buscando  
+# o hagamos pruebas  
 model = KMeans(n_clusters=5)
 
-\# Normalizamos los datos, ya que podemos ver en el dibujo anterior  
-\# que las escalas de X e Y son muy distintas  
+# Normalizamos los datos, ya que podemos ver en el dibujo anterior  
+# que las escalas de X e Y son muy distintas  
 model = model.fit(scale(data))
 
-\# Visualizamos el resultado de KMeans dando un color a cada cluster  
+# Visualizamos el resultado de KMeans dando un color a cada cluster  
 plt.figure(figsize=(8, 6))  
 plt.scatter(data[:,0], data[:,1], c=model.labels_.astype(float))  
 plt.show()  
-[/python]
+```
+
 
 <a href="http://blog.findemor.es/wp-content/uploads/2018/02/kmeans2.png" rel="attachment wp-att-529"><img class="aligncenter size-full wp-image-529" src="http://blog.findemor.es/wp-content/uploads/2018/02/kmeans2.png" alt="kmeans2" width="484" height="361" srcset="http://blog.findemor.es/wp-content/uploads/2018/02/kmeans2-300x224.png 300w, http://blog.findemor.es/wp-content/uploads/2018/02/kmeans2.png 484w" sizes="(max-width: 484px) 100vw, 484px" /></a>
 
@@ -260,69 +267,72 @@ El algoritmo en realidad funciona de forma muy simple, itera sobre los datos esc
 
 ¿Y qué es esta entropía? pues es el grado de desorden de los datos, es decir, un conjunto de datos donde tenemos por ejemplo 3 tipos de etiquetas y hay 100 datos con cada una de las etiquetas, tendrá una entropía alta. Por el contrario, si tenemos solo 1 etiqueta para cualquier numero de datos, la entropía será minima, ya que todos los datos pertenecen al mismo conjunto y por lo tanto no hay desorden. Con este algoritmo buscaremos que la entropía en cada hoja sea mínima, aunque eso implique que el arbol no sea óptimo en cuanto a número de decisiones.
 
-[python]  
+```python  
 import numpy as np  
 import pandas as pd  
 from sklearn import tree
 
-\# Cargariamos un csv con datos de curriculums, por ejemplo  
+# Cargariamos un csv con datos de curriculums, por ejemplo  
 input_file = "C:\curriculums.csv"  
-df = pd.read\_csv(input\_file, header = 0)
+df = pd.read_csv(input_file, header = 0)
 
-\# mostramos el contenido  
+# mostramos el contenido  
 df.head()  
-[/python]
+```
+
 
 <a href="http://blog.findemor.es/wp-content/uploads/2018/02/cvs1.jpg" rel="attachment wp-att-533"><img class="aligncenter size-full wp-image-533" src="http://blog.findemor.es/wp-content/uploads/2018/02/cvs1.jpg" alt="Datos en crudo" width="734" height="183" srcset="http://blog.findemor.es/wp-content/uploads/2018/02/cvs1-300x75.jpg 300w, http://blog.findemor.es/wp-content/uploads/2018/02/cvs1.jpg 734w" sizes="(max-width: 734px) 100vw, 734px" /></a>
 
-[python]  
-\# Creamos un objeto para mapear las variables categoricas en numericas,  
-\# que son las que acepta el algoritmo  
-d = {&#8216;Y&#8217;: 1, &#8216;N&#8217;: 0}
+```python  
+# Creamos un objeto para mapear las variables categoricas en numericas,  
+# que son las que acepta el algoritmo  
+d = {'Y': 1, 'N': 0}
 
-\# aplicamos la transformación  
-df[&#8216;Hired&#8217;] = df[&#8216;Hired&#8217;].map(d)  
-df[&#8216;Employed?&#8217;] = df[&#8216;Employed?&#8217;].map(d)  
-df[&#8216;Top-tier school&#8217;] = df[&#8216;Top-tier school&#8217;].map(d)  
-df[&#8216;Interned&#8217;] = df[&#8216;Interned&#8217;].map(d)
+# aplicamos la transformación  
+df['Hired'] = df['Hired'].map(d)  
+df['Employed?'] = df['Employed?'].map(d)  
+df['Top-tier school'] = df['Top-tier school'].map(d)  
+df['Interned'] = df['Interned'].map(d)
 
-\# hacemos lo mismo con el nivel de educacion  
-d = {&#8216;BS&#8217;: 0, &#8216;MS&#8217;: 1, &#8216;PhD&#8217;: 2}  
-df[&#8216;Level of Education&#8217;] = df[&#8216;Level of Education&#8217;].map(d)
+# hacemos lo mismo con el nivel de educacion  
+d = {'BS': 0, 'MS': 1, 'PhD': 2}  
+df['Level of Education'] = df['Level of Education'].map(d)
 
-\# Observamos el resultado de la transformacion de variables categoricas  
-\# en numericas  
+# Observamos el resultado de la transformacion de variables categoricas  
+# en numericas  
 df.head()  
-[/python]
+```
+
 
 <a href="http://blog.findemor.es/wp-content/uploads/2018/02/cvs2.jpg" rel="attachment wp-att-534"><img class="aligncenter size-full wp-image-534" src="http://blog.findemor.es/wp-content/uploads/2018/02/cvs2.jpg" alt="Datos masajeados" width="735" height="183" srcset="http://blog.findemor.es/wp-content/uploads/2018/02/cvs2-300x75.jpg 300w, http://blog.findemor.es/wp-content/uploads/2018/02/cvs2.jpg 735w" sizes="(max-width: 735px) 100vw, 735px" /></a>
 
-[python]  
-\# Seleccionamos las primeras 6 columnas, que contienen las caracteristicas  
-\# de la observacion (sin la clase Hired, que es la respuesta que queremos calcular)  
+```python  
+# Seleccionamos las primeras 6 columnas, que contienen las caracteristicas  
+# de la observacion (sin la clase Hired, que es la respuesta que queremos calcular)  
 features = list(df.columns[:6])  
 X = df[features]
 
-\# Seleccionamos de forma aislada la columna que contiene la etiqueta a entrenar  
+# Seleccionamos de forma aislada la columna que contiene la etiqueta a entrenar  
 y = df["Hired"]
 
-\# Y finalmente generamos el arbol de decision a partir de estos datos  
+# Y finalmente generamos el arbol de decision a partir de estos datos  
 clf = tree.DecisionTreeClassifier()  
 clf = clf.fit(X,y)
 
 ################################################  
-\## Si queremos visualizar el modelo, basta con emplear la libreria graphviz  
-\## quedaría asi  
+## Si queremos visualizar el modelo, basta con emplear la libreria graphviz  
+## quedaría asi  
 from IPython.display import Image  
 from sklearn.externals.six import StringIO  
 import pydotplus
 
 dot_data = StringIO()  
-tree.export\_graphviz(clf, out\_file=dot_data,  
+tree.export_graphviz(clf, out_file=dot_data,  
 feature_names=features)  
-graph = pydotplus.graph\_from\_dot\_data(dot\_data.getvalue())  
+graph = pydotplus.graph_from_dot_data(dot_data.getvalue())  
 Image(graph.create_png())  
-[/python]
+```
+
 
 <p style="text-align: center;">
   <a href="http://blog.findemor.es/wp-content/uploads/2018/02/cv3.png" rel="attachment wp-att-535"><img class="aligncenter size-full wp-image-535" src="http://blog.findemor.es/wp-content/uploads/2018/02/cv3.png" alt="cv3" width="553" height="636" srcset="http://blog.findemor.es/wp-content/uploads/2018/02/cv3-261x300.png 261w, http://blog.findemor.es/wp-content/uploads/2018/02/cv3.png 553w" sizes="(max-width: 553px) 100vw, 553px" /></a><br /> <em>Resultado del árbol de decisión.</em>
@@ -333,7 +343,7 @@ Image(graph.create_png())
 </p>
 
 <li style="text-align: left;">
-  <strong>VARIABLE <= &#8230;</strong> la condición que aparece al principio de cada decisión determina que si se cumple la condición, debe seguirse el camino de la izquierda, y si no, el de la derecha. Es la forma de avanzar por el árbol.
+  <strong>VARIABLE <= ...</strong> la condición que aparece al principio de cada decisión determina que si se cumple la condición, debe seguirse el camino de la izquierda, y si no, el de la derecha. Es la forma de avanzar por el árbol.
 </li>
 <li style="text-align: left;">
   <strong>gini</strong>: es el índice de entropía que determina el grado de desorden de los datos que se manejaron en cada decisión. Recordad que en cada paso debería reducirse la entropía.
@@ -353,30 +363,31 @@ Random Forests consiste básicamente en escoger aleatoriamente subconjuntos de d
 
 Utilizando los mismos datos del clasificador anterior basado en un árbol de decisión normal, vamos a ver como podríamos crear un modelo de tipo Random Forest en su lugar:
 
-[python]  
+```python  
 from sklearn.ensemble import RandomForestClassifier
 
-\# Basta con aplicar este otro método en lugar del anterior  
+# Basta con aplicar este otro método en lugar del anterior  
 clf = RandomForestClassifier(n_estimators=10)  
 clf = clf.fit(X, y)
 
 ##################################  
-\# Despues, podemos ver el resultado a un par de curriculums nuevos para los que  
-\# nuestro sistema no ha sido entrenado
+# Despues, podemos ver el resultado a un par de curriculums nuevos para los que  
+# nuestro sistema no ha sido entrenado
 
-\# ¿Debemos contratar a un profesional con 10 años de experiencia  
-\# que actualmente tiene trabajo?  
+# ¿Debemos contratar a un profesional con 10 años de experiencia  
+# que actualmente tiene trabajo?  
 print (clf.predict([[10, 1, 4, 0, 0, 0]]))
 
-\### OUT: [1] &#8230; Nuestro arbol de decisión diria que sí
+### OUT: [1] ... Nuestro arbol de decisión diria que sí
 
-\# ¿Y que pasa si actualmente está desempleado?  
+# ¿Y que pasa si actualmente está desempleado?  
 print (clf.predict([[10, 0, 4, 0, 0, 0]]))
 
-\### OUT: [0] &#8230; Nuestro arbol de decisión opina que no  
-[/python]
+### OUT: [0] ... Nuestro arbol de decisión opina que no  
+```
 
-Ocurre una cosa curiosa&#8230; si ejecutamos varias veces la prediccion sobre el mismo curriculum, en algunos casos a veces podría dar una respuesta positiva y otras negativa&#8230; esto se debe a la naturaleza aleatoria de la generación del modelo Random Forest. Si los arboles cambian sutilmente, las predicciones también podrían cambiar.
+
+Ocurre una cosa curiosa... si ejecutamos varias veces la prediccion sobre el mismo curriculum, en algunos casos a veces podría dar una respuesta positiva y otras negativa... esto se debe a la naturaleza aleatoria de la generación del modelo Random Forest. Si los arboles cambian sutilmente, las predicciones también podrían cambiar.
 
 ## Conjuntos de clasificadores heterogéneos {#sec05}
 
@@ -384,7 +395,7 @@ A veces es buena idea no limitarse a un único algoritmo de clasificación, sino
 
 Existen distintas técnicas para generar conjuntos de clasificadores (ensemble learning), entre ellas:
 
-  * **Bagging** (**B**ootstrap **agg**regat**ing**): la utilizada por Random Forest&#8230; muchos modelos entrenados con subconjuntos aleatorios de los datos.
+  * **Bagging** (**B**ootstrap **agg**regat**ing**): la utilizada por Random Forest... muchos modelos entrenados con subconjuntos aleatorios de los datos.
   * **Boosting**: parecido al anterior, pero cada modelo siguiente que se genera intenta aumentar el peso (boost) los atributos que hicieron que los datos se clasificasen erróneamente en el modelo anterior.
   * **Bucket**: entrena muchos modelos distintos, empleando distintos algoritmos pero los mismos datos de entrenamiento, despues se utiliza aquel que ofrece mejor precisión con el conjunto de test.
   * **Stacking**: se ejecutan varios modelos distintos en los mismos datos de entrenamiento, pero en este caso los resultados se fusionan, con lo que la clasificación final es el resultado combinado de todos los clasificadores empleados (votación, asignación de pesos/credibilidad, etc.).
@@ -397,69 +408,71 @@ Existen técnicas avanzadas para obtener mejores resultados a la hora de combina
 
 ## (SVM / SVC) Máquinas de vectores de soporte {#sec06}
 
-Anteriormente hemos hablado de técnicas como K-means, que permiten clasificar y clusterizar datos en función de una serie de características (funciona bien con 2 características o unas pocas)&#8230; en ocasiones, sin embargo, el número de características de las cuales depende nuestro sistema de clasificación es muy elevado, y si por lo que sea ninguna de ellas puede ser obviada y eliminada de nuestros cálculo, entonces deberemos recurrir a técnicas que trabajen bien con datos con un gran número de dimesiones, como es el caso de este algoritmo: Support Vector Machines.
+Anteriormente hemos hablado de técnicas como K-means, que permiten clasificar y clusterizar datos en función de una serie de características (funciona bien con 2 características o unas pocas)... en ocasiones, sin embargo, el número de características de las cuales depende nuestro sistema de clasificación es muy elevado, y si por lo que sea ninguna de ellas puede ser obviada y eliminada de nuestros cálculo, entonces deberemos recurrir a técnicas que trabajen bien con datos con un gran número de dimesiones, como es el caso de este algoritmo: Support Vector Machines.
 
-Las SVM son algoritmos que funcionan bien, como hemos dicho, con observaciones cuya clasificación depende de un gran número de variables, ya que emplean una serie de hiperplanos (matemáticassss) para realizar la clasificación. Debido a esta razón, son computacionalmente muy caras&#8230; y por lo general existen diferentes aproximaciones en las librerias que emplearemos para su implementación, que proporcionan mejor o peor resultado en función del &#8220;performance&#8221; que ofrezcan. Además, es importante resaltar que pese a que lo he comparado antes con K-Means, en realidad SVM se trata de un algoritmo supervisado, que requiere de un conjunto de entrenamiento correctamente etiquetado para generar su modelo.
+Las SVM son algoritmos que funcionan bien, como hemos dicho, con observaciones cuya clasificación depende de un gran número de variables, ya que emplean una serie de hiperplanos (matemáticassss) para realizar la clasificación. Debido a esta razón, son computacionalmente muy caras... y por lo general existen diferentes aproximaciones en las librerias que emplearemos para su implementación, que proporcionan mejor o peor resultado en función del “performance”; que ofrezcan. Además, es importante resaltar que pese a que lo he comparado antes con K-Means, en realidad SVM se trata de un algoritmo supervisado, que requiere de un conjunto de entrenamiento correctamente etiquetado para generar su modelo.
 
 En la imagen siguiente podemos ver el resultado de clasificar el conjunto de datos Iris aplicando algunos de los distintos Kernels de SVC (Support Vector Classification). En el ejemplo pueden distinguirse los resultados menos precisos que ofrecería un SVC Lineal (primera imagen) frente a los polinómicos (última imagen), pero por supuesto estos últimos tienen un mayor coste computacional. A menudo que funcionen unos mejores que otros dependen del conjunto de datos sobre el que lo empleemos.
 
 <div id="attachment_538" style="width: 410px" class="wp-caption aligncenter">
   <a href="http://blog.findemor.es/wp-content/uploads/2018/02/svc-kernels.png" rel="attachment wp-att-538"><img class="size-full wp-image-538" src="http://blog.findemor.es/wp-content/uploads/2018/02/svc-kernels.png" alt="Comparación de SVC Kernels (http://scikit-learn.org)" width="400" height="280" srcset="http://blog.findemor.es/wp-content/uploads/2018/02/svc-kernels-300x210.png 300w, http://blog.findemor.es/wp-content/uploads/2018/02/svc-kernels.png 400w" sizes="(max-width: 400px) 100vw, 400px" /></a>
   
-  <p class="wp-caption-text">
+ <p class="wp-caption-text">
     Comparación de SVC Kernels (http://scikit-learn.org)
   </p>
 </div>
 
 Hagamos algunas pruebas con Python.
 
-[python]  
+```python  
 %matplotlib inline  
 from pylab import *
 
-\# Primero creamos algunos datos de prueba, en nuestro caso preparamos dos arrays  
-\# X contiene vectores bidimensionales, que determinan las coordenadas X e Y de  
-\# nuestros datos X = [[1,0],[x, y],&#8230;]  
-\# Y contiene un valor de 1 a 5 que corresponde a la etiqueta que asignamos a cada  
-\# observacion de nuestro conjunto de entrenamiento  
+# Primero creamos algunos datos de prueba, en nuestro caso preparamos dos arrays  
+# X contiene vectores bidimensionales, que determinan las coordenadas X e Y de  
+# nuestros datos X = [[1,0],[x, y],...]  
+# Y contiene un valor de 1 a 5 que corresponde a la etiqueta que asignamos a cada  
+# observacion de nuestro conjunto de entrenamiento  
 (X, y) = createRandomData(5)
 
-\# Pintamos los datos para ver que tenemos entre manos  
+# Pintamos los datos para ver que tenemos entre manos  
 plt.figure(figsize=(8, 6))  
 plt.scatter(X[:,0], X[:,1], c=y.astype(np.float))  
 plt.show()  
-[/python]
+```
+
 
 <div id="attachment_539" style="width: 494px" class="wp-caption aligncenter">
   <a href="http://blog.findemor.es/wp-content/uploads/2018/02/svc1.png" rel="attachment wp-att-539"><img class="size-full wp-image-539" src="http://blog.findemor.es/wp-content/uploads/2018/02/svc1.png" alt="Nuestros datos" width="484" height="361" srcset="http://blog.findemor.es/wp-content/uploads/2018/02/svc1-300x224.png 300w, http://blog.findemor.es/wp-content/uploads/2018/02/svc1.png 484w" sizes="(max-width: 484px) 100vw, 484px" /></a>
   
-  <p class="wp-caption-text">
+ <p class="wp-caption-text">
     Nuestros datos
   </p>
 </div>
 
-[python]  
+```python  
 from sklearn import svm, datasets
 
-\# Creamos un modelo SVC usando el kernel lineal (el menos costoso)  
-svc = svm.SVC(kernel=&#8217;linear&#8217;, C=1.0).fit(X, y)
+# Creamos un modelo SVC usando el kernel lineal (el menos costoso)  
+svc = svm.SVC(kernel='linear', C=1.0).fit(X, y)
 
 ########################  
-\# Si queremos podemos ver en que cluster clasificaria  
-\# un par de nuevas observaciones&#8230;  
+# Si queremos podemos ver en que cluster clasificaria  
+# un par de nuevas observaciones...  
 print(svc.predict([[100000, 40]]))  
-\## OUT: [1] &#8230; lo clasifica en el cluster 1
+## OUT: [1] ... lo clasifica en el cluster 1
 
 print(svc.predict([[50000, 70]]))  
-\## OUT: [4] &#8230; lo clasifica en el cluster 4
+## OUT: [4] ... lo clasifica en el cluster 4
 
-\## Veamos los datos representados  
-[/python]
+## Veamos los datos representados  
+```
+
 
 <div id="attachment_540" style="width: 509px" class="wp-caption aligncenter">
   <a href="http://blog.findemor.es/wp-content/uploads/2018/02/svc2.png" rel="attachment wp-att-540"><img class="size-full wp-image-540" src="http://blog.findemor.es/wp-content/uploads/2018/02/svc2.png" alt="Resultado SVC Linear" width="499" height="361" srcset="http://blog.findemor.es/wp-content/uploads/2018/02/svc2-300x217.png 300w, http://blog.findemor.es/wp-content/uploads/2018/02/svc2.png 499w" sizes="(max-width: 499px) 100vw, 499px" /></a>
   
-  <p class="wp-caption-text">
+ <p class="wp-caption-text">
     Resultado SVC Linear
   </p>
 </div>

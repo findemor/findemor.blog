@@ -19,7 +19,7 @@ Mis hombres, una pandilla de caballeros mercenarios, y unos pocos guerreros que 
 
 Tras unas horas en las que avancé a examinar el terreno, ví como comenzaban a surgir del propio suelo los enemigos, una horda tras otra de huesos animados por un desconocido nigromante, que parecia ocultarse en una torre al noroeste.
 
-Lo que siguió no es algo como para contarlo alrededor de una hoguera&#8230; de hecho cortare la lengua a aquel que me lo mencione. Pero la realidad es que repentinamente un rayo cruzo el cielo, y mis caballerias ardieron en una masa de carne y sangre.
+Lo que siguió no es algo como para contarlo alrededor de una hoguera... de hecho cortare la lengua a aquel que me lo mencione. Pero la realidad es que repentinamente un rayo cruzo el cielo, y mis caballerias ardieron en una masa de carne y sangre.
 
 Mis huestes, acobardadas por la espantosa imagen, dudaron largo tiempo en avanzar, por lo que los esqueletos enemigos seguian levantandose y dirigiendose inexorablemente hacia nosotros. Tan solo los demonios se mostraron implacables, tanto los aulladores como los mastines que el propio Khorne me entregó, pero no fue suficiente. El resto de tropas estaban completamente desorientadas.
 

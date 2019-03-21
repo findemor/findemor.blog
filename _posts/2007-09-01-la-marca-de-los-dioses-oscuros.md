@@ -13,7 +13,7 @@ blogger_author:
 blogger_ee5e7a96c9f97b09d0db97b4ce8cadc3_permalink:
   - "8869427816855584749"
 categories:
-  - warhammer
+  - Personal
 ---
 Desperte como un mortal cualquiera, pero los Dioses del Caos me escogieron a mi para liderar sus Hordas.
 

@@ -8,23 +8,14 @@ guid: http://blog.findemor.es/?p=286
 permalink: /2013/10/prefab-gratis-para-hacer-transiciones-fadein-fadeout-entre-escenas-en-unity-3d/
 image: /wp-content/uploads/2013/10/mazemaster-64x64.png
 categories:
-  - Android
   - Desarrollo
   - How to
-  - Unity
 tags:
-  - Android
-  - fadeIn
-  - fadeOut
-  - free
-  - prefab
-  - scene
-  - transitions
   - Unity
 ---
-Hace poco he empezado a hacer algunas pruebas con Unity para hacer algún **juego en Android**. Mi experiencia está siendo muy positiva, porque hace largo tiempo trabajé con Div Game Studio y Phoenix, y me divertía muchísimo&#8230; y esto ha sido un reencuentro con el mundo del _indiegame_ genial.
+Hace poco he empezado a hacer algunas pruebas con Unity para hacer algún **juego en Android**. Mi experiencia está siendo muy positiva, porque hace largo tiempo trabajé con Div Game Studio y Phoenix, y me divertía muchísimo... y esto ha sido un reencuentro con el mundo del _indiegame_ genial.
 
-Sin embargo, encuentro que aún hay muchas cosas que le faltan a Unity y que no se porqué no están ahí&#8230; una de las más sencillas es la posibilidad de **hacer transiciones para pasar de una escena a otra**, con un **simple Fade In o Fade Out desde negro**.
+Sin embargo, encuentro que aún hay muchas cosas que le faltan a Unity y que no se porqué no están ahí... una de las más sencillas es la posibilidad de **hacer transiciones para pasar de una escena a otra**, con un **simple Fade In o Fade Out desde negro**.
 
 <!--more-->
 
@@ -63,7 +54,12 @@ Os invito a hacer pruebas con la configuración que más os guste.
 
 **Si quereis reproducir la transición desde código**, por ejemplo **al pulsar un botón**, basta con obtener la referencia del objeto instanciado SceneFade y ejecutar el método oportuno. Por ejemplo, para hacer FadeOut al pulsar el boton podeis hacer algo así:
 
-[sourcecode language=&#8221;java&#8221; highlight=&#8221;3&#8243;]<br />function OnMouseDown(){<br /><br />GameObject.Find("SceneFade").GetComponent(sceneFade).FadeOut();<br /><br />}<br />[/sourcecode]
+```js
+function OnMouseDown(){
+  GameObject.Find("SceneFade").GetComponent(sceneFade).FadeOut();
+  }
+```
+
 
 Si abrís el fichero **sceneFade.js** podeis encontrar **más métodos útiles** o modificarlos a vuestro antojo.
 
@@ -87,7 +83,12 @@ If you are looking for a free and simple (easy to use) Unity 3D Prefab for Fade 
 
   1. Or play transitions from codebehind by doing:
 
-[sourcecode language=&#8221;java&#8221; highlight=&#8221;3&#8243;]<br />function OnMouseDown(){<br /><br />GameObject.Find("SceneFade").GetComponent(sceneFade).FadeOut();<br /><br />}<br />[/sourcecode]
+```js
+function OnMouseDown(){
+  GameObject.Find("SceneFade").GetComponent(sceneFade).FadeOut();
+  }
+```
+
 
 Read sceneFade.js for more methods.
 

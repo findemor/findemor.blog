@@ -9,11 +9,9 @@ permalink: /2015/06/aprender-a-usar-mongodb-guia-5/
 image: /wp-content/uploads/2015/06/mongodb.png
 categories:
   - Desarrollo
-  - Tecnología
+  - Cursos
 tags:
-  - bases de datos
-  - mongodb
-  - tecnología
+  - MongoDB
 ---
 <p dir="ltr">
   En publicaciones anteriores hemos aprendido a utilizar <a href=" http://blog.findemor.es/2015/06/aprender-a-usar-mongodb-guia-3">multitud de comandos y operadores</a> para consultar y <a href="http://blog.findemor.es/2015/06/aprender-a-usar-mongodb-guia-4">manipular nuestros datos</a> en MongoDB… pero aún no hemos visto una de las cosas que más diferencias tienen en una base de datos noSQL frente a un entorno tradicional SQL o relacional: <strong>el hecho de que el esquema de datos está determinado por la aplicación</strong> (es decir, por el uso que se va a hacer de los mismos) y no por su propio esquema o modelo de dominio. Este será el tema que abordemos en este post.
@@ -50,39 +48,27 @@ Guía 4: [Comandos y operaciones avanzadas](http://blog.findemor.es/2015/06/ap
 </h3>
 
 <li dir="ltr">
-  <p dir="ltr">
     <strong>Documentos enriquecidos</strong>: en mongo, los documentos no se fragmentan para almacenar sus datos en distintas tablas con diferentes relaciones de cardinalidad entre sí, sino que un documento es un conjunto atómico de datos, que contiene toda la información relevante según la aplicación que necesite procesarlo.
-  </p>
 </li>
 
 <li dir="ltr">
-  <p dir="ltr">
     <strong>Pre-join o datos embebidos</strong>: En mongo, un documento puede incluir otros documentos embebidos en su interior… sería el equivalente a las relaciones entre tablas de SQL. En el documento esto se traduce en que uno de sus atributos es un array de otros documentos.
-  </p>
 </li>
 
 <li dir="ltr">
-  <p dir="ltr">
     <strong>No hay joins</strong>: Los JOINS o cruces de datos en SQL escalan realmente mal, y una de las cosas que se busca al decidirse a utilizar una base de datos noSQL es un alto rendimiento. Debido a esto no existen joins en mongo… en su lugar, el diseñador de la base de datos y el desarrollador de la aplicación trabajan conjuntamente para que los datos se almacenen y se manipulen exactamente como la aplicación los necesita, sin tener que transformarlos o realizar complicadas proyecciones.
-  </p>
 </li>
 
 <li dir="ltr">
-  <p dir="ltr">
     <strong>No hay constraints</strong>: Es decir, no hay ForeignKeys, Checks constraints, etc. La solución a esta carencia es emplear datos embebidos para establecer cualquier tipo de relación o catálogo.
-  </p>
 </li>
 
 <li dir="ltr">
-  <p dir="ltr">
     <strong>Operaciones atómicas</strong>: En mongo, como veremos más adelante, no hay transacciones, pero en su lugar, todas las operaciones de manipulacion de datos son atómicas a nivel de documento, por lo que la alteración que hagamos a un documento nunca será parcial o estará disponible hasta haberse completado.
-  </p>
 </li>
 
 <li dir="ltr">
-  <p dir="ltr">
     <strong>Sin declaración de esquema</strong>: una de las mayores virtudes de mongo es que no necesita que el esquema sea declarado o definido de ningún modo antes de poder empezar a usarlo. Simplemente añade un documento a una colección inexistente y ésta se creará. Añade un documento totalmente distinto a la misma colección y se almacenará en ella y podrá ser consultado en conjunto o por separado en base a sus atributos. Esto permite que si la aplicación cambia, la integración sea trivial y prácticamente podamos olvidarnos de pesados scripts de transformación de base de datos.
-  </p>
 </li>
 
 <p dir="ltr">
@@ -90,15 +76,15 @@ Guía 4: [Comandos y operaciones avanzadas](http://blog.findemor.es/2015/06/ap
 </p>
 
 <p dir="ltr">
-  1 &#8211; Liberar a la base de datos de anomalías de modificación de los datos: por ejemplo, datos duplicados.
+  1 - Liberar a la base de datos de anomalías de modificación de los datos: por ejemplo, datos duplicados.
 </p>
 
 <p dir="ltr">
-  2 &#8211; Minimizar el rediseño al extender la base de datos: si la base de datos debe crecer añadiendo nuevas entidades, no deberían verse afectadas las tablas anteriores… sin embargo, en el mundo real esto rara vez se consigue y las nuevas necesidades de la aplicación obligan a construir consultas muy complejas y poco eficientes o bien a rediseñar el modelo.
+  2 - Minimizar el rediseño al extender la base de datos: si la base de datos debe crecer añadiendo nuevas entidades, no deberían verse afectadas las tablas anteriores… sin embargo, en el mundo real esto rara vez se consigue y las nuevas necesidades de la aplicación obligan a construir consultas muy complejas y poco eficientes o bien a rediseñar el modelo.
 </p>
 
 <p dir="ltr">
-  3 &#8211; Evitar cualquier tendencia de patrón de uso de la aplicación: la estructura de los datos es independiente del uso que se haga de ellos. Pero ojo, que hacer esto tiene ventajas e inconvenientes… tantos como hacer exactamente lo contrario.
+  3 - Evitar cualquier tendencia de patrón de uso de la aplicación: la estructura de los datos es independiente del uso que se haga de ellos. Pero ojo, que hacer esto tiene ventajas e inconvenientes… tantos como hacer exactamente lo contrario.
 </p>
 
 <p dir="ltr">
@@ -109,7 +95,7 @@ Guía 4: [Comandos y operaciones avanzadas](http://blog.findemor.es/2015/06/ap
   <strong>Veamos un ejemplo con un Post</strong>, que puede recibir comentarios y que esta categorizado con una serie de tags.
 </p>
 
-[js]{  
+```js{  
 "_id": 1,  
 "author": "findemor",  
 "title": "este es el titulo",  
@@ -124,9 +110,11 @@ Guía 4: [Comandos y operaciones avanzadas](http://blog.findemor.es/2015/06/ap
 "author": "jane"  
 }],  
 "date": ISODate("2015-12-05T03:23:33.841Z"),  
-"permalink": "este\_es\_el_titulo",  
+"permalink": "este_es_el_titulo",  
 "tags": ["tecnologia", "programacion"]  
-}[/js]
+}
+```
+
 
 <h3 dir="ltr">
   Vivir en un mundo sin constraints.
@@ -137,7 +125,7 @@ Guía 4: [Comandos y operaciones avanzadas](http://blog.findemor.es/2015/06/ap
 </p>
 
 <p dir="ltr">
-  [Tweet &#8220;En MongoDB, si algo tiene la forma que tendría en SQL, probablemente no lo has enfocado bien.&#8221;]
+  > [ “En MongoDB, si algo tiene la forma que tendría en SQL, probablemente no lo has enfocado bien.”;]
 </p>
 
 <p dir="ltr">
@@ -172,15 +160,15 @@ Guía 4: [Comandos y operaciones avanzadas](http://blog.findemor.es/2015/06/ap
     
     <tr>
       <td>
-        {<br /> _id: 1,<br /> title: “&#8211; &#8211; ”,<br /> body: “&#8211; &#8211; ”,<br /> author: “&#8211; &#8211;”,<br /> date: “&#8211; &#8211; ”<br /> }
+        {<br /> _id: 1,<br /> title: “- - ”,<br /> body: “- - ”,<br /> author: “- -”,<br /> date: “- - ”<br /> }
       </td>
       
       <td>
-        {<br /> _id: 3,<br /> post_id: 1,<br /> author: “&#8211; &#8211; ”,<br /> author_email: “&#8211; &#8211; ”,<br /> order: 0<br /> }
+        {<br /> _id: 3,<br /> post_id: 1,<br /> author: “- - ”,<br /> author_email: “- - ”,<br /> order: 0<br /> }
       </td>
       
       <td>
-        {<br /> _id: 1,<br /> tag: “&#8211; &#8211; ”,<br /> posts: [1]<br /> }
+        {<br /> _id: 1,<br /> tag: “- - ”,<br /> posts: [1]<br /> }
       </td>
     </tr>
   </table>
@@ -203,15 +191,15 @@ Guía 4: [Comandos y operaciones avanzadas](http://blog.findemor.es/2015/06/ap
 </p>
 
 <p dir="ltr">
-  1 &#8211; <strong>Reestructurar el código</strong> para utilizar un único documento en las operaciones que deban ser atómicas, beneficiandote de su atomicidad para simular la transacción.
+  1 - <strong>Reestructurar el código</strong> para utilizar un único documento en las operaciones que deban ser atómicas, beneficiandote de su atomicidad para simular la transacción.
 </p>
 
 <p dir="ltr">
-  2 &#8211;<strong> Implementar por sofware una especie de bloqueo</strong> (semáforo, find and modify…).
+  2 -<strong> Implementar por sofware una especie de bloqueo</strong> (semáforo, find and modify…).
 </p>
 
 <p dir="ltr">
-  3 &#8211; <strong>Tolerancia</strong>: hay aplicaciones que se pueden permitir cierta cantidad de inconsistencia, como actualizar el muro de facebook, etc. donde la inconsistencia de los datos no es crítica si no es grave.
+  3 - <strong>Tolerancia</strong>: hay aplicaciones que se pueden permitir cierta cantidad de inconsistencia, como actualizar el muro de facebook, etc. donde la inconsistencia de los datos no es crítica si no es grave.
 </p>
 
 <p dir="ltr">

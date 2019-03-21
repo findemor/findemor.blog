@@ -13,8 +13,7 @@ blogger_blog:
 blogger_ee5e7a96c9f97b09d0db97b4ce8cadc3_permalink:
   - "1400975400283828919"
 categories:
-  - Internet
-  - Tecnología
+  - Opinion
 ---
 [<img class="alignleft" style="border: 0px initial initial;" src="http://www.congresodeinternet.com/wp-content/themes/congresodeinternet/images/logo.png" border="0" alt="" width="250" height="110" />](http://www.congresodeinternet.com/wp-content/themes/congresodeinternet/images/logo.png)
 
@@ -26,7 +25,7 @@ No voy a escribir un análisis porque ya existe, y escrito por autores con mejor
 [Victor Puig](http://victorpuig.es/2010/10/hablando-sobre-neuromarketing-aplicado-a-online-en-el-congreso-de-internet/)  
 [La vida en chandal](http://lavidaenchandal.blogspot.com/2010/10/erase-una-vez-un-congreso-de-internet-o.html)
 
-Aunque si quereis conocer brevemente mi experiencia&#8230;
+Aunque si quereis conocer brevemente mi experiencia...
 
 <!--more-->
 
@@ -44,11 +43,11 @@ Pero solo no significa aislado, y menos en un congreso de Social Media: saqué m
 
 La verdad es que me divertí mucho, aunque era un poco incómodo meter lo que querias decir no ya en 140 caracteres, sino en 90, porque estabamos usando 3 y hasta 4 hashtags (#congresodeinternet, #congresointernet, #congresoweb e incluso #congresodenointernet).
 
-Del domingo me quedo con la ponencia de <span style="font-weight: bold;">Victor Puig (@victorpuig) &#8220;Neuromarketing aplicado a la web&#8221;</span>, que me resultó amena y brillantemente preparada (y me dejó claro que una mujer de caramelo desnuda y volando en picado es una imagen que captura la atención de los usuarios).
+Del domingo me quedo con la ponencia de <span style="font-weight: bold;">Victor Puig (@victorpuig) “Neuromarketing aplicado a la web”;</span>, que me resultó amena y brillantemente preparada (y me dejó claro que una mujer de caramelo desnuda y volando en picado es una imagen que captura la atención de los usuarios).
 
 Después una mesa redonda a la que asistían Fernando Polo (@abladias) , Victor Puig (@victorpuig) , Pedro Rojas (@seniormanager), Javier Guembe (@estwitter) , Alfonso Alcántara (@yoriento) y Adolfo Suárez (@cosechadel66), y donde descubrí a <span style="font-weight: bold;">Alfonso Alcántara</span> como otro magnífico (y divertido) ponente.
 
-Por la tarde Juan Salom, Comandante de la Guardia Civil y responsable máximo del [GDT](https://www.gdt.guardiacivil.es/)nos habló de lo difícil que lo tienen para resolver delitos cometidos en nuestro amado mundo virtual (que son muchos), porque los &#8220;malos&#8221; aprenden deprisa, y nuestros legisladores actuan rápido y mal. Y solicitaba la ayuda de todos denunciando lo que corresponda. La verdad es que era para tomárselo en serio&#8230; porque aunque en una presentación con Comic Sans y la cara aberrada de El Santo para identificar a los pederastas, quedaba claro que la corrupción era amplia y dificilmente combatible.
+Por la tarde Juan Salom, Comandante de la Guardia Civil y responsable máximo del [GDT](https://www.gdt.guardiacivil.es/)nos habló de lo difícil que lo tienen para resolver delitos cometidos en nuestro amado mundo virtual (que son muchos), porque los “malos”; aprenden deprisa, y nuestros legisladores actuan rápido y mal. Y solicitaba la ayuda de todos denunciando lo que corresponda. La verdad es que era para tomárselo en serio... porque aunque en una presentación con Comic Sans y la cara aberrada de El Santo para identificar a los pederastas, quedaba claro que la corrupción era amplia y dificilmente combatible.
 
 En general fue una experiencia muy estimulante, con ponencias mejores (y desgraciadamente también algunas mejorables) donde el <span style="font-weight: bold;">Networking</span> estaba sobreestimulado (en parte por nuestras estupendas <span style="font-weight: bold;">camisetas-QR</span> jaja) y donde conocí a personas estupendas (y me llovieron followers!).
 

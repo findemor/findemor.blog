@@ -65,15 +65,15 @@ categories:
               
               <p style="text-align: left; line-height: 20px; font: normal normal normal 13px/normal Georgia; min-height: 15px; margin: 0;">
                 <p style="text-align: left; line-height: 20px; font: normal normal normal 13px/normal Georgia; margin: 0;">
-                  Son numerosos los rumores de que hubo un contacto con alienígenas en las misiones Apolo, y algo habrá de cierto en ello cuando gente como el ex jefe de los Sistemas de Comunicación de la NASA, Maurice Chatelain, confirmó en 1970 que Armstrong había informó de que habia dos OVNIs en el borde de un cráter Lunar. Además Chatelain cree que algunos OVNIs provienen de nuestro propio sistema solar, específicamente de Titán. <em>&#8220;El encuentro -dijo Chatelain- era la NASA tenia conocimiento de ello, pero se ocultó&#8221;.</em>
+                  Son numerosos los rumores de que hubo un contacto con alienígenas en las misiones Apolo, y algo habrá de cierto en ello cuando gente como el ex jefe de los Sistemas de Comunicación de la NASA, Maurice Chatelain, confirmó en 1970 que Armstrong había informó de que habia dos OVNIs en el borde de un cráter Lunar. Además Chatelain cree que algunos OVNIs provienen de nuestro propio sistema solar, específicamente de Titán. <em>“El encuentro -dijo Chatelain- era la NASA tenia conocimiento de ello, pero se ocultó”;.</em>
                 </p>
                 
                 <p style="text-align: left; font: normal normal normal 13px/normal Georgia; margin: 0;">
-                  <em>&#8220;&#8230;todos los vuelos de los Apolo y los Gemini fueron seguidos, unos a distancia y otros muy cerca, por vehículos de origen extraterrestre, platillos voladores u OVNIs, si usted prefiere llamarlos por ese nombre. En todo momento ocurrió lo mismo, los astronautas informaban al Centro de Control de las misiones, el cual ordenaba siempre el silencio absoluto&#8230;&#8221;</em>
+                  <em>“...todos los vuelos de los Apolo y los Gemini fueron seguidos, unos a distancia y otros muy cerca, por vehículos de origen extraterrestre, platillos voladores u OVNIs, si usted prefiere llamarlos por ese nombre. En todo momento ocurrió lo mismo, los astronautas informaban al Centro de Control de las misiones, el cual ordenaba siempre el silencio absoluto...”;</em>
                 </p>
                 
                 <p style="text-align: left; font: normal normal normal 13px/normal Georgia; margin: 0;">
-                  <em>&#8220;Yo opino que Walter Schirra, a bordo del Mercury 8, fue el primer astronauta que usó el nombre clave Santa Claus para referirse a la presencia de platillos voladores cerca de las cápsulas espaciales. Sin embargo, sus informes fueron apenas notados por el público en general. Fue algo distinto cuando James Lovell, comandante del Apolo 8, salió de detrás de la Luna y dijo para que todo el mundo oyera: &#8220;Por favor, sepan todos que Santa Claus si existe&#8221;.</em>
+                  <em>“Yo opino que Walter Schirra, a bordo del Mercury 8, fue el primer astronauta que usó el nombre clave Santa Claus para referirse a la presencia de platillos voladores cerca de las cápsulas espaciales. Sin embargo, sus informes fueron apenas notados por el público en general. Fue algo distinto cuando James Lovell, comandante del Apolo 8, salió de detrás de la Luna y dijo para que todo el mundo oyera: “Por favor, sepan todos que Santa Claus si existe”;.</em>
                 </p>
                 
                 <p style="text-align: left; font: normal normal normal 13px/normal Georgia; min-height: 15px; margin: 0;">

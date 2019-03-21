@@ -7,9 +7,7 @@ layout: post
 guid: http://blog.findemor.es/?p=84
 permalink: /2010/12/aplicar-estilos-css-al-codigo-fuente-en-wordpress/
 categories:
-  - CSS
-  - How to
-  - HTML
+  - Frontend
 ---
 A menudo tenemos la necesidad de postear en nuestro blog WordPress un ejemplo de implementación que contiene un trozo de código fuente. Y también sabemos por experiencia que cuando buscamos una solución a un problema frustrante, tendemos a huir a toda velocidad de las páginas donde el código fuente se mezcla con el resto del mensaje, cual **código spaghetti aberrado**, resultando ininteligible.
 
@@ -19,13 +17,13 @@ Los chicos de **WordPress** han pensado en esto y nos proporcionan un plugin per
 
 Después de instalar el plugin anterior como cualquier otro plugin (no obstante las instrucciones se encuentran en el enlace), incluir un bloque de código fuente resulta tan sencillo como añadir las etiquetas.
 
-\[source language=&#8221;css&#8221;\]\[/source\]  
+\[source language=”;css”;\]\[/source\]  
 código escrito en css  
 [/source code]
 
-<span style="color: #ff6600;"><strong>ATENCIÓN</strong></span>: aunque en el ejemplo pone &#8220;**source code**&#8221; separado, debéis poner **sourcecode**. Lo he puesto separado para evitar que se ejecute el plugin.
+<span style="color: #ff6600;"><strong>ATENCIÓN</strong></span>: aunque en el ejemplo pone “**source code**”; separado, debéis poner **sourcecode**. Lo he puesto separado para evitar que se ejecute el plugin.
 
-En el ejemplo pone language=&#8221;css&#8221; porque el bloque contiene sintaxis Css, pero si nuestro ejemplo está escrito en otro lenguaje, basta con cambiar css por el parametro apropiado, de esta lista:
+En el ejemplo pone language=”;css”; porque el bloque contiene sintaxis Css, pero si nuestro ejemplo está escrito en otro lenguaje, basta con cambiar css por el parametro apropiado, de esta lista:
 
   * actionscript3
   * bash
@@ -55,7 +53,7 @@ En el ejemplo pone language=&#8221;css&#8221; porque el bloque contiene sintaxis
   * vb
   * xml
 
-Tambien existen parametros de configuración que personalizan la salida generada por el plugin si deseamos darle un toque distinto, aunque no son necesarios, de hecho, el parametro &#8220;language&#8221; tampoco es necesario, y en caso de no escribirse el contenido se mostrara como texto monoespaciado (útil por ejemplo para hacer dibujos ascii jaja). En negrita marco el valor por defecto de entre los posibles valores que puede tomar el atributo.
+Tambien existen parametros de configuración que personalizan la salida generada por el plugin si deseamos darle un toque distinto, aunque no son necesarios, de hecho, el parametro “language”; tampoco es necesario, y en caso de no escribirse el contenido se mostrara como texto monoespaciado (útil por ejemplo para hacer dibujos ascii jaja). En negrita marco el valor por defecto de entre los posibles valores que puede tomar el atributo.
 
   * `autolinks` (**true**/false) — Todas las urls del código funcionan como enlaces.
   * `collapse` (true/**false**) — Contrae el bloque de código, el usuario debe pulsar sobre el para expandirlo y leerlo.
@@ -70,13 +68,15 @@ Tambien existen parametros de configuración que personalizan la salida generada
 
 Aqui hay un ejemplo de como quedaria usando el parametro highlight:
 
-[sourcecode language=&#8221;csharp&#8221; highlight=&#8221;4&#8243;]  
+```
+  
 public void HelloWorld(string saludo)  
 {  
 //La linea siguiente es importante  
 Console.WriteLine(saludo);  
 }  
-[/sourcecode]
+```
+
 
 Espero que os resulte útil.
 

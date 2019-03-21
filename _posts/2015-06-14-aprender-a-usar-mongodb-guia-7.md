@@ -9,11 +9,9 @@ permalink: /2015/06/aprender-a-usar-mongodb-guia-7/
 image: /wp-content/uploads/2015/06/mongodb.png
 categories:
   - Desarrollo
-  - Tecnología
+  - Cursos
 tags:
-  - bases de datos
-  - mongodb
-  - tecnología
+  - MongoDB
 ---
 <p dir="ltr">
   Ya sabemos mucho acerca de mongo, hemos <a href="http://blog.findemor.es/2015/06/aprender-a-usar-mongodb-guia-2">insertado datos</a>, <a href="http://blog.findemor.es/2015/06/aprender-a-usar-mongodb-guia-6">añadido indices para hacerlo realmente rápido</a>, y <a href="http://blog.findemor.es/2015/06/aprender-a-usar-mongodb-guia-3">creado nuestras consultas</a> para utilizarlo en nuestra aplicación… pero en algún momento <strong>podríamos querer analizar los datos y entender qué tenemos ahí dentro</strong>, para sacar provecho de todas esa información y hacer las cosas aún mejor.
@@ -45,9 +43,12 @@ Guía 6: [Crear, manejar y entender los índices](http://blog.findemor.es/2015
 >   > curl http://media.mongodb.org/zips.json > zips.json<br /> > mongoimport -d test -c zips zips.json
 > </p>
 
-[js]connected to: 127.0.0.1  
+```js
+connected to: 127.0.0.1  
 2015-06-08T19:24:31.236+0200 check 9 29353  
-2015-06-08T19:24:31.454+0200 imported 29353 objects[/js]
+2015-06-08T19:24:31.454+0200 imported 29353 objects
+```
+
 
 <p dir="ltr">
   <strong>Vemos que pinta tienen los datos</strong>, en la shell de mongo consultamos alguno de ellos:
@@ -57,13 +58,16 @@ Guía 6: [Crear, manejar y entender los índices](http://blog.findemor.es/2015
 >   > db.zips.findOne()
 > </p>
 
-[js]{  
+```js
+{  
 "_id": "01001",  
 "city": "AGAWAM",  
 "loc": [-72.622739, 42.070206],  
 "pop": 15338,  
 "state": "MA"  
-}[/js]
+}
+```
+
 
 <p dir="ltr">
   Vemos que <strong>son códigos postales, con su codigo de ciudad, las coordenadas, la población en ese código postal y el estado al que pertenecen</strong>.
@@ -77,13 +81,19 @@ Guía 6: [Crear, manejar y entender los índices](http://blog.findemor.es/2015
 >   > db.zips.aggregate([ {$group: { _id : 0, population:{$sum : 1} }} ])
 > </p>
 
-[js]{ "_id" : 0, "population" : 29353 }[/js]
+```js
+{ "_id" : 0, "population" : 29353 }
+```
+
 
 > <p dir="ltr">
 >   > db.zips.count()
 > </p>
 
-[js]29353[/js]
+```js
+29353
+```
+
 
 <h3 dir="ltr">
   Pipes en Aggregation
@@ -301,26 +311,30 @@ Guía 6: [Crear, manejar y entender los índices](http://blog.findemor.es/2015
   Se utiliza tambien en las primeras etapas para filtrar atributos y liberar memoria evitando procesar aquella información que no se va a necesitar.
 </p>
 
-[js]db.zips.aggregate([{  
+```js
+db.zips.aggregate([{  
 $project: {  
 _id: 0,  
-&#8216;ciudad&#8217;: {  
+'ciudad': {  
 $toLower: "$city"  
 },  
-&#8216;poblacion&#8217;: {  
-&#8216;unidades&#8217;: "$pop",  
-&#8216;miles&#8217;: {  
+'poblacion': {  
+'unidades': "$pop",  
+'miles': {  
 "$multiply": ["$pop", 0.001]  
 }  
 }  
 }  
-}])[/js]
+}])
+```
+
 
 <p dir="ltr">
   R<span style="line-height: 1.666666667;">esultado:</span>
 </p>
 
-[js]{  
+```js
+{  
 "ciudad": "cushman",  
 "poblacion": {  
 "unidades": 36963,  
@@ -334,7 +348,9 @@ $toLower: "$city"
 "miles": 4.546  
 }  
 }  
-&#8230;[/js]
+...
+```
+
 
 <p dir="ltr">
   Nótese que poner un 0 en un valor de campo (como en el caso del _id), hace que el atributo se ignore en el resultado. Si se pone un 1, se utilizará exactamente el mismo valor que tiene en el documento original.
@@ -352,11 +368,14 @@ $toLower: "$city"
   Por ejemplo, devolver unicamente los codigos postales del estado de California (CA)
 </p>
 
-[js]db.zips.aggregate([{  
+```js
+db.zips.aggregate([{  
 $match: {  
 state: "CA"  
 }  
-}])[/js]
+}])
+```
+
 
 <h4 dir="ltr" id="group">
   Agrupación ($group n:1)
@@ -374,7 +393,8 @@ state: "CA"
   Suma el valor de los atributos de los documentos del mismo grupo. Por ejemplo, para obtener, la población total de cada estado, y el número de ciudades que hay en el estado, para cada uno de los estados, basta por agrupar por estado y aplicar la clausula sum convenientemente.
 </p>
 
-[js]db.zips.aggregate([{  
+```js
+db.zips.aggregate([{  
 $group: {  
 _id: "$state",  
 state_pop: {  
@@ -384,13 +404,16 @@ state_cities: {
 $sum: 1  
 }  
 }  
-}])[/js]
+}])
+```
+
 
 <p dir="ltr">
   Resultado:
 </p>
 
-[js]{  
+```js
+{  
 "_id": "WA",  
 "state_pop": 4866692,  
 "state_cities": 484  
@@ -400,7 +423,9 @@ $sum: 1
 "state_pop": 1108229,  
 "state_cities": 80  
 }  
-…[/js]
+…
+```
+
 
 <h5 dir="ltr">
   <strong>Operador $avg</strong>
@@ -410,20 +435,24 @@ $sum: 1
   Obtiene la media de los valores de un atributo en el grupo. Por ejemplo, para calcular la población media de las ciudades de un estado.
 </p>
 
-[js]db.zips.aggregate([{  
+```js
+db.zips.aggregate([{  
 $group: {  
 _id: "$state",  
 avg_pop: {  
 $avg: "$pop"  
 }  
 }  
-}])[/js]
+}])
+```
+
 
 <p dir="ltr">
   Resultado:
 </p>
 
-[js]{  
+```js
+{  
 "_id": "WA",  
 "avg_pop": 10055.148760330578  
 } {  
@@ -432,7 +461,9 @@ $avg: "$pop"
 } {  
 "_id": "CA",  
 "avg_pop": 19627.236147757256  
-}…[/js]
+}…
+```
+
 
 <h5 dir="ltr">
   <strong>Operador $addToSet</strong>
@@ -442,14 +473,17 @@ $avg: "$pop"
   Es un operador un tanto raro, y no tiene equivalencia en SQL. Su objetivo crear un array con todos los valores distintos que toma un atributo en un grupo de documentos. Por ejemplo, la siguiente operación daria como resultado un documento que tendría un atributo categorías con todas las ciudades de cada estado.
 </p>
 
-[js]db.zips.aggregate([{  
+```js
+db.zips.aggregate([{  
 $group: {  
 _id: "$state",  
 cities: {  
 $addToSet: "$city"  
 }  
 }  
-}])[/js]
+}])
+```
+
 
 <h5 dir="ltr">
   <strong>Operador $push</strong>
@@ -467,14 +501,17 @@ $addToSet: "$city"
   Permiten obtener el valor máximo o el mínimo del grupo de documentos para alguno de sus atributos. Por ejemplo, para obtener la mayor población para cada estado.
 </p>
 
-[js]db.zips.aggregate([{  
+```js
+db.zips.aggregate([{  
 $group: {  
 _id: "$state",  
 max_pop: {  
 $max: "$pop"  
 }  
 }  
-}])[/js]
+}])
+```
+
 
 <h5 dir="ltr">
   Agrupación compuesta
@@ -484,7 +521,8 @@ $max: "$pop"
   Nos permite agrupar por más de un atributo, esto es, como si agrupamos por subcategorías. Por ejemplo, para obtener la población de cada una de las ciudades de un estado.
 </p>
 
-[js]db.zips.aggregate([{  
+```js
+db.zips.aggregate([{  
 $group: {  
 _id: {  
 "state": "$state",  
@@ -497,13 +535,16 @@ state_cities: {
 $sum: 1  
 }  
 }  
-}])[/js]
+}])
+```
+
 
 <p dir="ltr">
   Resultado:
 </p>
 
-[js]{  
+```js
+{  
 "_id": {  
 "state": "AK",  
 "city": "CRAIG"  
@@ -517,7 +558,9 @@ $sum: 1
 },  
 "state_pop": 14308,  
 "state_cities": 2  
-}…[/js]
+}…
+```
+
 
 <h5 dir="ltr">
   Agrupación múltiple
@@ -531,7 +574,8 @@ $sum: 1
   Por ejemplo, si quisieramos, podríamos obtener la media de la población de cada ciudad, y luego obtener la media de las media para cada estado.
 </p>
 
-[js]db.zips.aggregate([{  
+```js
+db.zips.aggregate([{  
 "$group": {  
 _id: {  
 state: "$state",  
@@ -543,24 +587,29 @@ city: "$city"
 }  
 }, {  
 "$group": {  
-\_id: "$\_id.state",  
+_id: "$_id.state",  
 "average": {  
 "$avg": "$average"  
 }  
 }  
-}])[/js]
+}])
+```
+
 
 <p dir="ltr">
   Resultado:
 </p>
 
-[js]{  
+```js
+{  
 "_id": "RI",  
 "average": 12835.16868131868  
 } {  
 "_id": "FL",  
 "average": 13097.2471511727  
-}[/js]
+}
+```
+
 
 <h4 dir="ltr" id="sort">
   Ordenación ($sort 1:1)
@@ -574,12 +623,15 @@ city: "$city"
   En el ejemplo se muestra como podríamos obtener los documentos ordenados por población (en orden descendente) y estado (ascendente)
 </p>
 
-[js]db.zips.aggregate([{  
+```js
+db.zips.aggregate([{  
 $sort: {  
 pop: -1,  
 state: 1  
 }  
-}])[/js]
+}])
+```
+
 
 <h4 dir="ltr" id="skip">
   Paginación ($skip y $limit)
@@ -593,11 +645,14 @@ state: 1
   Por ejemplo, podemos ignorar los 10 primeros y devolver los 5 siguientes (es decir, obtendríamos los elementos del 11 al 15.
 </p>
 
-[js]db.zips.aggregate([{  
+```js
+db.zips.aggregate([{  
 $skip: 10  
 }, {  
 $limit: 5  
-}])[/js]
+}])
+```
+
 
 <h4 dir="ltr">
   Primero y último ($first y $last)
@@ -612,18 +667,19 @@ $limit: 5
 </p>
 
 <p dir="ltr">
-  1 &#8211; Obtenemos la población de cada ciudad de cada estado
+  1 - Obtenemos la población de cada ciudad de cada estado
 </p>
 
 <p dir="ltr">
-  2 &#8211; Ordenamos por estado (ascendente) y población (descendente, la ciudad con mayor población quedará arriba en cada bloque de estados)
+  2 - Ordenamos por estado (ascendente) y población (descendente, la ciudad con mayor población quedará arriba en cada bloque de estados)
 </p>
 
 <p dir="ltr">
-  3 &#8211; Agrupamos por estado, obteniendo el primero de cada grupo.
+  3 - Agrupamos por estado, obteniendo el primero de cada grupo.
 </p>
 
-[js]db.zips.aggregate([  
+```js
+db.zips.aggregate([  
 //obtiene la poblacion de cada ciudad de cada estado  
 {  
 $group: {  
@@ -646,7 +702,7 @@ $sort: {
 //agrupamos por estado, obtenemos el primero de cada grupo  
 {  
 $group: {  
-\_id: "$\_id.state",  
+_id: "$_id.state",  
 city: {  
 $first: "$_id.city"  
 },  
@@ -655,13 +711,16 @@ $first: "$population"
 }  
 }  
 }  
-])[/js]
+])
+```
+
 
 <p dir="ltr">
   Resultado:
 </p>
 
-[js]{  
+```js
+{  
 "_id": "WV",  
 "city": "HUNTINGTON",  
 "population": 75343  
@@ -669,7 +728,9 @@ $first: "$population"
 "_id": "WA",  
 "city": "SEATTLE",  
 "population": 520096  
-}…[/js]
+}…
+```
+
 
 <h4 dir="ltr" id="unwind">
   Operación Unwind ($unwind)
@@ -696,7 +757,7 @@ $first: "$population"
 </p>
 
 > <p dir="ltr">
->   {&#8220;$unwind&#8221;:&#8221;$c&#8221;}
+>   {“$unwind”;:”;$c”;}
 > </p>
 
 <p dir="ltr">
@@ -712,21 +773,15 @@ $first: "$population"
 </p>
 
 <li dir="ltr">
-  <p dir="ltr">
     <strong>Hay un límite de 100mb de tamaño de pipeline para cada etapa</strong> durante el procesado, a menos que establezcamos el atributo allowDiskUse en la ejecución, lo que lo hará más lento.
-  </p>
 </li>
 
 <li dir="ltr">
-  <p dir="ltr">
     <strong>Hay 16mb de límite de tamaño para la salida de cada pipeline</strong>, ya que se maneja como un único documento. Se puede evitar obteniendo un cursor y recorriendo el cursor elemento a elemento.
-  </p>
 </li>
 
 <li dir="ltr">
-  <p dir="ltr">
     <strong>Sharding</strong>: cuando se usa group o sort, todos los datos se reunen en un solo shard (el pricipal) antes de continuar procesando los pipes. Para eso se puede importar el mongo en Hadoop (con Hadoop connector), ya que con mapreduce tiene mejor escalabilidad.
-  </p>
 </li>
 
 <h3 dir="ltr">
@@ -745,7 +800,8 @@ $first: "$population"
   Obtener la población total de las ciudades cuyo nombre empieza por A o B
 </p>
 
-[js]db.zips.aggregate([{  
+```js
+db.zips.aggregate([{  
 $project: {  
 _id: 1,  
 first_char: {  
@@ -766,7 +822,9 @@ total: {
 $sum: "$pop"  
 }  
 }  
-}])[/js]
+}])
+```
+
 
 <h4 dir="ltr">
   Ejemplo 2
@@ -776,7 +834,8 @@ $sum: "$pop"
   Obtenemos la media de población de entre todas las ciudades de Nueva York y California cuya población supera los 25000 ciudadanos.
 </p>
 
-[js]db.zips.aggregate([{  
+```js
+db.zips.aggregate([{  
 $match: {  
 "state": {  
 $in: ["CA", "NY"]  
@@ -805,7 +864,9 @@ avg: {
 $avg: "$sum_pop"  
 }  
 }  
-}, ])[/js]
+}, ])
+```
+
 
 <h4 dir="ltr">
   Ejemplo 3
@@ -815,7 +876,8 @@ $avg: "$sum_pop"
   Obtenemos los usuarios que más y menos comentarios han hecho de entre todos los posts de un blog. Ojo al uso de la clausula unwind para crear un documento por cada comentario del cada post (que inicialmente estarían en un array dentro de el post correspondiente).
 </p>
 
-[js]db.posts.aggregate([{  
+```js
+db.posts.aggregate([{  
 $unwind: "$comments"  
 }, {  
 $group: {  
@@ -844,7 +906,9 @@ number_menos: {
 $first: "$count"  
 }  
 }  
-}])[/js]
+}])
+```
+
 
 <h2 dir="ltr">
   Enlaces a la guía completa

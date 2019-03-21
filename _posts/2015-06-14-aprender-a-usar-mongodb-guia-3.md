@@ -9,11 +9,9 @@ permalink: /2015/06/aprender-a-usar-mongodb-guia-3/
 image: /wp-content/uploads/2015/06/mongodb.png
 categories:
   - Desarrollo
-  - Tecnología
+  - Cursos
 tags:
-  - bases de datos
-  - mongodb
-  - tecnología
+  - MongoDB
 ---
 <p dir="ltr">
   En posts anteriores <a href="http://blog.findemor.es/2015/06/aprender-a-usar-mongodb-guia-1">hemos visto una introducción a mongodb</a> y cómo se pone en marcha, e incluso como se puede <a href="http://blog.findemor.es/2015/06/aprender-a-usar-mongodb-guia-2">hacer una importación de datos</a>.
@@ -42,7 +40,7 @@ Guía 2: [Arrancar MongoDB e importar datos](http://blog.findemor.es/2015/06/ap
 </p>
 
 > <p dir="ltr">
->   > db.scores.insert({ _id: 1, username : &#8220;findemor&#8221;, score : 50, finished : true })<br /> > db.scores.insert({ _id: 2, username : &#8220;eden4ever&#8221;, score : 80, finished : false })<br /> > db.scores.insert({ _id: 3, username : &#8220;franbuipa&#8221;, score : 30 })
+>   > db.scores.insert({ _id: 1, username : “findemor”;, score : 50, finished : true })<br /> > db.scores.insert({ _id: 2, username : “eden4ever”;, score : 80, finished : false })<br /> > db.scores.insert({ _id: 3, username : “franbuipa”;, score : 30 })
 > </p>
 
 <p dir="ltr">
@@ -71,11 +69,12 @@ Guía 2: [Arrancar MongoDB e importar datos](http://blog.findemor.es/2015/06/ap
 >   > db.scores.find()
 > </p>
 
-[js]  
+```js
 { "_id" : 1, "username" : "findemor", "score" : 50, "finished" : true }  
 { "_id" : 2, "username" : "eden4ever", "score" : 80, "finished" : false }  
 { "_id" : 3, "username" : "franbuipa", "score" : 30 }  
-[/js]
+```
+
 
 <p dir="ltr">
   <strong>Listar alguno de los documentos</strong> de la colección (al azar). Suele utilizarse para hacerse una idea de la estructura de los documentos que contiene.
@@ -85,17 +84,23 @@ Guía 2: [Arrancar MongoDB e importar datos](http://blog.findemor.es/2015/06/ap
 >   > db.scores.findOne()
 > </p>
 
-[js]{ "_id" : 1, "username" : "findemor", "score" : 50, "finished" : true }[/js]
+```js
+{ "_id" : 1, "username" : "findemor", "score" : 50, "finished" : true }
+```
+
 
 <p dir="ltr">
   <strong>Listar los elementos por valor de sus atributos</strong>: basta con especificar el valor de aquellos parámetros que queramos filtrar.
 </p>
 
 > <p dir="ltr">
->   > db.scores.find({ username : &#8220;findemor&#8221; })
+>   > db.scores.find({ username : “findemor”; })
 > </p>
 
-[js]{ "_id" : 1, "username" : "findemor", "score" : 50, "finished" : true }[/js]
+```js
+{ "_id" : 1, "username" : "findemor", "score" : 50, "finished" : true }
+```
+
 
 <p dir="ltr">
   <strong>Listar por rango de valores</strong>: en este caso documentos donde el score sea mayor que 20 y menor o igual a 50.
@@ -105,8 +110,11 @@ Guía 2: [Arrancar MongoDB e importar datos](http://blog.findemor.es/2015/06/ap
 >   > db.scores.find({ score : { $gt : 20, $lte: 50 }})
 > </p>
 
-[js]{ "_id" : 1, "username" : "findemor", "score" : 50, "finished" : true }  
-{ "_id" : 3, "username" : "franbuipa", "score" : 30 }[/js]
+```js
+{ "_id" : 1, "username" : "findemor", "score" : 50, "finished" : true }  
+{ "_id" : 3, "username" : "franbuipa", "score" : 30 }
+```
+
 
 <p dir="ltr">
   <strong>Listar elementos que no incluyen (o que incluyen) un atributo</strong>. En este caso listamos el documento que no tiene el atributo finished.
@@ -116,17 +124,23 @@ Guía 2: [Arrancar MongoDB e importar datos](http://blog.findemor.es/2015/06/ap
 >   > db.scores.find({ finished : { $exists : false } })
 > </p>
 
-[js]{ "_id" : 3, "username" : "franbuipa", "score" : 30 }[/js]
+```js
+{ "_id" : 3, "username" : "franbuipa", "score" : 30 }
+```
+
 
 <p dir="ltr">
   <strong>Listar elementos usando expresiones regulares</strong>: cuyo username contenga la cadena uip
 </p>
 
 > <p dir="ltr">
->   > db.scores.find({ username : { $regex : &#8220;uip&#8221; }})
+>   > db.scores.find({ username : { $regex : “uip”; }})
 > </p>
 
-[js]{ "_id" : 3, "username" : "franbuipa", "score" : 30 }[/js]
+```js
+{ "_id" : 3, "username" : "franbuipa", "score" : 30 }
+```
+
 
 <p dir="ltr">
   <strong>Encontrar elementos por tipo de dato de los atributos</strong>: en el ejemplo, obtenemos los documentos donde el atributo finished es booleano. El tipo del atributo se identifica según la <a href="http://docs.mongodb.org/manual/reference/operator/query/type/">especificación de BSON</a>.
@@ -136,8 +150,11 @@ Guía 2: [Arrancar MongoDB e importar datos](http://blog.findemor.es/2015/06/ap
 >   > db.scores.find({ finished : { $type : 8 }})
 > </p>
 
-[js]{ "_id" : 1, "username" : "findemor", "score" : 50, "finished" : true }  
-{ "_id" : 2, "username" : "eden4ever", "score" : 80, "finished" : false }[/js]
+```js
+{ "_id" : 1, "username" : "findemor", "score" : 50, "finished" : true }  
+{ "_id" : 2, "username" : "eden4ever", "score" : 80, "finished" : false }
+```
+
 
 <p dir="ltr">
   <strong>Hacer una agrupación OR de dos consultas</strong>, en este caso elementos con _id = 1 OR _id = 2
@@ -147,8 +164,11 @@ Guía 2: [Arrancar MongoDB e importar datos](http://blog.findemor.es/2015/06/ap
 >   > db.scores.find({ $or : [ { _id : 1 }, { _id : 2 } ] })
 > </p>
 
-[js]{ "_id" : 1, "username" : "findemor", "score" : 50, "finished" : true }  
-{ "_id" : 2, "username" : "eden4ever", "score" : 80, "finished" : false }[/js]
+```js
+{ "_id" : 1, "username" : "findemor", "score" : 50, "finished" : true }  
+{ "_id" : 2, "username" : "eden4ever", "score" : 80, "finished" : false }
+```
+
 
 <p dir="ltr">
   <strong>Contar el número de documentos de la colección</strong>.
@@ -158,7 +178,10 @@ Guía 2: [Arrancar MongoDB e importar datos](http://blog.findemor.es/2015/06/ap
 >   > db.scores.count()
 > </p>
 
-[js]3[/js]
+```js
+3
+```
+
 
 <p dir="ltr">
   <strong>También podemos aplicar filtros</strong>.
@@ -168,7 +191,10 @@ Guía 2: [Arrancar MongoDB e importar datos](http://blog.findemor.es/2015/06/ap
 >   > db.scores.count({ finished : true })
 > </p>
 
-[js]1[/js]
+```js
+1
+```
+
 
 <h3 dir="ltr">
   Trabajando con estructuras anidadas y arrays
@@ -178,7 +204,8 @@ Guía 2: [Arrancar MongoDB e importar datos](http://blog.findemor.es/2015/06/ap
   Para poder tener datos con los que trabajar, <strong>vamos a insertar un par de documentos</strong> un poco más ricos en elementos.
 </p>
 
-[js collapse=&#8221;true&#8221;]db.scores.insert({  
+```js
+db.scores.insert({  
 _id: 4,
 
 username: "cocinero",
@@ -218,17 +245,20 @@ city: "toledo"
 
 WriteResult({  
 "nInserted": 1  
-})[/js]
+})
+```
+
 
 <p dir="ltr">
   <strong>Consultar por coincidencias en un array</strong>: listamos los documentos cuyo array de favoritos contenga el elemento postres… evidentemente será el usuario cocinero.
 </p>
 
 > <p dir="ltr">
->   > db.scores.find({ favorites : &#8220;postres&#8221; }).pretty()
+>   > db.scores.find({ favorites : “postres”; }).pretty()
 > </p>
 
-[js]{  
+```js
+{  
 "_id": 4,  
 "username": "cocinero",  
 "favorites": [  
@@ -239,17 +269,20 @@ WriteResult({
 "country": "es",  
 "city": "madrid"  
 }  
-}[/js]
+}
+```
+
 
 <p dir="ltr">
   Obtener los documentos que<strong> contengan en el array todos los elementos especificados</strong>.
 </p>
 
 > <p dir="ltr">
->   > db.scores.find({ favorites : { $all : [&#8220;postres&#8221;, &#8220;cocinar&#8221;] }}).pretty()
+>   > db.scores.find({ favorites : { $all : [“postres”;, “cocinar”;] }}).pretty()
 > </p>
 
-[js]{  
+```js
+{  
 "_id": 4,  
 "username": "cocinero",  
 "favorites": ["cocinar", "postres"],  
@@ -257,17 +290,20 @@ WriteResult({
 "country": "es",  
 "city": "madrid"  
 }  
-}[/js]
+}
+```
+
 
 <p dir="ltr">
   Listar los documentos que <strong>contengan en el array alguno de los elementos especificados</strong>.
 </p>
 
 > <p dir="ltr">
->   > db.scores.find({ favorites : { $in : [&#8220;cocinar&#8221;] }}).pretty()
+>   > db.scores.find({ favorites : { $in : [“cocinar”;] }}).pretty()
 > </p>
 
-[js]{  
+```js
+{  
 "_id": 4,  
 "username": "cocinero",  
 "favorites": ["cocinar", "postres"],  
@@ -275,17 +311,20 @@ WriteResult({
 "country": "es",  
 "city": "madrid"  
 }  
-}[/js]
+}
+```
+
 
 <p dir="ltr">
   <strong>Listando los elementos por valor de alguno de los atributos del documento embebido</strong>. En este caso, documentos cuya ciudad es madrid.
 </p>
 
 > <p dir="ltr">
->   > db.scores.find({ &#8220;address.city&#8221; : &#8220;madrid&#8221; }).pretty()
+>   > db.scores.find({ “address.city”; : “madrid”; }).pretty()
 > </p>
 
-[js]{  
+```js
+{  
 "_id": 4,  
 "username": "cocinero",  
 "favorites": ["cocinar", "postres"],  
@@ -293,7 +332,9 @@ WriteResult({
 "country": "es",  
 "city": "madrid"  
 }  
-}[/js]
+}
+```
+
 
 <h2 dir="ltr">
   Ejemplos utilizando el driver de MongoDB para nodejs
@@ -315,48 +356,51 @@ WriteResult({
   Procesar las fotografías de caratula de album, cuyo album no existe en la base de datos.
 </p>
 
-[js collapse=&#8221;true&#8221;]var client = require(&#8216;mongodb&#8217;)  
-.MongoClient;  
-client.connect(&#8216;mongodb://localhost:27017/h7&#8217;, function(err, db) {  
-if (err) throw err;  
-var albums = db.collection(&#8216;albums&#8217;);  
-db.collection(&#8216;images&#8217;, function(err, images) {  
-if (err) throw err;  
-images.find({}, {  
-&#8216;_id&#8217;: true  
-}, function(err, cursor) {  
-if (err) throw err;  
-var count = cursor.count(function(err, count) {  
-console.dir(&#8216;num images: &#8216; + count);  
-// iterate over each image  
-cursor.each(function(err, item) {  
-if (item !== null) {  
-// attempt to find an album containing the photo, if not prune  
-albums.findOne({  
-images: item._id  
-}, function(err, doc) {  
-if (err) throw err;  
-if (doc == null) {  
-images.remove({  
-&#8216;\_id&#8217;: item.\_id  
-}, function(err, numRemoved) {  
-if (err) throw err;  
-count&#8211;;  
-console.dir(&#8216;count: &#8216; + count);  
-if (count == 0) db.close();  
-});  
-} else {  
-count&#8211;;  
-console.dir(&#8216;count: &#8216; + count);  
-if (count == 0) db.close();  
-}  
-});  
-}  
-});  
-});  
-})  
-});  
-});[/js]
+```js
+var client = require('mongodb')
+    .MongoClient;
+client.connect('mongodb://localhost:27017/h7', function(err, db) {
+    if (err) throw err;
+    var albums = db.collection('albums');
+    db.collection('images', function(err, images) {
+        if (err) throw err;
+        images.find({}, {
+            '_id': true
+        }, function(err, cursor) {
+            if (err) throw err;
+            var count = cursor.count(function(err, count) {
+                console.dir('num images: ' + count);
+                // iterate over each image  
+                cursor.each(function(err, item) {
+                    if (item !== null) {
+                        // attempt to find an album containing the photo, if not prune  
+                        albums.findOne({
+                            images: item._id
+                        }, function(err, doc) {
+                            if (err) throw err;
+                            if (doc == null) {
+                                images.remove({
+                                    '_id': item._id
+                                }, function(err, numRemoved) {
+                                    if (err) throw err;
+                                    count - ;
+                                    console.dir('count: ' + count);
+                                    if (count == 0) db.close();
+                                });
+                            } else {
+                                count - ;
+                                console.dir('count: ' + count);
+                                if (count == 0) db.close();
+                            }
+                        });
+                    }
+                });
+            });
+        })
+    });
+});
+```
+
 
 <h3 dir="ltr">
   Ejemplo 2
@@ -366,69 +410,73 @@ if (count == 0) db.close();
   Registro de usuario y validación usando node y mongo
 </p>
 
-[js collapse=&#8221;true&#8221;]var bcrypt = require(&#8216;bcrypt-nodejs&#8217;);  
-/\* The UsersDAO must be constructed with a connected database object \*/  
-function UsersDAO(db) {  
-"use strict";  
-/* If this constructor is called without the "new" operator, "this" points
+```js
+var bcrypt = require('bcrypt-nodejs');
+/\* The UsersDAO must be constructed with a connected database object \*/
 
-\* to the global object. Log a warning and call it correctly. \*/  
-if (false === (this instanceof UsersDAO)) {  
-console.log(&#8216;Warning: UsersDAO constructor called without "new" operator&#8217;);  
-return new UsersDAO(db);  
-}  
-var users = db.collection("users");  
-this.addUser = function(username, password, email, callback) {  
-"use strict";  
-// Generate password hash  
-var salt = bcrypt.genSaltSync();  
-var password_hash = bcrypt.hashSync(password, salt);  
-// Create user document  
-var user = {  
-&#8216;_id&#8217;: username,  
-&#8216;password&#8217;: password_hash  
-};  
-// Add email if set  
-if (email != "") {  
-user[&#8217;email&#8217;] = email;  
-}  
-users.insert(user, function(err, result) {  
-"use strict";  
-if (!err) {  
-console.log("Inserted new user");  
-return callback(null, result[0]);  
-}  
-return callback(err, null);  
-});  
-}  
-this.validateLogin = function(username, password, callback) {  
-"use strict";  
-// Callback to pass to MongoDB that validates a user document  
-function validateUserDoc(err, user) {  
-"use strict";  
-if (err) return callback(err, null);  
-if (user) {  
-if (bcrypt.compareSync(password, user.password)) {  
-callback(null, user);  
-} else {  
-var invalid\_password\_error = new Error("Invalid password");  
-// Set an extra field so we can distinguish this from a db error  
-invalid\_password\_error.invalid_password = true;  
-callback(invalid\_password\_error, null);  
-}  
-} else {  
-var no\_such\_user_error = new Error("User: " + user + " does not exist");  
-// Set an extra field so we can distinguish this from a db error  
-no\_such\_user\_error.no\_such_user = true;  
-callback(no\_such\_user_error, null);  
-}  
-}  
-users.findOne({  
-&#8216;_id&#8217;: username  
-}, validateUserDoc);  
-}  
-}  
-module.exports.UsersDAO = UsersDAO;[/js]
+function UsersDAO(db) {
+    "use strict";
+    /* If this constructor is called without the "new" operator, "this" points
+
+    \* to the global object. Log a warning and call it correctly. \*/
+    if (false === (this instanceof UsersDAO)) {
+        console.log('Warning: UsersDAO constructor called without "new" operator');
+        return new UsersDAO(db);
+    }
+    var users = db.collection("users");
+    this.addUser = function(username, password, email, callback) {
+        "use strict";
+        // Generate password hash  
+        var salt = bcrypt.genSaltSync();
+        var password_hash = bcrypt.hashSync(password, salt);
+        // Create user document  
+        var user = {
+            '_id': username,
+            'password': password_hash
+        };
+        // Add email if set  
+        if (email != "") {
+            user['email'] = email;
+        }
+        users.insert(user, function(err, result) {
+            "use strict";
+            if (!err) {
+                console.log("Inserted new user");
+                return callback(null, result[0]);
+            }
+            return callback(err, null);
+        });
+    }
+    this.validateLogin = function(username, password, callback) {
+        "use strict";
+        // Callback to pass to MongoDB that validates a user document  
+        function validateUserDoc(err, user) {
+            "use strict";
+            if (err) return callback(err, null);
+            if (user) {
+                if (bcrypt.compareSync(password, user.password)) {
+                    callback(null, user);
+                } else {
+                    var invalid_password_error = new Error("Invalid password");
+                    // Set an extra field so we can distinguish this from a db error  
+                    invalid_password_error.invalid_password = true;
+                    callback(invalid_password_error, null);
+                }
+            } else {
+                var no_such_user_error = new Error("User: " + user + " does not exist");
+                // Set an extra field so we can distinguish this from a db error  
+                no_such_user_error.no_such_user = true;
+                callback(no_such_user_error, null);
+            }
+        }
+        users.findOne({
+            '_id': username
+        }, validateUserDoc);
+    }
+}
+module.exports.UsersDAO = UsersDAO;
+```
+
 
 <h3 dir="ltr">
   Ejemplo 3
@@ -438,134 +486,138 @@ module.exports.UsersDAO = UsersDAO;[/js]
   Operaciones de un blog
 </p>
 
-[js collapse=&#8221;true&#8221;]/\* The PostsDAO must be constructed with a connected database object \*/  
-function PostsDAO(db) {  
-"use strict";  
-/* If this constructor is called without the "new" operator, "this" points
+```js
+/* The PostsDAO must be constructed with a connected database object */
 
-\* to the global object. Log a warning and call it correctly. \*/  
-if (false === (this instanceof PostsDAO)) {  
-console.log(&#8216;Warning: PostsDAO constructor called without "new" operator&#8217;);  
-return new PostsDAO(db);  
-}  
-var posts = db.collection("posts");  
-this.insertEntry = function(title, body, tags, author, callback) {  
-"use strict";  
-console.log("inserting blog entry" + title + body);  
-// fix up the permalink to not include whitespace  
-var permalink = title.replace(/\s/g, &#8216;_&#8217;);  
-permalink = permalink.replace(/\W/g, &#8221;);  
-// Build a new post  
-var post = {  
-"title": title,  
-"author": author,  
-"body": body,  
-"permalink": permalink,  
-"tags": tags,  
-"comments": [],  
-"date": new Date()  
-}  
-// now insert the post  
-posts.insert(post, function(err, result) {  
-"use strict";  
-if (err) return callback(err, null);  
-console.log("Inserted new post");  
-callback(err, permalink);  
-});  
-};  
-this.getPosts = function(num, callback) {  
-"use strict";  
-posts.find()  
-.sort(&#8216;date&#8217;, -1)  
-.limit(num)  
-.toArray(function(err, items) {  
-"use strict";  
-if (err) return callback(err, null);  
-console.log("Found " + items.length + " posts");  
-callback(err, items);  
-});  
-};  
-this.getPostsByTag = function(tag, num, callback) {  
-"use strict";  
-posts.find({  
-tags: tag  
-})  
-.sort(&#8216;date&#8217;, -1)  
-.limit(num)  
-.toArray(function(err, items) {  
-"use strict";  
-if (err) return callback(err, null);  
-console.log("Found " + items.length + " posts");  
-callback(err, items);  
-});  
-};  
-this.getPostByPermalink = function(permalink, callback) {  
-"use strict";  
-posts.findOne({  
-&#8216;permalink&#8217;: permalink  
-}, function(err, post) {  
-"use strict";  
-if (err) return callback(err, null);  
-// XXX: Look here for final exam to see where we store "num_likes"  
-// fix up likes values. set to zero if data is not present  
-if (typeof post.comments === &#8216;undefined&#8217;) {  
-post.comments = [];  
-}  
-// Each comment document in a post should have a "num_likes" entry, so we have to  
-// iterate all the comments in the post to make sure that is the case  
-for (var i = 0; i < post.comments.length; i++) {  
-if (typeof post.comments[i].num_likes === &#8216;undefined&#8217;) {  
-post.comments[i].num_likes = 0;  
-}  
-post.comments[i].comment_ordinal = i;  
-}  
-callback(err, post);  
-});  
-};  
-this.addComment = function(permalink, name, email, body, callback) {  
-"use strict";  
-var comment = {  
-&#8216;author&#8217;: name,  
-&#8216;body&#8217;: body  
-}  
-if (email != "") {  
-comment[&#8217;email&#8217;] = email  
-}  
-posts.update({  
-&#8216;permalink&#8217;: permalink  
-}, {  
-&#8216;$push&#8217;: {  
-&#8216;comments&#8217;: comment  
-}  
-}, function(err, numModified) {  
-"use strict";  
-if (err) return callback(err, null);  
-callback(err, numModified);  
-});  
-};  
-this.incrementLikes = function(permalink, comment_ordinal, callback) {  
-"use strict";  
-posts.findOne({  
-&#8216;permalink&#8217;: permalink  
-}, function(err, post) {  
-"use strict";  
-console.dir(post.comments\[comment\_ordinal\]\["num\_likes"\]);  
-if (err) return callback(err, null);  
-if (!post.comments\[comment\_ordinal\]\["num\_likes"\]) {  
-post.comments\[comment\_ordinal\]\["num\_likes"\] = 0;  
-}  
-post.comments\[comment\_ordinal\]\["num\_likes"\] += 1;  
-posts.update({  
-&#8216;permalink&#8217;: permalink  
-}, post, function(err, numModified) {  
-console.log("numModified= " + numModified);  
-if (err) return callback(err, null);  
-callback(err, numModified);  
-});  
-});  
-};  
-}  
-module.exports.PostsDAO = PostsDAO;[/js]
+function PostsDAO(db) {
+    "use strict";
+    /* If this constructor is called without the "new" operator, "this" points
+
+    \* to the global object. Log a warning and call it correctly. \*/
+    if (false === (this instanceof PostsDAO)) {
+        console.log('Warning: PostsDAO constructor called without "new" operator');
+        return new PostsDAO(db);
+    }
+    var posts = db.collection("posts");
+    this.insertEntry = function(title, body, tags, author, callback) {
+        "use strict";
+        console.log("inserting blog entry" + title + body);
+        // fix up the permalink to not include whitespace  
+        var permalink = title.replace(/\s/g, '_');
+        permalink = permalink.replace(/\W/g, ”);
+        // Build a new post  
+        var post = {
+            "title": title,
+            "author": author,
+            "body": body,
+            "permalink": permalink,
+            "tags": tags,
+            "comments": [],
+            "date": new Date()
+        }
+        // now insert the post  
+        posts.insert(post, function(err, result) {
+            "use strict";
+            if (err) return callback(err, null);
+            console.log("Inserted new post");
+            callback(err, permalink);
+        });
+    };
+    this.getPosts = function(num, callback) {
+        "use strict";
+        posts.find()
+            .sort('date', -1)
+            .limit(num)
+            .toArray(function(err, items) {
+                "use strict";
+                if (err) return callback(err, null);
+                console.log("Found " + items.length + " posts");
+                callback(err, items);
+            });
+    };
+    this.getPostsByTag = function(tag, num, callback) {
+        "use strict";
+        posts.find({
+                tags: tag
+            })
+            .sort('date', -1)
+            .limit(num)
+            .toArray(function(err, items) {
+                "use strict";
+                if (err) return callback(err, null);
+                console.log("Found " + items.length + " posts");
+                callback(err, items);
+            });
+    };
+    this.getPostByPermalink = function(permalink, callback) {
+        "use strict";
+        posts.findOne({
+            'permalink': permalink
+        }, function(err, post) {
+            "use strict";
+            if (err) return callback(err, null);
+            // XXX: Look here for final exam to see where we store "num_likes"  
+            // fix up likes values. set to zero if data is not present  
+            if (typeof post.comments === 'undefined') {
+                post.comments = [];
+            }
+            // Each comment document in a post should have a "num_likes" entry, so we have to  
+            // iterate all the comments in the post to make sure that is the case  
+            for (var i = 0; i < post.comments.length; i++) {
+                if (typeof post.comments[i].num_likes === 'undefined') {
+                    post.comments[i].num_likes = 0;
+                }
+                post.comments[i].comment_ordinal = i;
+            }
+            callback(err, post);
+        });
+    };
+    this.addComment = function(permalink, name, email, body, callback) {
+        "use strict";
+        var comment = {
+            'author': name,
+            'body': body
+        }
+        if (email != "") {
+            comment['email'] = email
+        }
+        posts.update({
+            'permalink': permalink
+        }, {
+            '$push': {
+                'comments': comment
+            }
+        }, function(err, numModified) {
+            "use strict";
+            if (err) return callback(err, null);
+            callback(err, numModified);
+        });
+    };
+    this.incrementLikes = function(permalink, comment_ordinal, callback) {
+        "use strict";
+        posts.findOne({
+            'permalink': permalink
+        }, function(err, post) {
+            "use strict";
+            console.dir(post.comments[comment_ordinal]["num_likes"]);
+            if (err) return callback(err, null);
+            if (!post.comments[comment_ordinal]["num_likes"]) {
+                post.comments[comment_ordinal]["num_likes"] = 0;
+            }
+            post.comments[comment_ordinal]["num_likes"] += 1;
+            posts.update({
+                'permalink': permalink
+            }, post, function(err, numModified) {
+                console.log("numModified= " + numModified);
+                if (err) return callback(err, null);
+                callback(err, numModified);
+            });
+        });
+    };
+}
+module.exports.PostsDAO = PostsDAO;
+```
+
 
 <h2 dir="ltr">
   Enlaces a la guía completa

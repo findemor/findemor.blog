@@ -9,11 +9,9 @@ permalink: /2015/06/aprender-a-usar-mongodb-guia-2/
 image: /wp-content/uploads/2015/06/mongodb.png
 categories:
   - Desarrollo
-  - Tecnología
+  - Cursos
 tags:
-  - bases de datos
-  - mongodb
-  - tecnología
+  - MongoDB
 ---
 <p dir="ltr">
   En esta segunda publicación acerca de MongoDB veremos como arrancar el motor, crear una base de datos y poblarla con datos.
@@ -45,7 +43,7 @@ tags:
   Para eso, usando el terminal, entramos en la carpeta mongo que se ha creado al instalar mongodb, y ejecutamos el comando:
 </p>
 
-> > mongod -dbpath ./db
+> mongod -dbpath ./db
 
 <p dir="ltr">
   La aplicación mongod se arrancará y se mantendrá a la escucha en el puerto por defecto, y dará acceso a las bases de datos ubicadas bajo la carpeta db.
@@ -168,12 +166,10 @@ tags:
 </p>
 
 <li dir="ltr">
-  <p dir="ltr">
     Script de shell: la shell de mongo admite scripts Javascript, por lo que podríamos instanciar una variable dentro de un bucle y poblar una colección con datos de prueba.
-  </p>
 </li>
 
-[js]  
+```js
 for (i = 0; i & lt; 10; ++i) {  
 var doc = {  
 name: "user-" + i;  
@@ -181,22 +177,19 @@ name: "user-" + i;
 
 db.posts.insert(doc);  
 }  
-[/js]
+```
+
 
 <li dir="ltr">
-  <p dir="ltr">
     Ejecutar el script creado en una herramienta externa:
-  </p>
 </li>
 
 > <p dir="ltr">
->   > load(&#8220;scripts/myusers.js&#8221;)
+>   > load(“scripts/myusers.js”;)
 > </p>
 
 <li dir="ltr">
-  <p dir="ltr">
     Importar un documento que solo contenga Jsons: utilizando la herramienta mongoimport
-  </p>
 </li>
 
 > <p dir="ltr">
@@ -204,18 +197,16 @@ db.posts.insert(doc);
 > </p>
 
 <li dir="ltr">
-  <p dir="ltr">
     Desde una aplicación utilizando el driver correspondiente, por ejemplo con MongoClient driver:
-  </p>
 </li>
 
-[js]  
-var MongoClient = require(&#8216;mongodb&#8217;).MongoClient;
+```js
+var MongoClient = require('mongodb').MongoClient;
 
-MongoClient.connect(&#8216;mongodb://localhost:27017/testdb, function(err, db) {  
+MongoClient.connect('mongodb://localhost:27017/testdb, function(err, db) {  
 if (err) throw err;  
 var query = {  
-&#8216;grade&#8217;: 100  
+'grade': 100  
 };
 
 function callback(err, doc) {  
@@ -225,7 +216,8 @@ db.close();
 
 }  
 });  
-[/js]
+```
+
 
 <h2 dir="ltr">
   Enlaces a la guía completa

@@ -8,18 +8,12 @@ guid: http://blog.findemor.es/?p=344
 permalink: /2014/12/8-razones-por-las-que-tu-producto-podria-fracasar/
 image: /wp-content/uploads/2014/12/me-encanta-que-los-planes-salgan-bien.jpg
 categories:
-  - Innovación
-  - Marketing
-  - Negocio
+  - Opinion
 tags:
-  - apps
-  - experiencia
-  - innovacion
-  - marketing
-  - negocio
+  - Innovacion
 ---
 <p dir="ltr">
-  El mundo que nos rodea es altamente creativo (aunque a veces no se note), genera ideas, se apasiona con ellas, y las pone en marcha&#8230; y como además el tiempo apremia en todos los ámbitos, esto se hace a una velocidad vertiginosa: de hecho cada día se publican más de 2700 nuevas apps, por ejemplo.
+  El mundo que nos rodea es altamente creativo (aunque a veces no se note), genera ideas, se apasiona con ellas, y las pone en marcha... y como además el tiempo apremia en todos los ámbitos, esto se hace a una velocidad vertiginosa: de hecho cada día se publican más de 2700 nuevas apps, por ejemplo.
 </p>
 
 <p dir="ltr">
@@ -31,25 +25,25 @@ tags:
 </p>
 
 <h3 dir="ltr">
-  1 &#8211; Dedicar poco tiempo a estudio previo
+  1 - Dedicar poco tiempo a estudio previo
 </h3>
 
 <p dir="ltr">
-  ¿Cuántas veces hemos oído a alguien decirnos &#8220;tengo una idea brutal para un producto&#8221;?.
+  ¿Cuántas veces hemos oído a alguien decirnos “tengo una idea brutal para un producto”;?.
 </p>
 
 <p dir="ltr">
-  Lo cierto, es que las ideas pueden ser buenas, pero sin una correcta ejecución, no valen nada. <strong>Cuando alguien me dice que tiene una gran idea, lo primero que hago es pedirle ciertas tareas para que vaya trabajando sobre la misma</strong>: investiga y evalúa la competencia, pregunta a tus conocidos, piensa en el mapa de públicos, analiza los costes&#8230; <strong>Si existe motivación suficiente, el trabajo será muy beneficioso para desarrollar las tareas posteriores</strong>, nos protegerá de sorpresas y nos permitirá tomar decisiones correctas&#8230; <strong>si por el contrario no existe suficiente motivación para realizar esta tarea, es probable que sucumbiéramos en el futuro</strong> cuando nos veamos forzados a realizarla, así que es una forma apropiada de filtrar y evaluar el enorme número de ideas que un grupo creativo puede generar.
+  Lo cierto, es que las ideas pueden ser buenas, pero sin una correcta ejecución, no valen nada. <strong>Cuando alguien me dice que tiene una gran idea, lo primero que hago es pedirle ciertas tareas para que vaya trabajando sobre la misma</strong>: investiga y evalúa la competencia, pregunta a tus conocidos, piensa en el mapa de públicos, analiza los costes... <strong>Si existe motivación suficiente, el trabajo será muy beneficioso para desarrollar las tareas posteriores</strong>, nos protegerá de sorpresas y nos permitirá tomar decisiones correctas... <strong>si por el contrario no existe suficiente motivación para realizar esta tarea, es probable que sucumbiéramos en el futuro</strong> cuando nos veamos forzados a realizarla, así que es una forma apropiada de filtrar y evaluar el enorme número de ideas que un grupo creativo puede generar.
 </p>
 
-[Tweet &#8220;Las ideas pueden ser buenas, pero sin una correcta ejecución, no valen nada.&#8221;]
+> [ “Las ideas pueden ser buenas, pero sin una correcta ejecución, no valen nada.”;]
 
 <p dir="ltr">
-  En cualquier caso nunca te lances a realizar un producto sin investigar antes sus posibilidades reales, definirlo claramente, localizar partners y competidores, los costes que supondrá y el orden de magnitud de usuarios/ventas/fidelización/etc que vas a necesitar para obtener los beneficios deseados&#8230; por muy buena que sea la idea, si no está clara, fracasará.
+  En cualquier caso nunca te lances a realizar un producto sin investigar antes sus posibilidades reales, definirlo claramente, localizar partners y competidores, los costes que supondrá y el orden de magnitud de usuarios/ventas/fidelización/etc que vas a necesitar para obtener los beneficios deseados... por muy buena que sea la idea, si no está clara, fracasará.
 </p>
 
 <h3 dir="ltr">
-  2 &#8211; Planificar el lanzamiento el día de antes
+  2 - Planificar el lanzamiento el día de antes
 </h3>
 
 <p dir="ltr">
@@ -57,7 +51,7 @@ tags:
 </p>
 
 <h3 dir="ltr">
-  3 &#8211; Elegir a la persona equivocada para estar al cargo del lanzamiento
+  3 - Elegir a la persona equivocada para estar al cargo del lanzamiento
 </h3>
 
 <p dir="ltr">
@@ -69,7 +63,7 @@ tags:
 </p>
 
 <h3 dir="ltr">
-  4 &#8211; No mantener informados a tus empleados
+  4 - No mantener informados a tus empleados
 </h3>
 
 <p dir="ltr">
@@ -81,11 +75,11 @@ tags:
 </p>
 
 <p dir="ltr">
-  [Tweet &#8220;Los empleados de una empresa son los principales embajadores de la imagen de marca&#8221;]
+  > [ “Los empleados de una empresa son los principales embajadores de la imagen de marca”;]
 </p>
 
 <h3 dir="ltr">
-  5 &#8211; No considerar el lanzamiento como algo dinámico
+  5 - No considerar el lanzamiento como algo dinámico
 </h3>
 
 <p dir="ltr">
@@ -97,7 +91,7 @@ tags:
 </p>
 
 <h3 dir="ltr">
-  6 &#8211; No elegir cuidadosamente los medios donde publicarás
+  6 - No elegir cuidadosamente los medios donde publicarás
 </h3>
 
 <p dir="ltr">
@@ -105,7 +99,7 @@ tags:
 </p>
 
 <h3 dir="ltr">
-  7 &#8211; Utilizar únicamente <em>push-strategy</em>
+  7 - Utilizar únicamente <em>push-strategy</em>
 </h3>
 
 <p dir="ltr">
@@ -121,7 +115,7 @@ tags:
 </p>
 
 <p dir="ltr">
-  <strong>8 &#8211; “Me encanta que los planes salgan bien”</strong>
+  <strong>8 - “Me encanta que los planes salgan bien”</strong>
 </p>
 
 <p dir="ltr">
@@ -129,7 +123,7 @@ tags:
 </p>
 
 <p dir="ltr">
-  [Tweet &#8220;Al lanzar una aplicación, el pesimismo pragmático puede ser mejor idea que el optimismo ciego&#8221;]
+  > [ “Al lanzar una aplicación, el pesimismo pragmático puede ser mejor idea que el optimismo ciego”;]
 </p>
 
 <p dir="ltr">
@@ -137,7 +131,7 @@ tags:
 </p>
 
 <p dir="ltr">
-  <strong>Lo mejor es tener un plan B preparado de forma anticipada por si las cosas no van del todo bien</strong>, al menos frente a los problemas a los que nuestro producto concreto pueda resultar más sensible, o a las causas más frecuentes de fracaso. Como dice mi madre &#8220;<strong>mejor es prevenir que curar</strong>&#8220;.
+  <strong>Lo mejor es tener un plan B preparado de forma anticipada por si las cosas no van del todo bien</strong>, al menos frente a los problemas a los que nuestro producto concreto pueda resultar más sensible, o a las causas más frecuentes de fracaso. Como dice mi madre “<strong>mejor es prevenir que curar</strong>“.
 </p>
 
 <h3 dir="ltr">
@@ -149,11 +143,11 @@ tags:
 </p>
 
 <p dir="ltr">
-  Si os interesa este tema, hay libros especializados, como <a title="Como Gestionar la Innovacion" href="http://books.google.es/books/about/C%C3%B3mo_gestionar_la_innovaci%C3%B3n.html?id=ASSroAEACAAJ&redir_esc=y" target="_blank" rel="nofollow">&#8220;Cómo gestionar la innovación&#8221; de Miguel de Bas Sotelo</a> que me recomendó <a title="Sergio Alcalde" href="https://twitter.com/sergio_alcalde" target="_blank" rel="nofollow">@sergio_alcalde</a>
+  Si os interesa este tema, hay libros especializados, como <a title="Como Gestionar la Innovacion" href="http://books.google.es/books/about/C%C3%B3mo_gestionar_la_innovaci%C3%B3n.html?id=ASSroAEACAAJ&redir_esc=y" target="_blank" rel="nofollow">“Cómo gestionar la innovación”; de Miguel de Bas Sotelo</a> que me recomendó <a title="Sergio Alcalde" href="https://twitter.com/sergio_alcalde" target="_blank" rel="nofollow">@sergio_alcalde</a>
 </p>
 
 <p dir="ltr">
-  Y vosotros&#8230; ¿que consejos añadiríais para evitar el fracaso?
+  Y vosotros... ¿que consejos añadiríais para evitar el fracaso?
 </p>
 
 <p dir="ltr">

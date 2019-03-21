@@ -75,18 +75,22 @@ As mentioned previously, you can use [prose.io](https://prose.io/) to add or edi
 In order to have your new pages use this template and not just be plain pages, you need to add [YAML front matter](https://jekyllrb.com/docs/front-matter/) to the top of each page. This is where you'll give each page some parameters that I made available, such as a title and subtitle. I'll go into more detail about what parameters are available later. If you don't want to use any parameters on your new page (this also means having no title), then use the empty YAML front matter:
 
 ```
+
 ---
 ---
 ```
+
 
 If you want to use any parameters, write them between the two lines. For example, you can have this at the top of a page:
 
 ```
+
 ---
 title: Contact me
 subtitle: Here you'll find all the ways to get in touch with me
 ---
 ```
+
 
 You can look at the top of [`aboutme.md`](./aboutme.md) or [`index.html`](./index.html) as more examples.
 
@@ -225,36 +229,50 @@ Beautiful Jekyll is meant to be so simple to use that you can do it all within t
 
 2. Clone your repository locally.
 
-    ```bash
+    
+```
+bash
     git clone https://github.com/<your_username>/<your_username>.github.io.git
-    ```
+    
+```
+
 
 3. Run the following shell commands to build the docker image and start the container for the first time:
 
-    ```bash
+    
+```
+bash
     cd <repository_folder>
     docker build -t beautiful-jekyll "$PWD"
     docker run -d -p 4000:4000 --name beautiful-jekyll -v "$PWD":/srv/jekyll beautiful-jekyll
-    ```
+    
+```
+
 
 Note: If you encounter write permission problems with `Gemfile.lock`, try:
 
-```bash
+```
+bash
 touch Gemfile.lock
 chmod a+w Gemfile.lock
 ```
 
+
 Now that Docker is set up, you do not need to run the above steps again. You can now view your website at http://localhost:4000/. You can start the container again in the future with:
 
-```bash
+```
+bash
 docker start beautiful-jekyll
 ```
 
+
 And you can stop the server with:
 
-```bash
+```
+bash
 docker stop beautiful-jekyll
 ```
+
 
 Whenever you make any changes to `_config.yml`, you must stop and re-start the server for the new config settings to take effect.
 

@@ -42,7 +42,7 @@ categories:
 </p>
 
 <p style="font: 12px Helvetica; margin: 0;">
-  <span style="font-size: small;"><span style="font-family: georgia;">1 &#8211; Ya que la primera vez que sincronicemos borraremos todos los datos del iPhone y se traerá la información contenida en Google, hay que asegurarse de hacer un backup antes de empezar.</span></span>
+  <span style="font-size: small;"><span style="font-family: georgia;">1 - Ya que la primera vez que sincronicemos borraremos todos los datos del iPhone y se traerá la información contenida en Google, hay que asegurarse de hacer un backup antes de empezar.</span></span>
 </p>
 
 <p style="font: 12px Helvetica; min-height: 14px; margin: 0;">
@@ -50,11 +50,11 @@ categories:
 </p>
 
 <p style="font: 12px Helvetica; margin: 0;">
-  <span style="font-size: small;"><span style="font-family: georgia;">2 &#8211; En el iPhone, vamos a Ajustes, y elegimos Mail, contactos y calendarios</span></span>
+  <span style="font-size: small;"><span style="font-family: georgia;">2 - En el iPhone, vamos a Ajustes, y elegimos Mail, contactos y calendarios</span></span>
 </p>
 
 <p style="font: 12px Helvetica; margin: 0;">
-  <span style="font-size: small;"><span style="font-family: georgia;">3 &#8211; Una vez ahí pulsamos en Añadir nueva cuenta y elegimos la opción Microsoft Exchange.</span></span>
+  <span style="font-size: small;"><span style="font-family: georgia;">3 - Una vez ahí pulsamos en Añadir nueva cuenta y elegimos la opción Microsoft Exchange.</span></span>
 </p>
 
 <p style="font: 12px Helvetica; min-height: 14px; margin: 0;">
@@ -62,7 +62,7 @@ categories:
 </p>
 
 <p style="font: 12px Helvetica; margin: 0;">
-  <span style="font-size: small;"><span style="font-family: georgia;">4 &#8211; Los datos que debemos introducir son los siguientes: nuestra dirección de correo de Google y la contraseña. Hay que dejar el campo Dominio vacio.</span></span>
+  <span style="font-size: small;"><span style="font-family: georgia;">4 - Los datos que debemos introducir son los siguientes: nuestra dirección de correo de Google y la contraseña. Hay que dejar el campo Dominio vacio.</span></span>
 </p>
 
 <p style="font: 12px Helvetica; min-height: 14px; margin: 0;">
@@ -70,7 +70,7 @@ categories:
 </p>
 
 <p style="font: 12px Helvetica; margin: 0;">
-  <span style="font-size: small;"><span style="font-family: georgia;">5 &#8211; Pulsamos Siguiente y aceptamos el mensaje de “imposible verificar certificado”. En la casilla Servidor que aparecerá, escribimos </span></span><a href="http://m.google.com/"><span style="font-size: small;"><span style="font-family: georgia;">m.google.com</span></span></a><span style="font-size: small;"><span style="font-family: georgia;"> y volvemos a dar a Siguiente.</span></span>
+  <span style="font-size: small;"><span style="font-family: georgia;">5 - Pulsamos Siguiente y aceptamos el mensaje de “imposible verificar certificado”. En la casilla Servidor que aparecerá, escribimos </span></span><a href="http://m.google.com/"><span style="font-size: small;"><span style="font-family: georgia;">m.google.com</span></span></a><span style="font-size: small;"><span style="font-family: georgia;"> y volvemos a dar a Siguiente.</span></span>
 </p>
 
 <p style="font: 12px Helvetica; min-height: 14px; margin: 0;">
@@ -78,7 +78,7 @@ categories:
 </p>
 
 <p style="font: 12px Helvetica; margin: 0;">
-  <span style="font-size: small;"><span style="font-family: georgia;">6 &#8211; Elegimos todo aquello que queramos sincronizar por este método: Contactos Calendarios y / o Correos.</span></span>
+  <span style="font-size: small;"><span style="font-family: georgia;">6 - Elegimos todo aquello que queramos sincronizar por este método: Contactos Calendarios y / o Correos.</span></span>
 </p>
 
 <p style="font: 12px Helvetica; min-height: 14px; margin: 0;">
@@ -94,7 +94,7 @@ categories:
 </p>
 
 <p style="font: 12px Helvetica; margin: 0;">
-  <span style="font-size: small;"><span style="font-family: georgia;">7 &#8211; Desde el iphone, visitar la pagina: </span></span><a href="http://m.google.com/sync"><span style="font-size: small;"><span style="font-family: georgia;">m.google.com/sync</span></span></a>
+  <span style="font-size: small;"><span style="font-family: georgia;">7 - Desde el iphone, visitar la pagina: </span></span><a href="http://m.google.com/sync"><span style="font-size: small;"><span style="font-family: georgia;">m.google.com/sync</span></span></a>
 </p>
 
 <p style="font: 12px Helvetica; min-height: 14px; margin: 0;">
@@ -102,7 +102,7 @@ categories:
 </p>
 
 <p style="font: 12px Helvetica; margin: 0;">
-  <span style="font-size: small;"><span style="font-family: georgia;">8 &#8211; Si nos dice que el dispositivo no es compatible con el servicio, hay que ir a la seleccion de idioma en esa página y escoger English (US)</span></span>
+  <span style="font-size: small;"><span style="font-family: georgia;">8 - Si nos dice que el dispositivo no es compatible con el servicio, hay que ir a la seleccion de idioma en esa página y escoger English (US)</span></span>
 </p>
 
 <p style="font: 12px Helvetica; min-height: 14px; margin: 0;">
@@ -110,7 +110,7 @@ categories:
 </p>
 
 <p style="font: 12px Helvetica; margin: 0;">
-  <span style="font-size: small;"><span style="font-family: georgia;">9 &#8211; Introducimos los datos de nuestra cuenta de google y configuramos nuestro dispositivo siguiendo las instrucciones.</span></span>
+  <span style="font-size: small;"><span style="font-family: georgia;">9 - Introducimos los datos de nuestra cuenta de google y configuramos nuestro dispositivo siguiendo las instrucciones.</span></span>
 </p>
 
 <p style="font: 12px Helvetica; min-height: 14px; margin: 0;">
@@ -118,7 +118,7 @@ categories:
 </p>
 
 <p style="font: 12px Helvetica; margin: 0;">
-  <span style="font-size: small;"><span style="font-family: georgia;">10 &#8211; Elegimos los calendarios que deseemos que sean visibles desde el iPhone y a funcionar.</span></span>
+  <span style="font-size: small;"><span style="font-family: georgia;">10 - Elegimos los calendarios que deseemos que sean visibles desde el iPhone y a funcionar.</span></span>
 </p>
 
 <p style="font: 12px Helvetica; min-height: 14px; margin: 0;">
@@ -126,13 +126,14 @@ categories:
 </p>
 
 <p style="font: 12px Helvetica; margin: 0;">
-  <span style="font-size: small;"><span style="font-family: georgia;">Más info: </span></span><a href="http://www.google.com/mobile/products/sync.html#p=apple"><span style="font-size: small;"><span style="font-family: georgia;">web oficial de google sobre el tema</span></span></a><span style="font-size: small;"><span> tyle=&#8221;font-family:georgia;&#8221;>.</span></span>
+  <span style="font-size: small;"><span style="font-family: georgia;">Más info: </span></span><a href="http://www.google.com/mobile/products/sync.html#p=apple"><span style="font-size: small;"><span style="font-family: georgia;">web oficial de google sobre el tema</span></span></a><span style="font-size: small;"><span> tyle=”;font-family:georgia;”;>.</span></span>
 </p>
 
 <p style="font: 12px Helvetica; margin: 0;">
   <span style="font-size: small;"> </span>
 </p>
 
-[sourcecode language=&#8221;xml&#8221;]  
+```
+  
 <despedida>chau</despedida>  
-[/sourcecode]
+```

@@ -9,11 +9,9 @@ permalink: /2015/06/aprender-a-usar-mongodb-guia-6/
 image: /wp-content/uploads/2015/06/mongodb.png
 categories:
   - Desarrollo
-  - Tecnología
+  - Cursos
 tags:
-  - bases de datos
-  - mongodb
-  - tecnología
+  - MongoDB
 ---
 <p dir="ltr">
   Ahora que ya hemos aprendido a <a href="http://blog.findemor.es/2015/06/aprender-a-usar-mongodb-guia-5">diseñar correctamente la estructura de los datos en MongoDB</a>, y que sabemos <a href="http://blog.findemor.es/2015/06/aprender-a-usar-mongodb-guia-3">realizar todo tipo de consultas</a>, seguro que se nos ocurren multitud de posibilidades con documentos anidados y estructuras complejas para que nuestra aplicación sea realmente rápida.
@@ -309,7 +307,7 @@ Guía 5: [Esquema de datos dirigido por la aplicación](http://blog.findemor.e
 >   > db.places.find({ _id : 1 }, { _id : 1 }).explain()
 > </p>
 
-[js]{  
+```js{  
 "cursor": "IDCursor",  
 "n": 1,  
 "nscannedObjects": 0,  
@@ -325,7 +323,9 @@ Guía 5: [Esquema de datos dirigido por la aplicación](http://blog.findemor.e
 ]  
 },  
 "server": "MacBook-de-Findemor.local:27017"  
-}[/js]
+}
+```
+
 
 <p dir="ltr">
   En el ejemplo podemos ver que, <strong>al hacer una consulta Cubierta</strong> (es decir, la proyección y el filtro están en el índice, por lo que no hay que leer documentos del disco ni de la memoria), hemos obtenido 1 resultado (n), no se escaneó ningun documento en la colección (nscannedObjects), se escaneó solo un documento en el índice (nscanned), la consulta estaba cubierta (indexOnly), tardó 0 millisegundos…
@@ -347,7 +347,7 @@ Guía 5: [Esquema de datos dirigido por la aplicación](http://blog.findemor.e
 >   > db.places.stats()
 > </p>
 
-[js]{  
+```js{  
 "ns": "test.places",  
 "count": 2,  
 "size": 224,  
@@ -361,10 +361,12 @@ Guía 5: [Esquema de datos dirigido por la aplicación](http://blog.findemor.e
 "userFlags": 1,  
 "totalIndexSize": 8176,  
 "indexSizes": {  
-"\_id\_": 8176  
+"_id_": 8176  
 },  
 "ok": 1  
-}[/js]
+}
+```
+
 
 <h3 dir="ltr">
   Latencias, Autolog y Profiling
@@ -379,21 +381,15 @@ Guía 5: [Esquema de datos dirigido por la aplicación](http://blog.findemor.e
 </p>
 
 <li dir="ltr">
-  <p dir="ltr">
-    <strong></strong> : el profiler no registrará nada
-  </p>
+    <strong>0</strong> : el profiler no registrará nada
 </li>
 
 <li dir="ltr">
-  <p dir="ltr">
     <strong>1</strong> : el profiler registrará las operaciones lentas
-  </p>
 </li>
 
 <li dir="ltr">
-  <p dir="ltr">
     <strong>2</strong> : el profiler registrará todas las operaciones
-  </p>
 </li>
 
 <p dir="ltr">
@@ -401,7 +397,7 @@ Guía 5: [Esquema de datos dirigido por la aplicación](http://blog.findemor.e
 </p>
 
 > <p dir="ltr">
->   &#8211;profile 1 &#8211;slowms 20
+>   -profile 1 -slowms 20
 > </p>
 
 <p dir="ltr">
@@ -417,15 +413,11 @@ Guía 5: [Esquema de datos dirigido por la aplicación](http://blog.findemor.e
 </p>
 
 <li dir="ltr">
-  <p dir="ltr">
     <strong>mongotop</strong> es un programa que nos permite qué colecciones están gastando más tiempo
-  </p>
 </li>
 
 <li dir="ltr">
-  <p dir="ltr">
     <strong>mongostat</strong> devuelve principalmente el número de índices que se pierden… aunque resulta dificil de comprender en ocasiones (por ejemplo, un valor del 0% puede ser perfecto o puede significar que no tengas ningún índice).
-  </p>
 </li>
 
 <h2 dir="ltr">

@@ -7,9 +7,8 @@ layout: post
 guid: http://blog.findemor.es/?p=137
 permalink: /2011/02/como-programar-en-android-guia-4/
 categories:
-  - Android
   - Desarrollo
-  - Java
+  - Cursos
 tags:
   - Android
   - Java
@@ -24,7 +23,7 @@ Antes de continuar la lectura de la guía, quizá te interese leer [la anterior,
 
 Vamos a continuar el proyecto de la Guia 3, en el que teníamos una lista de títulos de libro, de forma que ahora la lista muestre para cada libro: una imagen, un titulo y su autor.
 
-#### Paso 1 &#8211; Preparar nuestro Layout lista_item.xml
+#### Paso 1 - Preparar nuestro Layout lista_item.xml
 
 En la Guía 3 estábamos mostrando en el ListView una lista de títulos (cadenas de texto) cada uno de los cuales necesitaba un único TextView para representar esa información. Es por eso el Layout lista_item.xml, que es el diseño de cada elemento de la lista, solo contenia un control TextView.
 
@@ -34,32 +33,32 @@ Como siempre que vamos a colocar más de un control en el layout, necesitaremos 
 
 Despues de editar nuestro archivo lista_item.xml quedará algo así:
 
-[sourcecode language=&#8221;xml&#8221; highlight=&#8221;18,28&#8243;]  
+```xml  
 <?xml version="1.0" encoding="utf-8"?>  
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"  
-android:layout\_width="fill\_parent"  
+android:layout_width="fill_parent"  
 android:layout_height="?android:attr/listPreferredItemHeight"  
 android:padding="5dip">  
 <ImageView  
 android:id="@+id/icono"  
-android:layout\_width="wrap\_content"  
-android:layout\_height="fill\_parent"  
+android:layout_width="wrap_content"  
+android:layout_height="fill_parent"  
 android:layout_marginRight="5dip"  
 android:src="@drawable/icon" />  
 <LinearLayout  
 android:orientation="vertical"  
 android:layout_width="0dip"  
 android:layout_weight="1"  
-android:layout\_height="fill\_parent">  
+android:layout_height="fill_parent">  
 <TextView  
 android:id="@+id/titulo"  
-android:layout\_width="fill\_parent"  
+android:layout_width="fill_parent"  
 android:layout_height="0dip"  
 android:layout_weight="1"  
 android:gravity="center_vertical"  
 />  
 <TextView  
-android:layout\_width="fill\_parent"  
+android:layout_width="fill_parent"  
 android:layout_height="0dip"  
 android:layout_weight="1"  
 android:id="@+id/autor"  
@@ -69,17 +68,18 @@ android:ellipsize="marquee"
 </LinearLayout>  
 </LinearLayout>
 
-[/sourcecode]
+```
+
 
 Si nos fijamos bien, veremos que lo que hemos hecho es definir un **LinearLayout**, que por defecto mostrara los elementos que contenga uno al lado del otro, dentro tenemos un **ImageView**, que por lo tanto aparecerá a la izquierda, y **otro LinearLayout**, que aparecerá a continuación de la imagen, a su derecha. Este segundo LinearLayout tiene orientación vertical, por lo que los **dos TextView** que contiene aparecerán uno encima de otro (y a la derecha de la imagen). El resto de atributos sirven para personalizar aún más el diseño, como son alturas de los elementos, margenes, etc, pero ahora mismo podemos obviarlos.
 
-#### Paso 2 &#8211; Preparar los objetos que aparecerán en la lista
+#### Paso 2 - Preparar los objetos que aparecerán en la lista
 
 En la Guía 3, el control ListView recibía una lista de títulos (cadenas de texto), para lo que usábamos un _ArrayList<String>._ Para el ejemplo de hoy necesitamos que nuestra entidad **Libro** contenga más información: un titulo y su autor, ya que esta entidad será lo que vamos a mostrar en cada celda de nuestro ListView.
 
 En nuestro archivo **ControladorLista.java**, donde tenemos implementada la Actividad que controla la lista, vamos a crear a nivel de clase, una **entidad Libro**, con dos propiedades.
 
-[sourcecode language=&#8221;java&#8221;]  
+```java  
 public class Libro {  
 private String Titulo = "";  
 private String Autor = "";
@@ -100,11 +100,12 @@ public void setAutor(String autor) {
 Autor = autor;  
 }  
 }  
-[/sourcecode]
+```
+
 
 También vamos a modificar el **método getItems()** para que genere y devuelva una lista de entidades Libro.
 
-[sourcecode language=&#8221;java&#8221;]  
+```java  
 /*  
 * Obtiene una lista de libros  
 *  
@@ -133,15 +134,16 @@ MiLista.add(libro3);
 
 return MiLista;  
 }  
-[/sourcecode]
+```
 
-#### Paso 3 &#8211; Implementar un CustomAdapter para el ListView
+
+#### Paso 3 - Implementar un CustomAdapter para el ListView
 
 En la Guía 3, vimos que para que el ListView poblase sus elementos a partir de una lista de cadenas de texto, bastaba con invocar el método **setListAdapter** al que pasabamos un **ArrayAdapter<String>** y el recurso que iba a actuar como layout para los elementos de nuestra lista.
 
 Este paso **era así de sencillo** porque el adaptador por defecto de la lista, al recibir una lista de Strings, y teniendo en su Layout un unico TextView, sabe facilmente que lo que debe hacer es usar el TextView para mostrar el String correspondiente. Pero hoy queremos mostrar una entidad Libro, que es mas compleja, por lo que tendremos que **implementar nuestro propia clase Adapter**, a la que llamaremos **LibroAdapter**, y que **heredará de ArrayAdapter<Libro>**, donde podremos decirle en que control de Layout debe mostrar cada atributo del objeto Libro.
 
-[sourcecode language=&#8221;java&#8221; highlight=&#8221;1,7,11,17,19,20,22,25&#8243;]  
+```java  
 private class LibroAdapter extends ArrayAdapter<Libro> {
 
 private ArrayList<Libro> items;
@@ -155,7 +157,7 @@ this.items = items;
 public View getView(int position, View convertView, ViewGroup parent) {  
 View v = convertView;  
 if (v == null) {  
-LayoutInflater vi = (LayoutInflater) getSystemService(Context.LAYOUT\_INFLATER\_SERVICE);  
+LayoutInflater vi = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);  
 v = vi.inflate(R.layout.lista_item, null);  
 }  
 Libro libro = items.get(position);  
@@ -172,7 +174,8 @@ tautor.setText(libro.getAutor());
 return v;  
 }  
 }  
-[/sourcecode]
+```
+
 
 Prestemos atención a lo que estamos haciendo:
 
@@ -182,13 +185,13 @@ Prestemos atención a lo que estamos haciendo:
 
 > **_Nota_**: Además, bajo ciertas circunstancias, aunque nuestra lista lista solo tenga por ejemplo 3 elementos, para representar la vista en el dispositivo, el sistema puede requerir **la ejecución de este método 3*N veces**. Siendo N un valor variable que depende de la **anidación de controles** en nuestra vista y del atributo **layout_width** y **layout_height** de los mismos, si deben calcularse dinamicamente (con **wrap_content** por ejemplo). Pero ya veremos la solución a este problema en futuros posts.
 
-#### Paso 4 &#8211; Poblar la lista con los objetos Libro
+#### Paso 4 - Poblar la lista con los objetos Libro
 
 Una vez que tenemos esto, solo falta cargar la lista de Libros en el adaptador de la lista, en el evento onCreate de la Actividad.
 
 Para esto empleamos como siempre el método setListAdapter, al que pasamos la lista de libros, pero esta vez usaremos nuestro adaptador personalizado.
 
-[sourcecode language=&#8221;java&#8221;]  
+```java  
 /*\* Called when the activity is first created. \*/  
 @Override  
 public void onCreate(Bundle savedInstanceState) {  
@@ -199,13 +202,14 @@ ArrayList<Libro> Libros = getItems();
 // Entregamos la lista de Libros al adaptador de la lista en el Layout Lista.xml  
 setListAdapter(new LibroAdapter(this, R.layout.lista_item, Libros));  
 }  
-[/sourcecode]
+```
 
-##### Paso 5 &#8211; Ejecutar la aplicación
+
+##### Paso 5 - Ejecutar la aplicación
 
 Nuestra Actividad controladora de la Lista, después de todos estos cambios, queda así (pulsa para desplegar):
 
-[sourcecode language=&#8221;java&#8221; collapse=&#8221;true&#8221;]  
+```java  
 package com.example.tolkienlibrary;
 
 import java.util.ArrayList;
@@ -255,7 +259,7 @@ this.items = items;
 public View getView(int position, View convertView, ViewGroup parent) {  
 View v = convertView;  
 if (v == null) {  
-LayoutInflater vi = (LayoutInflater) getSystemService(Context.LAYOUT\_INFLATER\_SERVICE);  
+LayoutInflater vi = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);  
 v = vi.inflate(R.layout.lista_item, null);  
 }  
 Libro libro = items.get(position);  
@@ -313,15 +317,16 @@ MiLista.add(libro3);
 return MiLista;  
 }  
 }  
-[/sourcecode]
+```
+
 
 Y con esto hemos acabado.
 
-#### Paso 6 &#8211; Descarga el proyecto
+#### Paso 6 - Descarga el proyecto
 
 Puedes descargar el código fuente del proyecto completo que hemos realizado en ésta guía [desde aquí](http://blog.findemor.es/resources/TolkienLibrary_Guia4_Solution.zip "desde aquí")
 
-#### Paso 7 &#8211; Aún hay más&#8230;
+#### Paso 7 - Aún hay más...
 
 Si queréis hacer una lista aún más avanzada, y usar un fragmento para distinguir y destacar completamente la funcionalidad y el aspecto de vuestro primer elemento de la lista (algo muy habitual) podeis ver la guia aquí:
 
@@ -329,12 +334,12 @@ Si queréis hacer una lista aún más avanzada, y usar un fragmento para disting
 
 O podéis leer las otras guías:
 
-<a href="http://blog.findemor.es/2011/01/como-programar-en-android-guia-1" target="_self">Guia 1 &#8211; Hola Mundo en Android.</a>
+<a href="http://blog.findemor.es/2011/01/como-programar-en-android-guia-1" target="_self">Guia 1 - Hola Mundo en Android.</a>
 
-[Guia 2 &#8211; Navegación entre Layouts con un botón, y paso de parámetros.](http://blog.findemor.es/2011/01/como-programar-en-android-guia-2/)
+[Guia 2 - Navegación entre Layouts con un botón, y paso de parámetros.](http://blog.findemor.es/2011/01/como-programar-en-android-guia-2/)
 
-[Guia 3 &#8211; ListView o listas con scroll.](http://blog.findemor.es/2011/02/como-programar-en-android-guia-3)
+[Guia 3 - ListView o listas con scroll.](http://blog.findemor.es/2011/02/como-programar-en-android-guia-3)
 
-[Guia 4 &#8211; ListView ricas con celdas personalizadas e imágenes.](http://blog.findemor.es/2011/02/como-programar-en-android-guia-4)
+[Guia 4 - ListView ricas con celdas personalizadas e imágenes.](http://blog.findemor.es/2011/02/como-programar-en-android-guia-4)
 
-[Guia 5 &#8211; Acceso a base de datos (SQLLite).](http://blog.findemor.es/2011/02/como-programar-en-android-guia-5)
+[Guia 5 - Acceso a base de datos (SQLLite).](http://blog.findemor.es/2011/02/como-programar-en-android-guia-5)

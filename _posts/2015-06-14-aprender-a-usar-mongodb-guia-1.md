@@ -9,11 +9,9 @@ permalink: /2015/06/aprender-a-usar-mongodb-guia-1/
 image: /wp-content/uploads/2015/06/mongodb.png
 categories:
   - Desarrollo
-  - Tecnología
+  - Cursos
 tags:
-  - bases de datos
-  - mongodb
-  - tecnología
+  - MongoDB
 ---
 <p dir="ltr">
   Hace algún tiempo completé uno de los fantásticos curso de <a href="https://university.mongodb.com/">mongo university</a> y me encantó. A veces, cuando utilizo mongo, me toca rebuscar entre los apuntes para recordar algún dato de los que habitualmente pueden caer en el olvido… y para evitarlo: a modo de nota personal, y para compartirlo con vosotros, he pensado en escribir un breve resumen del aprendizaje obtenido en dicho curso en una serie de varios posts. Espero que os guste, y no dudéis en hacer preguntas ¡o en comentar vuestras experiencias si también hicisteis el curso!
@@ -78,33 +76,28 @@ tags:
 </h3>
 
 <li dir="ltr">
-  <p dir="ltr">
     Alto rendimiento del mecanismo de persistencia.
-  </p>
+
 </li>
 
 <li dir="ltr">
-  <p dir="ltr">
     Soporta un modelo de datos embebido que reduce drásticamente la actividad de accesos al disco o a memoria.
-  </p>
+
 </li>
 
 <li dir="ltr">
-  <p dir="ltr">
     Soporta índices para acelerar las consultas en gran medida.
-  </p>
+
 </li>
 
 <li dir="ltr">
-  <p dir="ltr">
     Gran disponibilidad, basada en la replicación, que proporciona seguridad ante fallos y redundancia de datos.
-  </p>
+
 </li>
 
 <li dir="ltr">
-  <p dir="ltr">
     Escalado automático que proporciona escalabilidad horizontal como parte de la funcionalidad nativa, (conocido como sharding, que distribuye los datos a través de un cluster de máquinas).
-  </p>
+
 </li>
 
 <h2 dir="ltr">

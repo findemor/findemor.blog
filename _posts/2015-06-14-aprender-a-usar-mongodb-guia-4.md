@@ -9,11 +9,9 @@ permalink: /2015/06/aprender-a-usar-mongodb-guia-4/
 image: /wp-content/uploads/2015/06/mongodb.png
 categories:
   - Desarrollo
-  - Tecnología
+  - Cursos
 tags:
-  - bases de datos
-  - mongodb
-  - tecnología
+  - MongoDB
 ---
 <p dir="ltr">
   Anteriormente hemos visto como <a href="http://blog.findemor.es/2015/06/aprender-a-usar-mongodb-guia-2">introducir datos en la base de datos</a> MongoDB, y cómo realizar <a href=" http://blog.findemor.es/2015/06/aprender-a-usar-mongodb-guia-3">todo tipo de consultas</a> para obtener los datos almacenados con distintos tipos de filtro.
@@ -49,8 +47,11 @@ Guía 3: [Comandos y operaciones esenciales](http://blog.findemor.es/2015/06/ap
 >   > db.scores.find().skip(2).limit(2)
 > </p>
 
-[js]{ "_id" : 3, "username" : "franbuipa", "score" : 30 }  
-{ "_id" : 4, "username" : "cocinero", "favorites" : [ "cocinar", "postres" ], "address" : { "country" : "es", "city" : "madrid" } }[/js]
+```js
+{ "_id" : 3, "username" : "franbuipa", "score" : 30 }  
+{ "_id" : 4, "username" : "cocinero", "favorites" : [ "cocinar", "postres" ], "address" : { "country" : "es", "city" : "madrid" } }
+```
+
 
 <h3 dir="ltr">
   Ordenar resultados en MongoDB
@@ -64,15 +65,21 @@ Guía 3: [Comandos y operaciones esenciales](http://blog.findemor.es/2015/06/ap
 >   > db.scores.find().sort({ _id : 1 }).limit(2)
 > </p>
 
-[js]{ "_id" : 1, "username" : "findemor", &#8230; }  
-{ "_id" : 2, "username" : "eden4ever", &#8230; }[/js]
+```js
+{ "_id" : 1, "username" : "findemor", ... }  
+{ "_id" : 2, "username" : "eden4ever", ... }
+```
+
 
 > <p dir="ltr">
 >   > db.scores.find().sort({ _id : -1 }).limit(2)
 > </p>
 
-[js]{ "_id" : 5, "username" : "deportista", &#8230; }  
-{ "_id" : 4, "username" : "cocinero", &#8230; }[/js]
+```js
+{ "_id" : 5, "username" : "deportista", ... }  
+{ "_id" : 4, "username" : "cocinero", ... }
+```
+
 
 <h3 dir="ltr">
   Manejo de cursores en MongoDB
@@ -86,13 +93,19 @@ Guía 3: [Comandos y operaciones esenciales](http://blog.findemor.es/2015/06/ap
 >   > var c = db.scores.find().sort({ username : -1 }).limit(2)<br /> > c.hasNext()
 > </p>
 
-[js]true[/js]
+```js
+true
+```
+
 
 > <p dir="ltr">
 >   > c.next()
 > </p>
 
-[js]{ "_id" : 3, "username" : "franbuipa", "score" : 30 }[/js]
+```js
+{ "_id" : 3, "username" : "franbuipa", "score" : 30 }
+```
+
 
 <h3 dir="ltr">
   Actualización de documentos en MongoDB
@@ -110,19 +123,28 @@ Guía 3: [Comandos y operaciones esenciales](http://blog.findemor.es/2015/06/ap
 >   > db.scores.find({ _id : 1 })
 > </p>
 
-[js]{ "_id" : 1, "username" : "findemor", "score" : 50, "finished" : true }[/js]
+```js
+{ "_id" : 1, "username" : "findemor", "score" : 50, "finished" : true }
+```
+
 
 > <p dir="ltr">
->   > db.scores.update({ _id : 1 }, { _id : 1, username : &#8220;findemor&#8221;, score : 60 })
+>   > db.scores.update({ _id : 1 }, { _id : 1, username : “findemor”;, score : 60 })
 > </p>
 
-[js]WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })[/js]
+```js
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+```
+
 
 > <p dir="ltr">
 >   > db.scores.find({ _id : 1 })
 > </p>
 
-[js]{ "_id" : 1, "username" : "findemor", "score" : 60 }[/js]
+```js
+{ "_id" : 1, "username" : "findemor", "score" : 60 }
+```
+
 
 <p dir="ltr">
   <strong>Podemos evitar este efecto</strong>, como se muestra a continuación.
@@ -136,19 +158,28 @@ Guía 3: [Comandos y operaciones esenciales](http://blog.findemor.es/2015/06/ap
 >   > db.scores.find({ _id : 1 })
 > </p>
 
-[js]{ "_id" : 1, "username" : "findemor", "score" : 60 }[/js]
+```js
+{ "_id" : 1, "username" : "findemor", "score" : 60 }
+```
+
 
 > <p dir="ltr">
 >   > db.scores.update({ _id : 1 }, { $set : { finished : true }})
 > </p>
 
-[js]WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })[/js]
+```js
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+```
+
 
 > <p dir="ltr">
 >   > db.scores.find({ _id : 1 })
 > </p>
 
-[js]{ "_id" : 1, "username" : "findemor", "score" : 60, "finished" : true }[/js]
+```js
+{ "_id" : 1, "username" : "findemor", "score" : 60, "finished" : true }
+```
+
 
 <p dir="ltr">
   Se pueden realizar otras acciones trabajando con atributos independientes.
@@ -162,13 +193,19 @@ Guía 3: [Comandos y operaciones esenciales](http://blog.findemor.es/2015/06/ap
 >   > db.scores.update({ _id : 1 }, { $inc : { score : 1 }})
 > </p>
 
-[js]WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })[/js]
+```js
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+```
+
 
 > <p dir="ltr">
 >   > db.scores.find({ _id : 1 })
 > </p>
 
-[js]{ "_id" : 1, "username" : "findemor", "score" : 61, "finished" : true }[/js]
+```js
+{ "_id" : 1, "username" : "findemor", "score" : 61, "finished" : true }
+```
+
 
 <p dir="ltr">
   <strong>Eliminar una propiedad</strong> (o atributo) de un elemento.
@@ -178,13 +215,19 @@ Guía 3: [Comandos y operaciones esenciales](http://blog.findemor.es/2015/06/ap
 >   > db.scores.update({ _id : 1 }, { $unset : { finished : 1 }})
 > </p>
 
-[js]WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })[/js]
+```js
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+```
+
 
 > <p dir="ltr">
 >   > db.scores.find({ _id : 1 })
 > </p>
 
-[js]{ "_id" : 1, "username" : "findemor", "score" : 61 }[/js]
+```js
+{ "_id" : 1, "username" : "findemor", "score" : 61 }
+```
+
 
 <p dir="ltr">
   <strong>UPSERT en MongoDB</strong>, actualiza el documento, y si no existe, lo crea aprovechando los datos del update como definición del nuevo documento.
@@ -194,19 +237,28 @@ Guía 3: [Comandos y operaciones esenciales](http://blog.findemor.es/2015/06/ap
 >   > db.scores.find({ _id : 10 }).count()
 > </p>
 
-[js]0[/js]
+```js
+0
+```
+
 
 > <p dir="ltr">
 >   > db.scores.update({ _id : 10 }, { $set : { score : 74 } }, { upsert : true })
 > </p>
 
-[js]WriteResult({ "nMatched" : 0, "nUpserted" : 1, "nModified" : 0, "_id" : 10 })[/js]
+```js
+WriteResult({ "nMatched" : 0, "nUpserted" : 1, "nModified" : 0, "_id" : 10 })
+```
+
 
 > <p dir="ltr">
 >   > db.scores.find({ _id : 10 })
 > </p>
 
-[js]{ "_id" : 10, "score" : 74 }[/js]
+```js
+{ "_id" : 10, "score" : 74 }
+```
+
 
 <h4 dir="ltr">
   Actualización masiva de documentos
@@ -220,13 +272,19 @@ Guía 3: [Comandos y operaciones esenciales](http://blog.findemor.es/2015/06/ap
 >   > db.scores.update({}, { $set : { finished : true }})
 > </p>
 
-[js]WriteResult({ "nMatched" : 1, "nUpserted" : 0,"nModified" : 1 })[/js]
+```js
+WriteResult({ "nMatched" : 1, "nUpserted" : 0,"nModified" : 1 })
+```
+
 
 > <p dir="ltr">
 >   > db.scores.update({}, { $set : { finished : true }}, <strong>{ multi : true }</strong>)
 > </p>
 
-[js]WriteResult({ "nMatched" : 6, "nUpserted" : 0, "nModified" : 5 })[/js]
+```js
+WriteResult({ "nMatched" : 6, "nUpserted" : 0, "nModified" : 5 })
+```
+
 
 <h4 dir="ltr">
   Actualizando atributos de tipo Array (listas)
@@ -244,7 +302,8 @@ Guía 3: [Comandos y operaciones esenciales](http://blog.findemor.es/2015/06/ap
 >   > db.scores.find({ favorites : { $exists : 1 }}).pretty()
 > </p>
 
-[js]{  
+```js
+{  
 "_id": 4,  
 "username": "cocinero",  
 "favorites": ["cocinar", "postres"],  
@@ -262,23 +321,29 @@ Guía 3: [Comandos y operaciones esenciales](http://blog.findemor.es/2015/06/ap
 "city": "toledo"  
 },  
 "finished": true  
-}[/js]
+}
+```
+
 
 <p dir="ltr">
   <strong>Modificar un elemento concreto (por posición)</strong> <strong>dentro de un array</strong>.
 </p>
 
 > <p dir="ltr">
->   > db.scores.update({ _id:4 }, { $set : { &#8220;favorites.1&#8221; : &#8220;comer&#8221; }})
+>   > db.scores.update({ _id:4 }, { $set : { “favorites.1”; : “comer”; }})
 > </p>
 
-[js]WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })[/js]
+```js
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+```
+
 
 > <p dir="ltr">
 >   > db.scores.findOne({ _id:4 })
 > </p>
 
-[js]{  
+```js
+{  
 "_id": 4,  
 "username": "cocinero",  
 "favorites": ["cocinar", "comer"],  
@@ -287,17 +352,22 @@ Guía 3: [Comandos y operaciones esenciales](http://blog.findemor.es/2015/06/ap
 "city": "madrid"  
 },  
 "finished": true  
-}[/js]
+}
+```
+
 
 <p dir="ltr">
   <strong>Añadir un elemento al array por la derecha</strong>
 </p>
 
 > <p dir="ltr">
->   > db.scores.update({ _id:4 }, { $push : { favorites : &#8220;cazar&#8221; }})
+>   > db.scores.update({ _id:4 }, { $push : { favorites : “cazar”; }})
 > </p>
 
-[js]WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })[/js]
+```js
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+```
+
 
 <p dir="ltr">
   <strong>Eliminar un elemento del array por la izquierda</strong> (para que fuese por la derecha, habria que sustituir -1 por 1 positivo)
@@ -307,7 +377,10 @@ Guía 3: [Comandos y operaciones esenciales](http://blog.findemor.es/2015/06/ap
 >   > db.scores.update({ _id:4 }, { $pop : { favorites : -1 }})
 > </p>
 
-[js]WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })[/js]
+```js
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+```
+
 
 <p dir="ltr">
   <strong>Veamos como va quedando nuestro documento</strong> para comprender las acciones anteriores…
@@ -317,7 +390,8 @@ Guía 3: [Comandos y operaciones esenciales](http://blog.findemor.es/2015/06/ap
 >   > db.scores.findOne({ _id : 4 })
 > </p>
 
-[js]{  
+```js
+{  
 "_id": 4,  
 "username": "cocinero",  
 "favorites": ["comer", "cazar"],  
@@ -326,23 +400,29 @@ Guía 3: [Comandos y operaciones esenciales](http://blog.findemor.es/2015/06/ap
 "city": "madrid"  
 },  
 "finished": true  
-}[/js]
+}
+```
+
 
 <p dir="ltr">
   <strong>Añadir todos los elementos especificados al Array</strong>
 </p>
 
 > <p dir="ltr">
->   > db.scores.update({ _id : 4 }, { $pushAll : { favorites : [ &#8220;a&#8221;, &#8220;b&#8221;, &#8220;c&#8221; ]}})
+>   > db.scores.update({ _id : 4 }, { $pushAll : { favorites : [ “a”;, “b”;, “c”; ]}})
 > </p>
 
-[js]WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })[/js]
+```js
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+```
+
 
 > <p dir="ltr">
 >   > db.scores.findOne({ _id : 4 })
 > </p>
 
-[js]{  
+```js
+{  
 "_id": 4,  
 "username": "cocinero",  
 "favorites": ["comer", "cazar", "a", "b", "c"],  
@@ -351,23 +431,29 @@ Guía 3: [Comandos y operaciones esenciales](http://blog.findemor.es/2015/06/ap
 "city": "madrid"  
 },  
 "finished": true  
-}[/js]
+}
+```
+
 
 <p dir="ltr">
   <strong>Eliminar todos los elementos coincidentes del Array</strong>. También podríamos usar el operador pull para eliminar solo un elemento cualquiera especificando su valor.
 </p>
 
 > <p dir="ltr">
->   > db.scores.update({ _id : 4 }, { $pullAll : { favorites : [ &#8220;a&#8221;, &#8220;b&#8221;, &#8220;c&#8221; ]}})
+>   > db.scores.update({ _id : 4 }, { $pullAll : { favorites : [ “a”;, “b”;, “c”; ]}})
 > </p>
 
-[js]WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })[/js]
+```js
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+```
+
 
 > <p dir="ltr">
 >   > db.scores.findOne({ _id : 4 })
 > </p>
 
-[js]{  
+```js
+{  
 "_id": 4,  
 "username": "cocinero",  
 "favorites": ["comer", "cazar"],  
@@ -376,17 +462,22 @@ Guía 3: [Comandos y operaciones esenciales](http://blog.findemor.es/2015/06/ap
 "city": "madrid"  
 },  
 "finished": true  
-}[/js]
+}
+```
+
 
 <p dir="ltr">
   <strong>Añadir un elemento al array únicamente si no existe ya</strong>.
 </p>
 
 > <p dir="ltr">
->   > db.scores.update({ _id : 4 }, { $addToSet : { favorites : &#8220;cazar&#8221; }})
+>   > db.scores.update({ _id : 4 }, { $addToSet : { favorites : “cazar”; }})
 > </p>
 
-[js]WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 0 })[/js]
+```js
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 0 })
+```
+
 
 <h3 dir="ltr">
   Eliminar datos y colecciones en MongoDB
@@ -400,7 +491,10 @@ Guía 3: [Comandos y operaciones esenciales](http://blog.findemor.es/2015/06/ap
 >   > db.scores.remove({ _id : 4 })
 > </p>
 
-[js]WriteResult({ "nRemoved" : 1 })[/js]
+```js
+WriteResult({ "nRemoved" : 1 })
+```
+
 
 <p dir="ltr">
   <strong>Eliminar una colección</strong> (y todos los documentos que contiene)
@@ -410,13 +504,19 @@ Guía 3: [Comandos y operaciones esenciales](http://blog.findemor.es/2015/06/ap
 >   > db.scores.drop()
 > </p>
 
-[js]true[/js]
+```js
+true
+```
+
 
 > <p dir="ltr">
 >   > show collections
 > </p>
 
-[js]system.indexes[/js]
+```js
+system.indexes
+```
+
 
 <h2 dir="ltr">
   Conclusión
@@ -427,27 +527,19 @@ Guía 3: [Comandos y operaciones esenciales](http://blog.findemor.es/2015/06/ap
 </p>
 
 <li dir="ltr">
-  <p dir="ltr">
     Cómo trabajar con esquemas dirigidos por la aplicación (frente a la tradicional Tercera Forma Normal de SQL).
-  </p>
 </li>
 
 <li dir="ltr">
-  <p dir="ltr">
     Definir índices para acelerar las consultas en MongoDB.
-  </p>
 </li>
 
 <li dir="ltr">
-  <p dir="ltr">
     Cómo utilizar el framework de agregación para agrupar y analizar datos.
-  </p>
 </li>
 
 <li dir="ltr">
-  <p dir="ltr">
     Trabajar con réplicas y Shards (Sharding).
-  </p>
 </li>
 
 <p dir="ltr">

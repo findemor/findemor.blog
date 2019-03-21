@@ -7,10 +7,8 @@ layout: post
 guid: http://blog.findemor.es/?p=150
 permalink: /2011/02/como-programar-en-android-guia-5/
 categories:
-  - Android
   - Desarrollo
-  - How to
-  - Java
+  - Cursos
 tags:
   - Android
   - Java
@@ -25,16 +23,18 @@ Vamos a crear un fichero de Base de datos **SQLite**, a añadirlo a los **recurs
 
 Para preparar fácilmente nuestra base de datos, vamos a utilizar un editor de SQLite, por ejemplo [SQLite Database Browser](http://sourceforge.net/projects/sqlitebrowser/), un editor GUI muy ligero y Open Source, disponible en Mac, Linux y Windows.
 
-#### Paso 1 &#8211; Preparar nuestro fichero de Base de Datos SQLite
+#### Paso 1 - Preparar nuestro fichero de Base de Datos SQLite
 
 En la Guia 4, mostrabamos una lista de Libros, cada uno de los cuales tenia como información asociada: Titulo y Autor. Vamos a preparar una tabla en nuestra Base de datos que almacene esta información. Para eso podemos utilizar por ejemplo **SQLite Database Browser**. Es muy sencillo de utilizar, y asumo que todos entendemos como funciona una Base de Datos, así que vamos a ir muy rápido en este paso.
 
-[sourcecode language=&#8221;sql&#8221;]  
+```
+  
 CREATE TABLE "Libros" ("_id" INTEGER PRIMARY KEY, "Titulo" TEXT, "Autor" TEXT);  
 INSERT INTO "Libros" ("Titulo","Autor") VALUES ("El Silmarillion", "J.R.R. Tolkien");  
 INSERT INTO "Libros" ("Titulo","Autor") VALUES ("Hoja de Niggle", "J.R.R. Tolkien");  
 INSERT INTO "Libros" ("Titulo","Autor") VALUES ("Mitopoeia", "J.R.R. Tolkien");  
-[/sourcecode]
+```
+
 
 De esta forma creamos la Tabla que almacena la información de los libros, e insertamos 3 registros. Es evidente que hay modelos mejores para guardar estos datos, pero es suficiente para este ejemplo.
 
@@ -42,38 +42,40 @@ Hay que **destacar el campo _id** que es la clave primaria de nuestra tabla libr
 
 Sin embargo esto no es suficiente, y hay que realizar otro pequeño cambio a nuestra base de datos para que funcione en el dispositivo: **añadir una tabla de metadatos con información para la localización**.
 
-[sourcecode language=&#8221;sql&#8221;]  
-CREATE TABLE "android\_metadata" ("locale" TEXT DEFAULT &#8216;es\_ES&#8217;);  
-INSERT INTO "android\_metadata" VALUES (&#8216;es\_ES&#8217;);  
-[/sourcecode]
+```
+  
+CREATE TABLE "android_metadata" ("locale" TEXT DEFAULT 'es_ES');  
+INSERT INTO "android_metadata" VALUES ('es_ES');  
+```
+
 
 <div id="attachment_155" style="width: 310px" class="wp-caption aligncenter">
   <a href="http://blog.findemor.es/wp-content/uploads/2011/02/DatabaseScreenshot1.jpg"><img class="size-medium wp-image-155" title="Así queda nuestra Base de Datos" src="http://blog.findemor.es/wp-content/uploads/2011/02/DatabaseScreenshot1-300x245.jpg" alt="Así queda nuestra Base de Datos" width="300" height="245" /></a>
   
-  <p class="wp-caption-text">
+ <p class="wp-caption-text">
     Así queda nuestra Base de Datos
   </p>
 </div>
 
-#### Paso 2 &#8211; Copiar nuestro archivo de Base de Datos
+#### Paso 2 - Copiar nuestro archivo de Base de Datos
 
-El fichero de Base de datos SQLite que hemos creado, debemos copiarlo dentro de la carpeta &#8220;**assets**&#8221; de nuestro proyecto. En este ejemplo el fichero se llamará **TolkienLibraryDB**.
+El fichero de Base de datos SQLite que hemos creado, debemos copiarlo dentro de la carpeta “**assets**”; de nuestro proyecto. En este ejemplo el fichero se llamará **TolkienLibraryDB**.
 
 <div id="attachment_157" style="width: 160px" class="wp-caption aligncenter">
   <a href="http://blog.findemor.es/wp-content/uploads/2011/02/esqueleto-proyecto1.jpg"><img class="size-thumbnail wp-image-157" title="Esqueleto del proyecto" src="http://blog.findemor.es/wp-content/uploads/2011/02/esqueleto-proyecto1-150x150.jpg" alt="Esqueleto del proyecto" width="150" height="150" /></a>
   
-  <p class="wp-caption-text">
+ <p class="wp-caption-text">
     Esqueleto del proyecto
   </p>
 </div>
 
-#### Paso 3 &#8211; Extender SQLiteOpenHelper
+#### Paso 3 - Extender SQLiteOpenHelper
 
 Una vez que tenemos nuestro fichero de Base de Datos preparado y en la carpeta donde Android espera encontrar este tipo de recurso, es hora de implementar lo necesario para que sea accesible desde nuestra aplicación en ejecución.
 
 Para esto vamos a crear una clase que **extienda la clase SQLiteOpenHelper**, una facilidad que nos proporciona android para manejar la creación y actualización de bases de datos, y escribiremos lo necesario para que quede así (haz clic para ver el código):
 
-[sourcecode language=&#8221;java&#8221; collapse=&#8221;true&#8221;]  
+```java  
 package com.example.tolkienlibrary;
 
 import java.io.FileOutputStream;  
@@ -141,7 +143,7 @@ throw new Error("Error al copiar la Base de Datos");
 private boolean comprobarBaseDatos(){  
 SQLiteDatabase checkDB = null;  
 try{  
-String myPath = DB\_PATH + DB\_NAME;  
+String myPath = DB_PATH + DB_NAME;  
 checkDB = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);  
 }catch(SQLiteException e){  
 //No existe  
@@ -164,7 +166,7 @@ private void copiarBaseDatos() throws IOException{
 InputStream myInput = myContext.getAssets().open(DB_NAME);
 
 //Carpeta de destino (donde hemos creado la BBDD vacia)  
-String outFileName = DB\_PATH + DB\_NAME;
+String outFileName = DB_PATH + DB_NAME;
 
 //Abrimos la BBDD vacia como OutputStream  
 OutputStream myOutput = new FileOutputStream(outFileName);
@@ -186,7 +188,7 @@ myInput.close();
 * Abre la base de datos  
 **/  
 public void abrirBaseDatos() throws SQLException{  
-String myPath = DB\_PATH + DB\_NAME;  
+String myPath = DB_PATH + DB_NAME;  
 myDataBase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
 
 }
@@ -217,20 +219,21 @@ public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
 }
 
-[/sourcecode]
+```
 
-El código está comentado para que resulte autoexplicativo, pero hay que **destacar las variables DB\_PATH y DB\_NAME.**
+
+El código está comentado para que resulte autoexplicativo, pero hay que **destacar las variables DB_PATH y DB_NAME.**
 
   * **DB_PATH** contiene la carpeta de destino en la que Android coloca la Base de Datos de nuestra aplicación por defecto, y es de la forma /data/data/**TU_PACKAGE**/databases/ siendo **TU_PACKAGE** el nombre de tu package.
   * **DB_NAME** es el nombre del fichero de la Base de Datos que hemos colocado en Assets.
 
-#### Paso 4 &#8211; Nuestra entidad Libro
+#### Paso 4 - Nuestra entidad Libro
 
 En la Guía 4 implementamos nuestra entidad Libro en el controlador de la lista: la Actividad ControladorLista.
 
-Vamos a quitar de ahí el código que define la entidad Libro y a crear una nueva clase &#8220;Libro.java&#8221; donde recolocaremos ese código, de forma que quede claro que vamos a acceder a entidades de ese tipo tanto desde el Controlador de la Lista como desde la clase de acceso a la Base de Datos.
+Vamos a quitar de ahí el código que define la entidad Libro y a crear una nueva clase “Libro.java”; donde recolocaremos ese código, de forma que quede claro que vamos a acceder a entidades de ese tipo tanto desde el Controlador de la Lista como desde la clase de acceso a la Base de Datos.
 
-[sourcecode language=&#8221;java&#8221;]  
+```java  
 package com.example.tolkienlibrary;
 
 public class Libro {  
@@ -253,9 +256,10 @@ public void setAutor(String autor) {
 Autor = autor;  
 }  
 }  
-[/sourcecode]
+```
 
-#### Paso 5 &#8211; Implementar una operación de Consulta sobre los datos
+
+#### Paso 5 - Implementar una operación de Consulta sobre los datos
 
 En la clase **BaseDatosHelper** que acabamos de implementar, vamos a implementar un método que nos devuelva todos los registros de Libros que hay en nuestra tabla Libros.
 
@@ -263,15 +267,15 @@ Los datos se pueden devolver de varias formas, **lo más común** **es devolver 
 
 Añadimos el siguiente código a nuestra clase:
 
-[sourcecode language=&#8221;java&#8221;]
+```java
 
 //Podemos añadir métodos públicos que accedan al contenido de la base de datos,  
 //para realizar consultas, u operaciones CRUD (create, read, update, delete)
 
 private final String TABLE_LIBROS = "Libros";  
-private final String TABLE\_KEY\_ID = "_id";  
-private final String TABLE\_KEY\_TITULO = "Titulo";  
-private final String TABLE\_KEY\_AUTOR = "Autor";
+private final String TABLE_KEY_ID = "_id";  
+private final String TABLE_KEY_TITULO = "Titulo";  
+private final String TABLE_KEY_AUTOR = "Autor";
 
 /*  
 * Obtiene todos los libros desde la Base de Datos  
@@ -280,7 +284,7 @@ public ArrayList<Libro> GetLibros(){
 ArrayList<Libro> listaLibros = new ArrayList<Libro>();
 
 Cursor c = myDataBase.query(TABLE_LIBROS,  
-new String[] {TABLE\_KEY\_ID, TABLE\_KEY\_TITULO, TABLE\_KEY\_AUTOR},  
+new String[] {TABLE_KEY_ID, TABLE_KEY_TITULO, TABLE_KEY_AUTOR},  
 null, null, null, null, null);
 
 //Iteramos a traves de los registros del cursor  
@@ -296,13 +300,15 @@ c.close();
 
 return listaLibros;  
 }  
-[/sourcecode]
+```
 
-#### Paso 6 &#8211; Consultar los datos para mostrarlos en la Lista
 
-Vamos a reimplementar el evento **OnCreate** de la Actividad &#8220;**ControladorLista**&#8221; de nuestro ejemplo de la Guia 4, para crear la Base de Datos al mostrar la lista (si no se ha creado anteriormente).
+#### Paso 6 - Consultar los datos para mostrarlos en la Lista
 
-[sourcecode language=&#8221;java&#8221;]  
+Vamos a reimplementar el evento **OnCreate** de la Actividad “**ControladorLista**”; de nuestro ejemplo de la Guia 4, para crear la Base de Datos al mostrar la lista (si no se ha creado anteriormente).
+
+```java
+  
 public class ControladorLista extends ListActivity {
 
 private class LibroAdapter extends ArrayAdapter<Libro> {
@@ -319,7 +325,7 @@ this.items = items;
 public View getView(int position, View convertView, ViewGroup parent) {  
 View v = convertView;  
 if (v == null) {  
-LayoutInflater vi = (LayoutInflater) getSystemService(Context.LAYOUT\_INFLATER\_SERVICE);  
+LayoutInflater vi = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);  
 v = vi.inflate(R.layout.lista_item, null);  
 }  
 Libro libro = items.get(position);  
@@ -361,14 +367,15 @@ ArrayList<Libro> Libros = getItems();
 setListAdapter(new LibroAdapter(this, R.layout.lista_item, Libros));  
 }
 
-&#8230;  
-[/sourcecode]
+...  
+```
+
 
 En la **Guía 4** también implementamos en esta clase controladora un método que proporcionaba una lista de Libros cargados de datos: **public ArrayList<Libro> getItems()**
 
 Vamos a **reimplementar** ese método para que **abra una conexión** con la Base de Datos, **consulte** los datos, y **cierre** la conexión.
 
-[sourcecode language=&#8221;java&#8221;]  
+```java  
 /*  
 * Obtiene una lista de libros  
 *  
@@ -384,9 +391,10 @@ miBBDDHelper.close();
 //Devolvemos los datos  
 return listaLibros;  
 }  
-[/sourcecode]
+```
 
-#### Paso 7 &#8211; Probar la aplicación
+
+#### Paso 7 - Probar la aplicación
 
 Ya hemos terminado y es hora de ejecutar la aplicación.
 
@@ -395,21 +403,21 @@ Aparentemente no debería tener diferencias con la de la Guía 4, excepto porque
 <div id="attachment_161" style="width: 310px" class="wp-caption aligncenter">
   <a href="http://blog.findemor.es/wp-content/uploads/2011/02/ScreenshotAppGuia5.jpg"><img class="size-medium wp-image-161" title="Resultado de la ejecución" src="http://blog.findemor.es/wp-content/uploads/2011/02/ScreenshotAppGuia5-300x210.jpg" alt="Resultado de la ejecución" width="300" height="210" /></a>
   
-  <p class="wp-caption-text">
+ <p class="wp-caption-text">
     Resultado de la ejecución
   </p>
 </div>
 
-#### Paso 8 &#8211; Descarga la aplicación&#8230;
+#### Paso 8 - Descarga la aplicación...
 
 El fichero de solución de la Guía 5, lo puedes descargar desde <a href="http://blog.findemor.es/resources/TolkienLibrary_Guia5_Solution.zip" target="_blank">este enlace</a>.
 
-#### Paso 9 &#8211; Guías anteriores
+#### Paso 9 - Guías anteriores
 
 Esta serie de Guías-Tutoriales para programar en Android está formada por los siguientes capítulos.
 
 Espero que os hayan resultado útiles.
 
-[<< IR A LA GUÍA ANTERIOR: Guia 4 &#8211; ListView ricas con celdas personalizadas e imágenes.](http://blog.findemor.es/2011/02/como-programar-en-android-guia-4)
+[<< IR A LA GUÍA ANTERIOR: Guia 4 - ListView ricas con celdas personalizadas e imágenes.](http://blog.findemor.es/2011/02/como-programar-en-android-guia-4)
 
-[](http://blog.findemor.es/2011/02/como-programar-en-android-guia-4)<a style="text-align: right;" title="Inserción de registros en la base de datos" href="http://blog.findemor.es/2012/02/como-programar-en-android-guia-6/">IR A LA GUÍA SIGUIENTE: Guia 6 &#8211; Inserción de registros en la Base de Datos >></a>
+[](http://blog.findemor.es/2011/02/como-programar-en-android-guia-4)<a style="text-align: right;" title="Inserción de registros en la base de datos" href="http://blog.findemor.es/2012/02/como-programar-en-android-guia-6/">IR A LA GUÍA SIGUIENTE: Guia 6 - Inserción de registros en la Base de Datos >></a>

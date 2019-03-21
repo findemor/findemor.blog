@@ -9,11 +9,9 @@ permalink: /2015/06/aprender-a-usar-mongodb-guia-8/
 image: /wp-content/uploads/2015/06/mongodb.png
 categories:
   - Desarrollo
-  - Tecnología
+  - Cursos
 tags:
-  - bases de datos
-  - mongodb
-  - tecnología
+  - MongoDB
 ---
 <p dir="ltr">
   Hasta la fecha hemos cubierto prácticamente todos los temas principales que pueden interesarnos para comenzar a trabajar con MongoDB, salvo uno: <strong>el sharding y replicación</strong>.
@@ -54,27 +52,23 @@ Guía 7: [Análisis de datos con el framework de agregación](http://blog.finde
 </p>
 
 <li dir="ltr">
-  <p dir="ltr">
     <strong>Regular</strong>: Es el caso descrito arriba, y será un mongo que podrá actuar como primario o secundario.
-  </p>
+
 </li>
 
 <li dir="ltr">
-  <p dir="ltr">
     <strong>Árbitro</strong>: un nodo de tipo árbitro sólo sirve para participar en la votación (por ejemplo, resultaría útil si queremos desplegar un número par de réplicas, y necesitamos un nodo adicional para deshacer los empates en las decisiones).
-  </p>
+
 </li>
 
 <li dir="ltr">
-  <p dir="ltr">
     <strong>Delayed</strong>: solo puede actuar como nodo secundario (es una mezcla entre árbitro y regular).
-  </p>
+
 </li>
 
 <li dir="ltr">
-  <p dir="ltr">
     <strong>Hidden</strong>: no puede ser primario, y suele emplearse únicamente para almacenar analíticas.
-  </p>
+
 </li>
 
 <h4 dir="ltr">
@@ -106,7 +100,7 @@ Guía 7: [Análisis de datos con el framework de agregación](http://blog.finde
 > </p>
 > 
 > <p dir="ltr">
->   mongod &#8211;replSet rs1 &#8211;logpath &#8220;1.log&#8221; &#8211;dbpath /data/rs1 &#8211;port 27017 &#8211;fork<br /> mongod &#8211;replSet rs1 &#8211;logpath &#8220;3.log&#8221; &#8211;dbpath /data/rs2 &#8211;port 27018 &#8211;fork<br /> mongod &#8211;replSet rs1 &#8211;logpath &#8220;3.log&#8221; &#8211;dbpath /data/rs3 &#8211;port 27019 &#8211;fork
+>   mongod -replSet rs1 -logpath “1.log”; -dbpath /data/rs1 -port 27017 -fork<br /> mongod -replSet rs1 -logpath “3.log”; -dbpath /data/rs2 -port 27018 -fork<br /> mongod -replSet rs1 -logpath “3.log”; -dbpath /data/rs3 -port 27019 -fork
 > </p>
 
 <p dir="ltr">
@@ -114,7 +108,7 @@ Guía 7: [Análisis de datos con el framework de agregación](http://blog.finde
 </p>
 
 > <p dir="ltr">
->   > config = { _id: &#8220;rs1&#8221;, members: [<br /> { _id : 0, host: &#8220;127.0.0.1:27017&#8221;, priority: 0, slaveDelay: 5 },<br /> { _id : 1, host: &#8220;127.0.0.1:27018&#8221; },<br /> { _id : 2, host: &#8220;127.0.0.1:27019&#8221;}<br /> ]}
+>   > config = { _id: “rs1”;, members: [<br /> { _id : 0, host: “127.0.0.1:27017”;, priority: 0, slaveDelay: 5 },<br /> { _id : 1, host: “127.0.0.1:27018”; },<br /> { _id : 2, host: “127.0.0.1:27019”;}<br /> ]}
 > </p>
 > 
 > <p dir="ltr">
@@ -134,7 +128,7 @@ Guía 7: [Análisis de datos con el framework de agregación](http://blog.finde
 </p>
 
 > <p dir="ltr">
->   > mongo &#8211;port 27018<br /> > rs.status()
+>   > mongo -port 27018<br /> > rs.status()
 > </p>
 
 <p dir="ltr">
@@ -166,33 +160,28 @@ Guía 7: [Análisis de datos con el framework de agregación](http://blog.finde
 </h4>
 
 <li dir="ltr">
-  <p dir="ltr">
     Los nodos son transparentes para los clientes conectados
-  </p>
+
 </li>
 
 <li dir="ltr">
-  <p dir="ltr">
     El driver que estemos usando, necesita conocer al menos a un servidor
-  </p>
+
 </li>
 
 <li dir="ltr">
-  <p dir="ltr">
     <strong>Write concern</strong>: puede pasar un tiempo hasta que la escritura esté disponible, y cuando se produce un fallo, puede que no se admita la escritura durante un breve tiempo.
-  </p>
+
 </li>
 
 <li dir="ltr">
-  <p dir="ltr">
     Hay preferencias de lectura que puedes cambiar
-  </p>
+
 </li>
 
 <li dir="ltr">
-  <p dir="ltr">
     Los errores pueden seguir ocurriendo, y el entorno distribuido esta preparado para resolver gran parte de ellos
-  </p>
+
 </li>
 
 <h4 dir="ltr">
@@ -224,7 +213,7 @@ Guía 7: [Análisis de datos con el framework de agregación](http://blog.finde
 </p>
 
 > <p dir="ltr">
->   MongoClient.connect(&#8220;mongodb://localhost:30001,&#8221; +<br /> &#8220;localhost:30002,&#8221;+<br /> &#8220;localhost:30003/course&#8221;, function(err, db) {<br /> &#8230;<br /> })
+>   MongoClient.connect(“mongodb://localhost:30001,”; +<br /> “localhost:30002,”;+<br /> “localhost:30003/course”;, function(err, db) {<br /> ...<br /> })
 > </p>
 
 <p dir="ltr">
@@ -255,7 +244,7 @@ Guía 7: [Análisis de datos con el framework de agregación](http://blog.finde
 </p>
 
 > <p dir="ltr">
->   &#8220;localhost:30003/course?w=1&#8221;
+>   “localhost:30003/course?w=1”;
 > </p>
 
 <p dir="ltr">
@@ -263,7 +252,7 @@ Guía 7: [Análisis de datos con el framework de agregación](http://blog.finde
 </p>
 
 > <p dir="ltr">
->   &#8220;insert({x:2},{w:3})&#8221;
+>   “insert({x:2},{w:3})”;
 > </p>
 
 <h5 dir="ltr">
@@ -275,11 +264,11 @@ Guía 7: [Análisis de datos con el framework de agregación](http://blog.finde
 </p>
 
 > <p dir="ltr">
->   &#8220;localhost:30003/course?readPreference=secondary&#8221;
+>   “localhost:30003/course?readPreference=secondary”;
 > </p>
 > 
 > <p dir="ltr">
->   { &#8216;readPreference&#8217; : ReadPreference.PRIMARY }
+>   { 'readPreference' : ReadPreference.PRIMARY }
 > </p>
 
 <h3 dir="ltr">
@@ -311,11 +300,11 @@ Guía 7: [Análisis de datos con el framework de agregación](http://blog.finde
 </h4>
 
 <p dir="ltr">
-  Para desplegar un entorno de sharding, hay que lanzarlo <strong>del mismo modo que si fuera un conjunto de réplicas, añadiendo la clave &#8212;<em>shardsvr</em></strong> para indicarle que además de una réplica, va a ser un shard.
+  Para desplegar un entorno de sharding, hay que lanzarlo <strong>del mismo modo que si fuera un conjunto de réplicas, añadiendo la clave —;<em>shardsvr</em></strong> para indicarle que además de una réplica, va a ser un shard.
 </p>
 
 <p dir="ltr">
-  Además, necesitaremos unos config-servers, que se lanzan igual pero su clave en este caso será<strong><em> &#8211;configsvr</em></strong>
+  Además, necesitaremos unos config-servers, que se lanzan igual pero su clave en este caso será<strong><em> -configsvr</em></strong>
 </p>
 
 <p dir="ltr">
@@ -323,7 +312,7 @@ Guía 7: [Análisis de datos con el framework de agregación](http://blog.finde
 </p>
 
 > <p dir="ltr">
->   //ej. init_sharded_env.ae39ee9f8161.sh<br /> mongos &#8211;logpath &#8220;mongos-1.log&#8221; &#8211;configdb<br /> localhost:57040,localhost:57041,localhost:57042 &#8211;fork
+>   //ej. init_sharded_env.ae39ee9f8161.sh<br /> mongos -logpath “mongos-1.log”; -configdb<br /> localhost:57040,localhost:57041,localhost:57042 -fork
 > </p>
 
 <p dir="ltr">
@@ -331,7 +320,7 @@ Guía 7: [Análisis de datos con el framework de agregación](http://blog.finde
 </p>
 
 > <p dir="ltr">
->   > db.adminCommand({ addshard: &#8230; })
+>   > db.adminCommand({ addshard: ... })
 > </p>
 
 <p dir="ltr">
@@ -347,27 +336,23 @@ Guía 7: [Análisis de datos con el framework de agregación](http://blog.finde
 </h4>
 
 <li dir="ltr">
-  <p dir="ltr">
     <strong>Todos los documentos deben incluir la shardKey</strong>
-  </p>
+
 </li>
 
 <li dir="ltr">
-  <p dir="ltr">
     La ShardKey no puede cambiar nunca
-  </p>
+
 </li>
 
 <li dir="ltr">
-  <p dir="ltr">
     Necesitas establecer un índice que comience con la ShardKey
-  </p>
+
 </li>
 
 <li dir="ltr">
-  <p dir="ltr">
     No puede tener ningún índice único (o clave única) que sea parte de la shardKey
-  </p>
+
 </li>
 
 <p dir="ltr">
@@ -379,15 +364,11 @@ Guía 7: [Análisis de datos con el framework de agregación](http://blog.finde
 </h4>
 
 <li dir="ltr">
-  <p dir="ltr">
     Tienes que asegurarte de que hay <strong>suficiente cardinalidad</strong>, es decir, suficiente cantidad de valores distintos para que los chunks se generen correctamente.
-  </p>
 </li>
 
 <li dir="ltr">
-  <p dir="ltr">
     Puede ser monotamente creciente, pero si no tiene suficiente cardinalidad, al final todos los nuevos elementos irán al mismo shard. Esto puede causar problemas, por ejemplo si la clave de shard fuese una fecha, al final todos los elementos mayores al momento en que los rangos de clave se asignan a cada shard, serán enviados al último.
-  </p>
 </li>
 
 <p dir="ltr">
@@ -402,20 +383,26 @@ Guía 7: [Análisis de datos con el framework de agregación](http://blog.finde
   A continuación se muestra un fragmento de la documentación de Mongo University donde se describen los pasos para generar un conjunto de replicas y sharding:
 </p>
 
-[js collapse=&#8221;true&#8221;]#  
-Andrew Erlichson# 10 gen# script to start a sharded environment on localhost# clean everything up  
+```js
+#  Andrew Erlichson
+# 10 gen
+# script to start a sharded environment on localhost
+# clean everything up  
+
 echo "killing mongod and mongos"  
 killall mongod  
 killall monogs  
 echo "removing data files"  
-rm &#8211; rf / data / config  
-rm &#8211; rf / data / shard * #start a replica set and tell it that it will be a shord0  
-mkdir &#8211; p / data / shard0 / rs0 / data / shard0 / rs1 / data / shard0 / rs2  
-mongod&#8211;replSet s0&#8211;logpath "s0-r0.log"&#8211;dbpath / data / shard0 / rs0&#8211;port 37017&#8211;fork&#8211;shardsvr&#8211;smallfiles  
-mongod&#8211;replSet s0&#8211;logpath "s0-r1.log"&#8211;dbpath / data / shard0 / rs1&#8211;port 37018&#8211;fork&#8211;shardsvr&#8211;smallfiles  
-mongod&#8211;replSet s0&#8211;logpath "s0-r2.log"&#8211;dbpath / data / shard0 / rs2&#8211;port 37019&#8211;fork&#8211;shardsvr&#8211;smallfiles  
-sleep 5# connect to one server and initiate the set  
-mongo&#8211;port 37017 << &#8216;EOF&#8217;  
+rm - rf / data / config  
+rm - rf / data / shard * #start a replica set and tell it that it will be a shord0  
+mkdir - p / data / shard0 / rs0 / data / shard0 / rs1 / data / shard0 / rs2  
+mongod-replSet s0-logpath "s0-r0.log"-dbpath / data / shard0 / rs0-port 37017-fork-shardsvr-smallfiles  
+mongod-replSet s0-logpath "s0-r1.log"-dbpath / data / shard0 / rs1-port 37018-fork-shardsvr-smallfiles  
+mongod-replSet s0-logpath "s0-r2.log"-dbpath / data / shard0 / rs2-port 37019-fork-shardsvr-smallfiles  
+sleep 5
+
+# connect to one server and initiate the set  
+mongo-port 37017 << 'EOF'  
 config = {  
 _id: "s0",  
 members: [{  
@@ -430,13 +417,15 @@ host: "localhost:37019"
 }]  
 };  
 rs.initiate(config)  
-EOF# start a replicate set and tell it that it will be a shard1  
-mkdir &#8211; p / data / shard1 / rs0 / data / shard1 / rs1 / data / shard1 / rs2  
-mongod&#8211;replSet s1&#8211;logpath "s1-r0.log"&#8211;dbpath / data / shard1 / rs0&#8211;port 47017&#8211;fork&#8211;shardsvr&#8211;smallfiles  
-mongod&#8211;replSet s1&#8211;logpath "s1-r1.log"&#8211;dbpath / data / shard1 / rs1&#8211;port 47018&#8211;fork&#8211;shardsvr&#8211;smallfiles  
-mongod&#8211;replSet s1&#8211;logpath "s1-r2.log"&#8211;dbpath / data / shard1 / rs2&#8211;port 47019&#8211;fork&#8211;shardsvr&#8211;smallfiles  
+EOF
+
+# start a replicate set and tell it that it will be a shard1  
+mkdir - p / data / shard1 / rs0 / data / shard1 / rs1 / data / shard1 / rs2  
+mongod-replSet s1-logpath "s1-r0.log"-dbpath / data / shard1 / rs0-port 47017-fork-shardsvr-smallfiles  
+mongod-replSet s1-logpath "s1-r1.log"-dbpath / data / shard1 / rs1-port 47018-fork-shardsvr-smallfiles  
+mongod-replSet s1-logpath "s1-r2.log"-dbpath / data / shard1 / rs2-port 47019-fork-shardsvr-smallfiles  
 sleep 5  
-mongo&#8211;port 47017 << &#8216;EOF&#8217;  
+mongo-port 47017 << 'EOF'  
 config = {  
 _id: "s1",  
 members: [{  
@@ -451,13 +440,15 @@ host: "localhost:47019"
 }]  
 };  
 rs.initiate(config)  
-EOF# start a replicate set and tell it that it will be a shard2  
-mkdir &#8211; p / data / shard2 / rs0 / data / shard2 / rs1 / data / shard2 / rs2  
-mongod&#8211;replSet s2&#8211;logpath "s2-r0.log"&#8211;dbpath / data / shard2 / rs0&#8211;port 57017&#8211;fork&#8211;shardsvr&#8211;smallfiles  
-mongod&#8211;replSet s2&#8211;logpath "s2-r1.log"&#8211;dbpath / data / shard2 / rs1&#8211;port 57018&#8211;fork&#8211;shardsvr&#8211;smallfiles  
-mongod&#8211;replSet s2&#8211;logpath "s2-r2.log"&#8211;dbpath / data / shard2 / rs2&#8211;port 57019&#8211;fork&#8211;shardsvr&#8211;smallfiles  
+EOF
+
+# start a replicate set and tell it that it will be a shard2  
+mkdir - p / data / shard2 / rs0 / data / shard2 / rs1 / data / shard2 / rs2  
+mongod-replSet s2-logpath "s2-r0.log"-dbpath / data / shard2 / rs0-port 57017-fork-shardsvr-smallfiles  
+mongod-replSet s2-logpath "s2-r1.log"-dbpath / data / shard2 / rs1-port 57018-fork-shardsvr-smallfiles  
+mongod-replSet s2-logpath "s2-r2.log"-dbpath / data / shard2 / rs2-port 57019-fork-shardsvr-smallfiles  
 sleep 5  
-mongo&#8211;port 57017 << &#8216;EOF&#8217;  
+mongo-port 57017 << 'EOF'  
 config = {  
 _id: "s2",  
 members: [{  
@@ -471,18 +462,19 @@ _id: 2,
 host: "localhost:57019"  
 }]  
 };  
+
 rs.initiate(config)  
 EOF# now start 3 config servers  
-mkdir &#8211; p / data / config / config &#8211; a / data / config / config &#8211; b / data / config / config &#8211; c  
-mongod&#8211;logpath "cfg-a.log"&#8211;dbpath / data / config / config &#8211; a&#8211;port 57040&#8211;fork&#8211;configsvr&#8211;smallfiles  
-mongod&#8211;logpath "cfg-b.log"&#8211;dbpath / data / config / config &#8211; b&#8211;port 57041&#8211;fork&#8211;configsvr&#8211;smallfiles  
-mongod&#8211;logpath "cfg-c.log"&#8211;dbpath / data / config / config &#8211; c&#8211;port 57042&#8211;fork&#8211;configsvr&#8211;smallfiles# now start the mongos on a standard port  
-mongos&#8211;logpath "mongos-1.log"&#8211;configdb localhost: 57040, localhost: 57041, localhost: 57042&#8211;fork  
+mkdir - p / data / config / config - a / data / config / config - b / data / config / config - c  
+mongod-logpath "cfg-a.log"-dbpath / data / config / config - a-port 57040-fork-configsvr-smallfiles  
+mongod-logpath "cfg-b.log"-dbpath / data / config / config - b-port 57041-fork-configsvr-smallfiles  
+mongod-logpath "cfg-c.log"-dbpath / data / config / config - c-port 57042-fork-configsvr-smallfiles# now start the mongos on a standard port  
+mongos-logpath "mongos-1.log"-configdb localhost: 57040, localhost: 57041, localhost: 57042-fork  
 echo "Waiting 60 seconds for the replica sets to fully come online"  
 sleep 60  
 echo "Connnecting to mongos and enabling sharding"#  
 add shards and enable sharding on the test db  
-mongo << &#8216;EOF&#8217;  
+mongo << 'EOF'  
 db.adminCommand({  
 addShard: "s0/" + "localhost:37017"  
 });  
@@ -501,7 +493,9 @@ key: {
 student_id: 1  
 }  
 });  
-EOF[/js]
+EOF
+```
+
 
 <h2 dir="ltr">
   Conclusión

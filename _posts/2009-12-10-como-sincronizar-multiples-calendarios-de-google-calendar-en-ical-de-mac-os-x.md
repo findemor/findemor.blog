@@ -13,14 +13,12 @@ blogger_author:
 blogger_ee5e7a96c9f97b09d0db97b4ce8cadc3_permalink:
   - "1520461184660081243"
 categories:
-  - Google
   - How to
-  - Mac
 ---
 [<img class="alignleft" style="border: 0px initial initial;" src="http://www.google.com/apps/images/collaboration_docs.jpg" border="0" alt="" width="75" height="75" />](http://www.google.com/apps/images/collaboration_docs.jpg) <span style="color: #333333; line-height: 20px;"></span>
 
 <div>
-  <a style="color: #cc6600; text-decoration: underline;" href="http://www.google.com/calendar/"><span style="font-size: small;"><span style="font-family: georgia;">Google Calendar</span></span></a><span style="font-size: small;"><span style="font-family: georgia;"> es una aplicación maravillosa tan solo si podemos ir con ella a todas partes. Los usuarios de Windows suelen tener tal cantidad de aplicaciones que siempre hay alguna que hace exactamente lo que buscas (Como el maravilloso </span></span><a style="color: #5588aa; text-decoration: none;" href="http://www.rainlendar.net/cms/index.php"><span style="font-size: small;"><span style="font-family: georgia;">Rainlendar</span></span></a><span style="font-size: small;"><span style="font-family: georgia;">). Sin embargo, aquellos que tienen un MAC siempre intentan sincronizar los distintos servicios de &#8220;la nube&#8221; con las aplicaciones nativas del sistema.</span></span>
+  <a style="color: #cc6600; text-decoration: underline;" href="http://www.google.com/calendar/"><span style="font-size: small;"><span style="font-family: georgia;">Google Calendar</span></span></a><span style="font-size: small;"><span style="font-family: georgia;"> es una aplicación maravillosa tan solo si podemos ir con ella a todas partes. Los usuarios de Windows suelen tener tal cantidad de aplicaciones que siempre hay alguna que hace exactamente lo que buscas (Como el maravilloso </span></span><a style="color: #5588aa; text-decoration: none;" href="http://www.rainlendar.net/cms/index.php"><span style="font-size: small;"><span style="font-family: georgia;">Rainlendar</span></span></a><span style="font-size: small;"><span style="font-family: georgia;">). Sin embargo, aquellos que tienen un MAC siempre intentan sincronizar los distintos servicios de “la nube”; con las aplicaciones nativas del sistema.</span></span>
 </div>
 
 <div>

@@ -8,14 +8,11 @@ guid: http://blog.findemor.es/?p=334
 permalink: /2014/11/guia-rapida-generar-un-api-fake-con-osprey-cli-y-raml/
 image: /wp-content/uploads/2014/11/Captura-de-pantalla-2014-11-29-a-las-15.53.47.png
 categories:
-  - API
   - Desarrollo
+  - Backend
   - How to
 tags:
-  - api
-  - node
-  - raml
-  - rest
+  - API
 ---
 Muy a menudo, cuando implementamos una aplicación, una parte importante de su arquitectura será un API REST. Para poder **paralelizar** el desarrollo de la aplicación cliente (consumidora) y el API REST (servicio remoto), lo ideal será contar lo antes posible con un prototipo del API, interactivo y pseudo-funcional, que además nos sirva para **validar la especificación** de nuestro API. **A este tipo de API, que devuelve datos _dummy_ para testeo, se la conoce como API Mock o fake**.
 
@@ -26,15 +23,15 @@ Actualmente existen numerosas formas de lograr esto, empleando distintas tecnolo
 ### ¿Qué vamos a utilizar?
 
   * **Node.js**: plataforma y entorno de desarrollo, que utiliza el lenguaje Javascript para desarrollar aplicaciones, y especialmente indicado para la construcción de APIs RESTful.
-  * **RAML**: Lenguaje de especificación de APIs. Si defines tu API con RAML (aunque existen otros, como Swagger y API Blueprint), podrás usar este fichero para generar otras cosas rápidamente, como el API fake para testing, generar documentación, una consola interactiva, pruebas con SoapUI&#8230; y todo con un único fichero.
+  * **RAML**: Lenguaje de especificación de APIs. Si defines tu API con RAML (aunque existen otros, como Swagger y API Blueprint), podrás usar este fichero para generar otras cosas rápidamente, como el API fake para testing, generar documentación, una consola interactiva, pruebas con SoapUI... y todo con un único fichero.
 
 ### ¿Qué necesitamos?
 
   1. Pues antes de nada, hay que <a title="Instalar node y npm" href="http://nodejs.org/" target="_blank">instalar Node.js y npm</a> (su gestor de paquetes).
   2. Además, necesitamos redactar la especificación de nuestro API en un documento RAML. Si no lo conoces, <a title="RAML" href="http://raml.org/" target="_blank">aquí puedes aprender</a> rápidamente.
 
-_Nota: Si solo quieres probar esta técnica, puedes utilizar un fichero RAML de ejemplo de los numerosos que existen en Github o en la documentación de RAML. Por ejemplo <a href="https://raw.githubusercontent.com/kevinrenskers/raml2html/master/examples/example.raml" target="_blank">éste</a> extraído de la documentación de raml2html._**  
-** 
+_Nota: Si solo quieres probar esta técnica, puedes utilizar un fichero RAML de ejemplo de los numerosos que existen en Github o en la documentación de RAML. Por ejemplo <a href="https://raw.githubusercontent.com/kevinrenskers/raml2html/master/examples/example.raml" target="_blank">éste</a> extraído de la documentación de raml2html.  
+
 
 ### Guía rápida
 
@@ -46,15 +43,15 @@ Una vez que tenemos las cosas instaladas y hemos generado nuestro fichero RAML, 
       3. > npm install -g osprey-cli
     
       4. Si estas en linux o mac, y te da error, prueba anteponiendo el comando **_sudo_**
-  2. <span style="line-height: 1.666666667;">Llamamos a nuestro fichero RAML &#8220;<em>api.raml</em>&#8220;</span>
+  2. <span style="line-height: 1.666666667;">Llamamos a nuestro fichero RAML “<em>api.raml</em>“</span>
   3. Ejecutamos el siguiente comando 
-      1. > osprey new api.raml &#8211;name test &#8211;target test
+      1. > osprey new api.raml -name test -target test
 
 Esto nos generará una carpeta **_test_**_ _con la estructura del proyecto. Para instalar las dependencias, vamos (usando el terminal) a la carpeta en la que se ha creado el fichero package.json y ejecutamos lo siguiente:
 
 > npm install
 
-Igual que antes, si esto da error, pude ser que no tengamos permisos. Probad con &#8220;sudo npm install&#8221;.
+Igual que antes, si esto da error, pude ser que no tengamos permisos. Probad con “sudo npm install”;.
 
 ### Ejecutar y probar
 

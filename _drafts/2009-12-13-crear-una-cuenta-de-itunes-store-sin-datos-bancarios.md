@@ -54,7 +54,7 @@ categories:
 </p>
 
 <p style="font: 12px Helvetica; margin: 0;">
-  <span style="font-family: georgia;"><span style="font-size: small;">1 &#8211; Abrimos la iTunes Store desde el iTunes. Y en el menu de arriba elegimos “App Store”, es importante estar en la App Store y no en la iTunes Store.</span></span>
+  <span style="font-family: georgia;"><span style="font-size: small;">1 - Abrimos la iTunes Store desde el iTunes. Y en el menu de arriba elegimos “App Store”, es importante estar en la App Store y no en la iTunes Store.</span></span>
 </p>
 
 <p style="font: 12px Helvetica; min-height: 14px; margin: 0;">
@@ -62,7 +62,7 @@ categories:
 </p>
 
 <p style="font: 12px Helvetica; margin: 0;">
-  <span style="font-family: georgia;"><span style="font-size: small;">2 &#8211; Debemos elegir una aplicación gratuita y darle a Descargar.</span></span>
+  <span style="font-family: georgia;"><span style="font-size: small;">2 - Debemos elegir una aplicación gratuita y darle a Descargar.</span></span>
 </p>
 
 <p style="font: 12px Helvetica; min-height: 14px; margin: 0;">
@@ -70,7 +70,7 @@ categories:
 </p>
 
 <p style="font: 12px Helvetica; margin: 0;">
-  <span style="font-family: georgia;"><span style="font-size: small;">3 &#8211; Pulsamos el botón “Crear nueva cuenta”</span></span>
+  <span style="font-family: georgia;"><span style="font-size: small;">3 - Pulsamos el botón “Crear nueva cuenta”</span></span>
 </p>
 
 <p style="font: 12px Helvetica; min-height: 14px; margin: 0;">
@@ -78,7 +78,7 @@ categories:
 </p>
 
 <p style="font: 12px Helvetica; margin: 0;">
-  <span style="font-family: georgia;"><span style="font-size: small;">4 &#8211; Elegimos continuar y aceptamos los terminos de uso tras leerlos xD</span></span>
+  <span style="font-family: georgia;"><span style="font-size: small;">4 - Elegimos continuar y aceptamos los terminos de uso tras leerlos xD</span></span>
 </p>
 
 <p style="font: 12px Helvetica; min-height: 14px; margin: 0;">
@@ -86,7 +86,7 @@ categories:
 </p>
 
 <p style="font: 12px Helvetica; margin: 0;">
-  <span style="font-family: georgia;"><span style="font-size: small;">5 &#8211; A continuacion tenemos que indicar nuestra dirección de correo electrónico, elegir una contraseña y demás datos para la cuenta.</span></span>
+  <span style="font-family: georgia;"><span style="font-size: small;">5 - A continuacion tenemos que indicar nuestra dirección de correo electrónico, elegir una contraseña y demás datos para la cuenta.</span></span>
 </p>
 
 <p style="font: 12px Helvetica; min-height: 14px; margin: 0;">
@@ -94,7 +94,7 @@ categories:
 </p>
 
 <p style="font: 12px Helvetica; margin: 0;">
-  <span style="font-family: georgia;"><span style="font-size: small;">6 &#8211; Ahora lo importante: como forma de pago elegimos: Ninguna</span></span>
+  <span style="font-family: georgia;"><span style="font-size: small;">6 - Ahora lo importante: como forma de pago elegimos: Ninguna</span></span>
 </p>
 
 <p style="font: 12px Helvetica; min-height: 14px; margin: 0;">
@@ -102,7 +102,7 @@ categories:
 </p>
 
 <p style="font: 12px Helvetica; margin: 0;">
-  <span style="font-family: georgia;"><span style="font-size: small;">7 &#8211; Introducimos el resto de campos obligatorios (nombre, dirección).</span></span>
+  <span style="font-family: georgia;"><span style="font-size: small;">7 - Introducimos el resto de campos obligatorios (nombre, dirección).</span></span>
 </p>
 
 <p style="font: 12px Helvetica; min-height: 14px; margin: 0;">
@@ -110,7 +110,7 @@ categories:
 </p>
 
 <p style="font: 12px Helvetica; margin: 0;">
-  <span style="font-family: georgia;"><span style="font-size: small;">8 &#8211; En la pantalla de “Verificar tu cuenta” pulsamos en Hecho y comprobamos que hemos recibido el email de iTunes Store.</span></span>
+  <span style="font-family: georgia;"><span style="font-size: small;">8 - En la pantalla de “Verificar tu cuenta” pulsamos en Hecho y comprobamos que hemos recibido el email de iTunes Store.</span></span>
 </p>
 
 <p style="font: 12px Helvetica; min-height: 14px; margin: 0;">
@@ -118,7 +118,7 @@ categories:
 </p>
 
 <p style="font: 12px Helvetica; margin: 0;">
-  <span style="font-family: georgia;"><span style="font-size: small;">9 &#8211; En el correo que hemos recibido, debemos hacer click sobre el enlace que aparece en el mensaje, así se activará la cuenta.</span></span>
+  <span style="font-family: georgia;"><span style="font-size: small;">9 - En el correo que hemos recibido, debemos hacer click sobre el enlace que aparece en el mensaje, así se activará la cuenta.</span></span>
 </p>
 
 <p style="font: 12px Helvetica; min-height: 14px; margin: 0;">
@@ -126,7 +126,7 @@ categories:
 </p>
 
 <p style="font: 12px Helvetica; margin: 0;">
-  <span style="font-family: georgia;"><span style="font-size: small;">10 &#8211; En la pagina que se nos abre, iniciamos sesion con la nueva cuenta y ¡Enhorabuena! ya tienes tu cuenta de iTunes Store.</span></span>
+  <span style="font-family: georgia;"><span style="font-size: small;">10 - En la pagina que se nos abre, iniciamos sesion con la nueva cuenta y ¡Enhorabuena! ya tienes tu cuenta de iTunes Store.</span></span>
 </p>
 
 <div>
