@@ -4,7 +4,7 @@
 # baseurl is the website's URL without the hostname
 
 # If you are building a simple GitHub user page (https://username.github.io) then use these settings:
-url: "https://findemor.github.io"
+url: "http://blog.findemor.es"
 baseurl: ""
 
 # If you are building a GitHub project page then use these settings:
@@ -124,7 +124,7 @@ gtag: "UA-9584202-6"
 # --- Comments --- #
 
 # Fill in your Disqus shortname (NOT the userid) if you want to support Disqus comments
-# disqus: "blog.findemor"
+disqus: "blog.findemor"
 
 # To use Facebook Comments, fill in a Facebook App ID
 # fb_comment_id: ""
