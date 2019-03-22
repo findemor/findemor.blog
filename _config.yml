@@ -104,10 +104,10 @@ url-pretty: "findemor.es"  # eg. "deanattali.com/beautiful-jekyll"
 # --- Web Statistics Section --- #
 
 # Fill in your Google Analytics gtag.js ID to track your website using gtag
-#gtag: ""
+gtag: "UA-9584202-6"
 
 # Fill in your Google Analytics ID to track your website using GA
-#google_analytics: ""
+#google_analytics: "UA-9584202-6"
 
 # Google Tag Manager ID
 #gtm: ""
@@ -124,7 +124,7 @@ url-pretty: "findemor.es"  # eg. "deanattali.com/beautiful-jekyll"
 # --- Comments --- #
 
 # Fill in your Disqus shortname (NOT the userid) if you want to support Disqus comments
-# disqus: ""
+# disqus: "blog.findemor"
 
 # To use Facebook Comments, fill in a Facebook App ID
 # fb_comment_id: ""
