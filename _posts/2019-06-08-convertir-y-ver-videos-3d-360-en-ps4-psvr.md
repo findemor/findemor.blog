@@ -22,11 +22,13 @@ Este reproductor es gratuito, ya que viene por defecto, y hace algunos meses lan
 Si no necesitas ver video 3D, puedes usar este reproductor, cuyos requisitos son:
 
 > Video: 
-> H.264/MPEG-4 AVC High Profile Level 4.2
+> H.264/MPEG-4 AVC High Profile Level 4.2  
+> 
 > Audio: 
-> AAC LC, AC-3 (Dolby Digital), LPCM
-> File Format: 
-> MP4
+> AAC LC, AC-3 (Dolby Digital), LPCM  
+> 
+> File Format:  
+> MP4 
 
 ## Reproductor Littlstar
 
@@ -34,14 +36,16 @@ Podemos encontrar este reproductor en la [PlayStation Store](https://store.plays
 
 Si te animas a usar este reproductor, tendras que meter los videos en una memoria USB, dentro de una carpeta llamada "Littlstar" en la raiz del disco, en un formato compatible:
 
-> Video: 
-> H.264 High@5.1 or lower
-> Max pixel width: 2560, Max frame rate: 60fps, YUV420/NV12 color space, 20Mbps bit rate or lower
-> Audio Requirements:
-> Stereo Audio only
-> AAC (Advanced Audio Coding)
-> 320Kbps bit rate or lower
-> File format:
+> Video:  
+> H.264 High@5.1 or lower 
+> Max pixel width: 2560, Max frame rate: 60fps, YUV420/NV12 color space,  20Mbps bit rate or lower  
+> 
+> Audio Requirements: 
+> Stereo Audio only 
+> AAC (Advanced Audio Coding) 
+> 320Kbps bit rate or lower 
+> 
+> File format: 
 > File extensions: MP4, MOV, No fragmented MP4, No DRM, 15 min max duration
 
 ## Requisitos de PSVR
