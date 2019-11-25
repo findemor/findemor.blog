@@ -1,3 +1,17 @@
+---
+title: Otorgar permisos a Azure Data Factory para acceder a recursos como Azure Data Lake
+date: 2019-07-16T16:52:46+00:00
+author: findemor
+layout: post
+permalink: /2019/07/azure-data-factory-y-azure-data-lake-storage-access-permissions/
+image: /wp-content/uploads/2019-07-16/permission-assigned.jp
+categories:
+  - Desarrollo
+  - How to
+tags:
+  - Cloud
+---
+
 # Otorgar permisos a Azure Data Factory para acceder a recursos como Azure Data Lake
 
 Cuando estamos creando un pipeline en Azure Data Factory en el que queremos aplicar una acción Copy para copiar información desde un silo de origen (puedes ver aquí como vincular por ejemplo una base de datos SQL $$$) hacia un sink o destino, como podría ser un Azure Data Lake Storage, puede ocurrir que tengas el siguiente error de acceso y permisos.
@@ -14,7 +28,7 @@ En la pestaña de edición del servicio vinculado de destino (Azure Data Lake St
 
 En Authentication type, escogeremos Managed Identity, y nos fijaremos en el identificador de aplicación que aparece debajo. En la imagen se puede ver en amarillo.
 
-![edit linked service](./2019-07-16/edit-linked-service.jpg)
+![edit linked service](/wp-content/uploads/2019-07-16/edit-linked-service.jpg)
 
 Copiamos ese identificador y vamos al panel de Azure, a la pantalla del recurso Azure Data Lake Storage que intentamos vincular.
 
@@ -27,7 +41,7 @@ En el Portal de Azure, dentro del recurso Azure Data Lake Storage Gen1, vamos a 
 3. Selecciona en la lista el recurso de DataFactory que esta identificado por ese codigo.
 4. Pulsa __Save__
 
-![permission assigned](./2019-07-16/permission-assigned.jpg)
+![permission assigned](/wp-content/uploads/2019-07-16/permission-assigned.jpg)
 
 ## Vuelve a Azure Data Factory y verifca el enlace
 
