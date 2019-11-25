@@ -4,19 +4,20 @@ date: 2019-07-16T16:52:46+00:00
 author: findemor
 layout: post
 permalink: /2019/07/azure-data-factory-y-azure-data-lake-storage-access-permissions/
-image: /wp-content/uploads/2019-07-16/permission-assigned.jp
+image: /wp-content/uploads/2019-07-16/permission-assigned.jpg
 categories:
   - Desarrollo
   - How to
 tags:
   - Cloud
+  - Azure
 ---
 
 # Otorgar permisos a Azure Data Factory para acceder a recursos como Azure Data Lake
 
-Cuando estamos creando un pipeline en Azure Data Factory en el que queremos aplicar una acción Copy para copiar información desde un silo de origen (puedes ver aquí como vincular por ejemplo una base de datos SQL $$$) hacia un sink o destino, como podría ser un Azure Data Lake Storage, puede ocurrir que tengas el siguiente error de acceso y permisos.
+Cuando estamos creando un pipeline en Azure Data Factory en el que queremos aplicar una acción Copy para copiar información desde un silo de origen (puedes [ver aquí como vincular por ejemplo una base de datos SQL](/2019/07/acceder-base-datos-sql-server-on-premise-desde-azure-data-factory/)) hacia un sink o destino, como podría ser un Azure Data Lake Storage, puede ocurrir que tengas el siguiente error de acceso y permisos.
 
->> [{"code":9083,"message":"Access to https://------.azuredatalakestore.net/webhdfs/v1/ is denied. Make sure the ACL and firewall rule is correctly configured in the Azure Data Lake Store account. Service request id: ------ Response details: {\"RemoteException\":{\"exception\":\"AccessControlException\",\"message\":\"Permission denied on / [------][2019-07-16T00:13:21.8941188-07:00]\",\"javaClassName\":\"org.apache.hadoop.security.AccessControlException\"}}","details":"{\"Code\":9083,\"Message\":\"Access to https://-------.azuredatalakestore.net/webhdfs/v1/ is denied. Make sure the ACL and firewall rule is correctly configured in the Azure Data Lake Store account. Service request id:------ Response details: {\\\"RemoteException\\\":{\\\"exception\\\":\\\"AccessControlException\\\",\\\"message\\\":\\\"Permission denied on / [-------][2019-07-16T00:13:21.8941188-07:00]\\\",\\\"javaClassName\\\":\\\"org.apache.hadoop.security.AccessControlException\\\"}}\",\"EventType\":0,\"Category\":5,\"Data\":{},\"MsgId\":null,\"ExceptionType\":\"Microsoft.DataTransfer.Common.Shared.HybridDeliveryException\",\"Source\":\"Microsoft.DataTransfer.ClientLibrary\",\"StackTrace\":\"\",\"InnerEventInfos\":[{\"Code\":0,\"Message\":\"'Type=,Message=The remote server returned an error: (403) Forbidden.,Source=,'\",\"EventType\":0,\"Category\":5,\"Data\":{},\"MsgId\":null,\"ExceptionType\":\"System.Net.WebException\",\"Source\":\"System\",\"StackTrace\":\"\",\"InnerEventInfos\":[]}]}"}]
+> [{"code":9083,"message":"Access to https://------.azuredatalakestore.net/webhdfs/v1/ is denied. Make sure the ACL and firewall rule is correctly configured in the Azure Data Lake Store account. Service request id: ------ Response details: {\"RemoteException\":{\"exception\":\"AccessControlException\",\"message\":\"Permission denied on / [------][2019-07-16T00:13:21.8941188-07:00]\",\"javaClassName\":\"org.apache.hadoop.security.AccessControlException\"}}","details":"{\"Code\":9083,\"Message\":\"Access to https://-------.azuredatalakestore.net/webhdfs/v1/ is denied. Make sure the ACL and firewall rule is correctly configured in the Azure Data Lake Store account. Service request id:------ Response details: {\\\"RemoteException\\\":{\\\"exception\\\":\\\"AccessControlException\\\",\\\"message\\\":\\\"Permission denied on / [-------][2019-07-16T00:13:21.8941188-07:00]\\\",\\\"javaClassName\\\":\\\"org.apache.hadoop.security.AccessControlException\\\"}}\",\"EventType\":0,\"Category\":5,\"Data\":{},\"MsgId\":null,\"ExceptionType\":\"Microsoft.DataTransfer.Common.Shared.HybridDeliveryException\",\"Source\":\"Microsoft.DataTransfer.ClientLibrary\",\"StackTrace\":\"\",\"InnerEventInfos\":[{\"Code\":0,\"Message\":\"'Type=,Message=The remote server returned an error: (403) Forbidden.,Source=,'\",\"EventType\":0,\"Category\":5,\"Data\":{},\"MsgId\":null,\"ExceptionType\":\"System.Net.WebException\",\"Source\":\"System\",\"StackTrace\":\"\",\"InnerEventInfos\":[]}]}"}]
 
 Este error 403, Access denied significa que Azure Data Factory no dispone de permisos suficientes para acceder al recurso Azure Data Lake Storage.
 

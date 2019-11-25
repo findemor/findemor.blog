@@ -1,3 +1,17 @@
+---
+title: Acceder a base de datos SQL Server on-premise desde Azure Data Factory
+date: 2019-07-12T16:52:46+00:00
+author: findemor
+layout: post
+permalink: /2019/07/acceder-base-datos-sql-server-on-premise-desde-azure-data-factory/
+image: /wp-content/uploads/2019-07-12/success-diagnosis.jpg
+categories:
+  - Desarrollo
+  - How to
+tags:
+  - Cloud
+  - Azure
+---
 # Acceder a base de datos SQL Server on-premise desde Azure Data Factory
 
 En ocasiones cuando tenemos entre manos un proyecto en el que pretendemos hacer algun flujo de datos o integración de datos, por ejemplo para hacer Business Intelligence, Business Analytics, Big Data, etc. necesitamos una herramienta con la que generar un workflow y los correspondientes pipelines de datos. 
@@ -15,11 +29,11 @@ En primer lugar, entraremos en el [Portal de Azure](Portal de Azure) (en el que 
 
 Creamos en primer lugar un Grupo de Recursos en el que iremos añadiendo todos los recursos que vayamos necesitando para contruir nuestro pipeline.
 
-![create resource group](./2019-07-12/resource-group-creation.jpg)
+![create resource group](/wp-content/uploads/2019-07-12/resource-group-creation.jpg)
 
 Una vez que se ha creado el grupo de recursos, creamos un recurso de tipo "Data Factory" en él. Pulsamos añadir y rellenamos los campos, seleccionando el Resource Group existente que acabamos de crear.
 
-![create adf](./2019-07-12/adf-creation.jpg)
+![create adf](/wp-content/uploads/2019-07-12/adf-creation.jpg)
 
 Y esperamos a que finalice la creación.
 
@@ -29,13 +43,13 @@ Accedemos al Data factory que acabamos de crear en Azure y entramos en su panel 
 
 Para lograrlo, pulsamos __"Editar > Connections > Integration Runtimes > New > Perform data movement and dispatch... > Self-Hosted"__.
 
-![integration runtime creation](./2019-07-12/ir-creation.jpg)
+![integration runtime creation](/wp-content/uploads/2019-07-12/ir-creation.jpg)
 
 Le damos un nombre a nuestro nueva conexión Self-Hosted, y una descripción de que dentro de unos años nos haga sentir orgullosos de nuestro "yo del pasado".
 
 Una vez tenemos esto, copiamos el __Token de Autenticación__ que nos hará falta en el paso siguiente. ¡No lo compartas ni lo pongas en lugares inseguros!
 
-![create adf](./2019-07-12/ir-token.jpg)
+![create adf](/wp-content/uploads/2019-07-12/ir-token.jpg)
 
 ## Instalar Azure Data Factory Integration Runtime
 
@@ -47,17 +61,17 @@ El proceso de instalación es muy sencillo, simplemente ejecutar el fichero y se
 
 Cuando el proceso de instalación del servicio autohospedado haya finalizado, nos pedirá credenciales para registrarlo, ponemos el __Token de Autenticación__ que obtuvimos en el paso anterior. Al registrarlo veremos lo siguiente:
 
-![success-instalation](./2019-07-12/success-instalation.jpg)
+![success-instalation](/wp-content/uploads/2019-07-12/success-instalation.jpg)
 
 Vamos a la petaña Diagnóstico a continuación e introducimos las credenciales de nuestra base de datos.
 
-![success-diagnosis](./2019-07-12/success-diagnosis.jpg)
+![success-diagnosis](/wp-content/uploads/2019-07-12/success-diagnosis.jpg)
 
 ## Comprobar que se ha creado el enlace
 
 Si volvemos a nuestro panel de control de Data Factory (donde obtuvimos el token) podremos ver que aparece una nueva conexión a nuestra máquina. Si el Status no es Running, prueba a recargar la página web.
 
-![registered integration runtime](./2019-07-12/registered-ir.jpg)
+![registered integration runtime](/wp-content/uploads/2019-07-12/registered-ir.jpg)
 
 Nota: si aún así no aparece como Running, seguramente se trate de un problema de conexión de la red en la que tienes la máquina.
 
@@ -67,7 +81,7 @@ Ahora lo que haremos será crear un servicio vinculado que permitirá acceder a 
 
 Vamos a __"Editar > Connections > Linked Services > New > SQL Server"__.
 
-![sql connection creation](./2019-07-12/sql-connection-creation.jpg)
+![sql connection creation](/wp-content/uploads/2019-07-12/sql-connection-creation.jpg)
 
 Damos un nombre y una descripción bien semántica a la nueva base de datos, introducimos las credenciales del mismo modo en que lo hicimos antes durante el diagnóstico del Integration Runtime Service en la máquina de windows.
 
@@ -79,4 +93,4 @@ Verifica que la conextión está correctamente vinculada haciendo click en el bo
 
 Cuando diga "Connection successful", pulsa Finish para guardar el enlace a datos.
 
-![linked sql config](./2019-07-12/linked-sql-config.jpg)
+![linked sql config](/wp-content/uploads/2019-07-12/linked-sql-config.jpg)
