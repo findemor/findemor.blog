@@ -25,7 +25,7 @@ Allá vamos.
 
 ## Crear Grupo de recursos y Recurso Data factory
 
-En primer lugar, entraremos en el [Portal de Azure](Portal de Azure) (en el que debemos tener usuario y permisos para crear recursos).
+En primer lugar, entraremos en el [Portal de Azure](https://portal.azure.com/) (en el que debemos tener usuario y permisos para crear recursos).
 
 Creamos en primer lugar un Grupo de Recursos en el que iremos añadiendo todos los recursos que vayamos necesitando para contruir nuestro pipeline.
 
@@ -87,7 +87,8 @@ Damos un nombre y una descripción bien semántica a la nueva base de datos, int
 
 Ponemos especial atención a __seleccionar el Integration Runtime__ que hemos instalado en el combo "Connect via integration runtime".
 
-__Nota: __ Ojo con tu Server name si este tiene el caracter backslash (\), ya que en la herramienta de diagnostico habrá que escaparlo poniendo un doble backslash, mientras que en el panel de la web hay que usar solo uno.
+__Nota:__ Ojo con tu Server name si este tiene el caracter backslash (\\), ya que en la herramienta de diagnostico habrá que escaparlo poniendo un doble backslash, mientras que en el panel de la web hay que usar solo uno.
+
 
 Verifica que la conextión está correctamente vinculada haciendo click en el botón Test Connection, que te dará información en caso de que haya algo mal configurado.
 
