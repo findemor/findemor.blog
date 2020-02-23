@@ -32,7 +32,7 @@ navbar-links:
 
 # Image to show in the navigation bar - image must be a square (width = height)
 # Remove this parameter if you don't want an image in the navbar
-avatar: "https://avatars1.githubusercontent.com/u/2557122?s=460&v=4"
+avatar: "https://blog.findemor.es/img/idi-findemor-solusoft.jpg"
 
 # If you want to have an image logo in the top-left corner instead of the title text,
 # then specify the following parameter
