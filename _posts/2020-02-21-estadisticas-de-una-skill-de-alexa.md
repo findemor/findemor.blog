@@ -4,6 +4,7 @@ date: 2020-02-21T12:40:48+00:00
 author: findemor
 layout: post
 image: /wp-content/uploads/2020/02/fotnite-sounds.png
+share-img: /wp-content/uploads/2020/02/fotnite-sounds.png
 categories:
   - Desarrollo
 tags:
