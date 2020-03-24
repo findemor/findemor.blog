@@ -23,6 +23,10 @@ Obviamente con este post solo intento aportar como he solucionado mis problemas 
 * [WEB DEL PROYECTO DE LA VISERA "OFICIAL" PARA HOSPITALES](https://wikifactory.com/+covidmakersmadrid/visera-hospitales)
 * [GRUPO DE TELEGRAM DE FABRICACIÓN DE MADRID: @cv19_fab_info](https://web.telegram.org/#/im?p=@cv19_fab_info)
 
+
+Si solo quieres el modelo, aqui lo tienes.
+> __[DESCARGA MODELO OFICIAL MODIFICADO PARA ENDER 3 DESDE THINGVERSE](https://www.thingiverse.com/thing:4240059)__
+
 ## Modelo oficial
 
 El modelo oficial pude obtenerse [ESTE ENLACE A LA WEB DE MAKERS COVIDMADRID](https://covidmadrid.com/). Si en tu caso puedes hacerlo, siempre intenta producir modelos oficiales en la última versión.
@@ -41,9 +45,9 @@ En mi caso, tengo una impresora Ender 3, con una cama caliente relativamente peq
 
 Sin embargo entiendo que si han validado este estoy seguro de que tiene ventajas de peso, y decidí intentarlo, por lo que hice numerosas modificaciones y pruebas sobre el modelo oficial hasta que consegui que mi impresora aceptase esta impresión con bastantes garantías de resultar funcional.
 
-> __DESCARGA MODELO OFICIAL MODIFICADO PARA ENDER 3 DESDE THINGVERSE__
+> __[DESCARGA MODELO OFICIAL MODIFICADO PARA ENDER 3 DESDE THINGVERSE](https://www.thingiverse.com/thing:4240059)__
 
-[![DOWNLOAD](/wp-content/uploads/2020/03/24/download.jpg)]()
+[![DOWNLOAD](/wp-content/uploads/2020/03/24/download.jpg)](https://www.thingiverse.com/thing:4240059)
 
 
 __Las modificaciones__ que he realizado sobre la verión 1.0 del modelo oficial espero que sean inocuas para su funcionalidad pero que le otorguen mayor robustez y que permitan que pueda ser impreso en modelos como la Ender 3 y por lo tanto llegar aun mayor número de personas, hago un repaso de los retoques:
