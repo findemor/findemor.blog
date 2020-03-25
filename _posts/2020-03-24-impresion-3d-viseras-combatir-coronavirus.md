@@ -31,13 +31,6 @@ Si solo quieres el modelo, aqui lo tienes.
 
 El modelo oficial pude obtenerse [ESTE ENLACE A LA WEB DE MAKERS COVIDMADRID](https://covidmadrid.com/). Si en tu caso puedes hacerlo, siempre intenta producir modelos oficiales en la última versión.
 
-## Dificultades del modelo oficial y modelo alternativo "media"
-
-Lamentablemente el modelo escogido presenta algunas características que dificultan su impresión en algunas de las impresoras más modestas, como es mi caso. Por esta razón, algunos makers que no pueden imprimir el modelo "homologado" prefieren no quedarse parados y seguir fabricando el modelo de media visera, cuyo fichero .stl podeis descargar [EN ESTE ENLACE](/wp-content/uploads/2020/03/24/modelo_media_visera.stl).
-
-Este modelo de "media visera" o "media" es más fácil y rápido de imprimir, aparentemente más robusto y más de "batalla". Además, siguen siendo útiles para otras personas expuestas que no trabajen en sanidad y que también necesitan protección.
-
-Eso sí, también presenta desventajas, ya que debido a su forma y características no es apto para el uso por parte de los sanitarios durante varias horas, es más incómodo de manejar, peor ventilado, etc. Tened en cuenta el trabajo que los sanitarios deben realizar con esto puesto, y el número de horas que lo llevan encima...
 
 ### Adaptaciones al modelo oficial y reglas de la casa
 
@@ -102,6 +95,14 @@ Un video vale más que mil palabras:
 ![Montado 1](/wp-content/uploads/2020/03/24/montado.png)
 ![Montado 2](/wp-content/uploads/2020/03/24/montado2.png)
 
+
+## Modelo alternativo "media"
+
+Lamentablemente el modelo escogido presenta algunas características que dificultan su impresión en algunas de las impresoras más modestas, como es mi caso. Por esta razón, algunos makers que no pueden imprimir el modelo "homologado" prefieren no quedarse parados y seguir fabricando el modelo de media visera, cuyo fichero .stl podeis descargar [EN ESTE ENLACE](/wp-content/uploads/2020/03/24/modelo_media_visera.stl).
+
+Este modelo de "media visera" o "media" es más fácil y rápido de imprimir, aparentemente más robusto y más de "batalla". Además, siguen siendo útiles para otras personas expuestas que no trabajen en sanidad y que también necesitan protección.
+
+Eso sí, también presenta desventajas, ya que debido a su forma y características no es apto para el uso por parte de los sanitarios durante varias horas, es más incómodo de manejar, peor ventilado, etc. Tened en cuenta el trabajo que los sanitarios deben realizar con esto puesto, y el número de horas que lo llevan encima...
 
 ## Feedback, consultas, sugerencias
 
