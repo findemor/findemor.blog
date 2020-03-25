@@ -33,7 +33,7 @@ El modelo oficial pude obtenerse [ESTE ENLACE A LA WEB DE MAKERS COVIDMADRID](ht
 
 ## Dificultades del modelo oficial y modelo alternativo "media"
 
-Lamentablemente el modelo escogido presenta algunas características que dificultan su impresión en algunas de las impresoras más modestas, como es mi caso. Por esta razón, algunos makers que no pueden imprimir el modelo "homologado" prefieren no quedarse parados y seguir fabricando el modelo de media visera, cuyo fichero .stl podeis descargar [EN ESTE ENLACE](/wp-content/uploads/2020/03/24/modelo-media-visera.stl).
+Lamentablemente el modelo escogido presenta algunas características que dificultan su impresión en algunas de las impresoras más modestas, como es mi caso. Por esta razón, algunos makers que no pueden imprimir el modelo "homologado" prefieren no quedarse parados y seguir fabricando el modelo de media visera, cuyo fichero .stl podeis descargar [EN ESTE ENLACE](/wp-content/uploads/2020/03/24/modelo_media_visera.stl).
 
 Este modelo de "media visera" o "media" es más fácil y rápido de imprimir, aparentemente más robusto y más de "batalla". Además, siguen siendo útiles para otras personas expuestas que no trabajen en sanidad y que también necesitan protección.
 
