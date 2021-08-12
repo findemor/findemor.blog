@@ -30,10 +30,9 @@ navbar-links:
   #  - GitHub Pages: "https://pages.github.com/"
   Autor resume: "http://www.findemor.es"
 
-
 # Image to show in the navigation bar - image must be a square (width = height)
 # Remove this parameter if you don't want an image in the navbar
-avatar: "/img/findemor-logo.png"
+avatar: "/img/idi-findemor-solusoft.jpg"
 
 # If you want to have an image logo in the top-left corner instead of the title text,
 # then specify the following parameter
@@ -43,12 +42,12 @@ avatar: "/img/findemor-logo.png"
 
 # Personalize the colors in your website. Colour values can be any valid CSS colour
 
-navbar-col: "#18122a"
+navbar-col: "#3366c8"
 navbar-text-col: "#ffffff"
-navbar-children-col: "#18122a"
+navbar-children-col: "#3366c8"
 page-col: "#FFFFFF"
-link-col: "#18122a"
-hover-col: "#ffb83a"
+link-col: "#3366c8"
+hover-col: "#404040"
 footer-col: "#F5F5F5"
 footer-text-col: "#777777"
 footer-link-col: "#404040"
@@ -73,22 +72,22 @@ author:
 # If you want to add a new link that isn't here, you'll need to also edit the file _data/SocialNetworks.yml
 social-network-links:
   rss: true
-# email: "contacto@findemor.es"
+  email: "contacto@findemor.es"
 #  facebook: daattali
   github: findemor
   twitter: findemor
 #  reddit: yourname
 #  google-plus: +DeanAttali
- linkedin: manueljgs
+  linkedin: manueljgs
 #  xing: yourname
 #  stackoverflow: "3943160/daattali"
 #  snapchat: deanat78
-  instagram: findemor.es
-  youtube: user/findemor
+  instagram: findemor.nomedhel
+#  youtube: user/deanat78
 #  spotify: yourname
 #  telephone: +14159998888
 #  steam: deanat78
-  twitch: findemor
+#  twitch: yourname
 #  yelp: yourname
 
 # Select which share links to show in posts
@@ -100,7 +99,7 @@ share-links-active:
 
 # How to display the link to the website in the footer
 # Remove this if you don't want a link in the footer
-url-pretty: "www.findemor.es"  # eg. "deanattali.com/beautiful-jekyll"
+url-pretty: "findemor.es"  # eg. "deanattali.com/beautiful-jekyll"
 
 # --- Web Statistics Section --- #
 
