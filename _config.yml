@@ -54,6 +54,7 @@ post-hover-col: "#f14640"
 footer-col: "#F5F5F5"
 footer-text-col: "#777777"
 footer-link-col: "#3d387d" 
+selection: "#f14640" 
 #azul oscuro 18122a
 #gris oscuro 404040
 #amarillo ffb83a
