@@ -14,7 +14,7 @@ baseurl: ""
 # Of course don't forget to change the username and projectname to YOUR username and project
 
 # Name of website
-title: findemor
+title: blog
 
 # Short description of your site
 description: Por tanto quiso que los corazones de los Hombres buscaran siempre más allá y no encontraran reposo en el mundo.
@@ -23,16 +23,17 @@ description: Por tanto quiso que los corazones de los Hombres buscaran siempre m
 
 # List of links in the navigation bar
 navbar-links:
-  Acerca de...: "aboutme"
+  #Acerca de...: "aboutme"
   #Resources:
   #  - Beautiful Jekyll: "http://deanattali.com/beautiful-jekyll/"
   #  - Learn markdown: "http://www.markdowntutorial.com/"
   #  - GitHub Pages: "https://pages.github.com/"
-  Autor resume: "http://www.findemor.es"
+  Blog: "https://blog.findemor.es"
+  Sobre mi: "https://www.findemor.es"
 
 # Image to show in the navigation bar - image must be a square (width = height)
 # Remove this parameter if you don't want an image in the navbar
-avatar: "/img/idi-findemor-solusoft.jpg"
+avatar: "/img/findemor-logo.png"
 
 # If you want to have an image logo in the top-left corner instead of the title text,
 # then specify the following parameter
@@ -42,11 +43,11 @@ avatar: "/img/idi-findemor-solusoft.jpg"
 
 # Personalize the colors in your website. Colour values can be any valid CSS colour
 
-navbar-col: "#3366c8"
+navbar-col: "#18122a"
 navbar-text-col: "#ffffff"
-navbar-children-col: "#3366c8"
+navbar-children-col: "#18122a"
 page-col: "#FFFFFF"
-link-col: "#3366c8"
+link-col: "#18122a"
 hover-col: "#404040"
 footer-col: "#F5F5F5"
 footer-text-col: "#777777"
