@@ -330,7 +330,8 @@ footer .theme-by {
   border-bottom: 0;
 }
 
-.post-preview a {
+.post-preview a,
+.post-preview h2.post-title {
   text-decoration: none;
   color: {{ site.hover-col }};
 }
