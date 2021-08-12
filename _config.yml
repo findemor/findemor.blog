@@ -14,7 +14,7 @@ baseurl: ""
 # Of course don't forget to change the username and projectname to YOUR username and project
 
 # Name of website
-title: findemor blog
+title: findemor
 
 # Short description of your site
 description: Por tanto quiso que los corazones de los Hombres buscaran siempre más allá y no encontraran reposo en el mundo.
@@ -23,13 +23,13 @@ description: Por tanto quiso que los corazones de los Hombres buscaran siempre m
 
 # List of links in the navigation bar
 navbar-links:
-  #Acerca de...: "aboutme"
+  Acerca de...: "aboutme"
   #Resources:
   #  - Beautiful Jekyll: "http://deanattali.com/beautiful-jekyll/"
   #  - Learn markdown: "http://www.markdowntutorial.com/"
   #  - GitHub Pages: "https://pages.github.com/"
-  Blog: "https://blog.findemor.es"
-  Sobre mi: "https://www.findemor.es"
+  Autor resume: "http://www.findemor.es"
+
 
 # Image to show in the navigation bar - image must be a square (width = height)
 # Remove this parameter if you don't want an image in the navbar
