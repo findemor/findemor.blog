@@ -7,6 +7,7 @@
     'floating-chat.donateButton.text-color': '#fff'
     });
 
+    /*
     //en el caso de los moviles, solo cargamos el boton cuando no está en la pantalla el consentimiento de cookies
     window.addEventListener("load", function(){
         var cookiepopup = document.querySelectorAll('[aria-label="cookieconsent"]');
@@ -37,8 +38,16 @@
             }, false);
         }
     });
+    */
+
+
 </script>
 <style>
+    div.floatingchat-container-wrap,
+    div.floatingchat-container-wrap-mobi {
+        z-index: 9998 !important;
+    }
+
     iframe.floatingchat-container,
     iframe.floatingchat-container-mobi {
         width: auto !important;
