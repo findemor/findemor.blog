@@ -6,9 +6,21 @@
     'floating-chat.donateButton.background-color': '#00bfa5',
     'floating-chat.donateButton.text-color': '#fff'
     });
+
+    //en el caso de los moviles, solo cargamos el boton cuando no está en la pantalla el consentimiento de cookies
+    window.addEventListener("load", function(){
+        var cookiebutton = document.getElementById("div.cc-compliance");
+        cookiebutton.addEventListener('click', function(e) {
+            var kofi = document.getElementsByClassName("floatingchat-container-mobi");
+            if (kofi && kofi.length > 0) {
+                kofi[0].style.display = "block"; 
+            }
+        }, false);
+    });
 </script>
 <style>
-    iframe.floatingchat-container {
+    iframe.floatingchat-container,
+    iframe.floatingchat-container-mobi {
         width: auto !important;
     }
 </style>
