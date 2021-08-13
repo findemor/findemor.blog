@@ -9,7 +9,7 @@
 
     //en el caso de los moviles, solo cargamos el boton cuando no está en la pantalla el consentimiento de cookies
     window.addEventListener("load", function(){
-        var cookiebutton = document.getElementById("div.cc-compliance");
+        var cookiebutton = document.querySelectorAll("div.cc-compliance")[0];
         cookiebutton.addEventListener('click', function(e) {
             var kofi = document.getElementsByClassName("floatingchat-container-mobi");
             if (kofi && kofi.length > 0) {
