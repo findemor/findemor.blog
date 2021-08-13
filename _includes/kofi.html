@@ -9,13 +9,23 @@
 
     //en el caso de los moviles, solo cargamos el boton cuando no está en la pantalla el consentimiento de cookies
     window.addEventListener("load", function(){
-        var cookiebutton = document.querySelectorAll("div.cc-compliance")[0];
-        cookiebutton.addEventListener('click', function(e) {
+        var cookiepopup = document.querySelectorAll('[aria-label="cookieconsent"]');
+        if (cookiepopup && cookiepopup.length > 0 && cookiepopup[0].style.display != "none") {
+            //se esta mostrando el popup
+            var cookiebutton = document.querySelectorAll("div.cc-compliance")[0];
+            cookiebutton.addEventListener('click', function(e) {
+                var kofi = document.getElementsByClassName("floatingchat-container-mobi");
+                if (kofi && kofi.length > 0) {
+                    setTimeout(function() {
+                        kofi[0].style.display = "block"; 
+                    }, 20000); //le damos un tiempo antes de que se muestre el boton... es la primera visita
+                }
+            }, false);
+        } else {
+            //el popup no esta mostrandose
             var kofi = document.getElementsByClassName("floatingchat-container-mobi");
-            if (kofi && kofi.length > 0) {
-                kofi[0].style.display = "block"; 
-            }
-        }, false);
+            if (kofi && kofi.length > 0) kofi[0].style.display = "block"; 
+        }
     });
 </script>
 <style>
