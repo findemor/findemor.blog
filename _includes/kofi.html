@@ -12,18 +12,28 @@
         var cookiepopup = document.querySelectorAll('[aria-label="cookieconsent"]');
         if (cookiepopup && cookiepopup.length > 0 && cookiepopup[0].style.display != "none") {
             //se esta mostrando el popup
+            
+            //ocultamos kofi version movil hasta que se acepte el consentimiento
+            var kofi = document.getElementsByClassName("floatingchat-container-wrap-mobi");
+            let displayStatus, mobileVersionEnabled;
+            if (kofi && kofi.length > 0) {
+                mobileVersionEnabled = true;
+                displayStatus = kofi[0].style.display;
+                console.log("kofi mobile state saved: " + displayStatus);
+                kofi[0].style.display = "none";
+            } else {
+                console.log("kofi mobile not enabled");
+            };
+
+            //si se pulsa el consentimiento, mostramos kofi version movil
             var cookiebutton = document.querySelectorAll("div.cc-compliance")[0];
             cookiebutton.addEventListener('click', function(e) {
-                var kofi = document.getElementsByClassName("floatingchat-container-wrap-mobi");
-                if (kofi && kofi.length > 0) {
-                    let displayStatus = kofi[0].style.display;
-                    console.log("kofi with cookies popup: " + displayStatus);
-                    kofi[0].style.display = "none";
-                    setTimeout(function() {
+                setTimeout(function() {
+                    if (mobileVersionEnabled) {
                         kofi[0].style.display = displayStatus; 
-                        console.log("kofi restablecido: " + kofi[0].style.display);
-                    }, 20000); //le damos un tiempo antes de que se muestre el boton... es la primera visita
-                }
+                        console.log("kofi mobile restablecido: " + kofi[0].style.display);
+                    }
+                }, 20000); //le damos un tiempo antes de que se muestre el boton... es la primera visita
             }, false);
         }
     });
