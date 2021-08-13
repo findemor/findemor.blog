@@ -15,24 +15,27 @@
             var cookiebutton = document.querySelectorAll("div.cc-compliance")[0];
             cookiebutton.addEventListener('click', function(e) {
                 var kofi = document.getElementsByClassName("floatingchat-container-mobi");
-                if (kofi && kofi.length > 0) {
+                /*if (kofi && kofi.length > 0) {
                     setTimeout(function() {
+
+iframe.floatingchat-container-mobi {
+        display: none;
+    }
+
+
                         kofi[0].style.display = "block"; 
                     }, 20000); //le damos un tiempo antes de que se muestre el boton... es la primera visita
-                }
+                }*/
             }, false);
         } else {
             //el popup no esta mostrandose
-            var kofi = document.getElementsByClassName("floatingchat-container-mobi");
-            if (kofi && kofi.length > 0) kofi[0].style.display = "block"; 
+            //var kofi = document.getElementsByClassName("floatingchat-container-mobi");
+            //if (kofi && kofi.length > 0) kofi[0].style.display = "block"; 
         }
     });
 </script>
 <style>
-    iframe.floatingchat-container-mobi {
-        display: none;
-    }
-
+    
     iframe.floatingchat-container,
     iframe.floatingchat-container-mobi {
         width: auto !important;
