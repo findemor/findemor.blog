@@ -14,28 +14,21 @@
             //se esta mostrando el popup
             var cookiebutton = document.querySelectorAll("div.cc-compliance")[0];
             cookiebutton.addEventListener('click', function(e) {
-                var kofi = document.getElementsByClassName("floatingchat-container-mobi");
-                /*if (kofi && kofi.length > 0) {
+                var kofi = document.getElementsByClassName("floatingchat-container-wrap-mobi");
+                if (kofi && kofi.length > 0) {
+                    let displayStatus = kofi[0].style.display;
+                    console.log("kofi with cookies popup: " + displayStatus);
+                    kofi[0].style.display = "none";
                     setTimeout(function() {
-
-iframe.floatingchat-container-mobi {
-        display: none;
-    }
-
-
-                        kofi[0].style.display = "block"; 
+                        kofi[0].style.display = displayStatus; 
+                        console.log("kofi restablecido: " + kofi[0].style.display);
                     }, 20000); //le damos un tiempo antes de que se muestre el boton... es la primera visita
-                }*/
+                }
             }, false);
-        } else {
-            //el popup no esta mostrandose
-            //var kofi = document.getElementsByClassName("floatingchat-container-mobi");
-            //if (kofi && kofi.length > 0) kofi[0].style.display = "block"; 
         }
     });
 </script>
 <style>
-    
     iframe.floatingchat-container,
     iframe.floatingchat-container-mobi {
         width: auto !important;
