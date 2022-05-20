@@ -132,6 +132,10 @@ Dentro de las ténicas de NLP, existen una gran diversidad de subconjuntos de te
 * __Generación automática de textos o Generación de lenguaje natural (NLG)__: se centran en dotar al software de capacidad para tomar decisiones acerca de como un concepto específico puede ser espresado mediante palabras en lenguaje natural, completar frases, corregir textos, etc.
 * __Chatbots__: Se emplean diversas técnicas combinadas, pero el NLP tiene un papel relevante ya que permite analizar los objetivos del usuario en la comunicación y sintetizar su intención y los parámetros o entidades reveladas en la conversación. Por ejemplo, cuando un usuario le dice al chatbot "buenos días, me gustaría alquilar un piso en Madrid por 750€ al mes", los algoritmos identificarán "alquilar" como intención, y "zona=Madrid" y "precio=750" como parámetros de entrada, que serán entregados a un software tradicional para que realice las búsquedas oportunas.
 
+Si quieres flipar un poco con lo que estos sistemas son capaces de hacer, echa un vistazo a [__esta entrevista que hicieron a GPT-3__](https://www.20minutos.es/tecnologia/gpt-3-inteligencia-artificial-cada-humano-es-unico-y-por-lo-tanto-puede-ser-dificil-comprender-como-piensan-o-sienten-a-veces-creo-que-lo-consigo-4999660/) donde la propia IA opina que no cree que vaya a sustituir las capacidades humanas (curiosa forma de demostrarlo).  
+
+Aunque en realidad GPT-3 es más "clasificable" como Deep Learning que como NLP, es evidente que hay capas en las que el procesamiento del lenguaje natural es evidente, más allá de cual sea la técnica empleada, y es que como decía antes, es muy habitual combinar muchas estrategias en cada capa de un sistema de Inteligencia Artificial para lograr resultados adecuados, por lo que la clasificación del sistema es un tanto difusa.
+
 ### Visión artificial o computacional
 
 La visión artificial o computacional son las técnicas y métodos que permiten a una máquina adquirir, procesar y analizar las imágenes que provienen del mundo real y producir información y datos a partir de ellas.
@@ -141,6 +145,10 @@ En general una misma imagen se descompone y se realizan distintos análisis en b
 La vision artificial puede combinar numerosas técnicas de la IA y sus aplicaciones son muy amplias: reconocimiento de objetos o reconocimiento facial, identificacion de personas, detección de objetos en la escena, detección de movimiento o actividades, reconstrucción de escenas, etc.
 
 También interviene en muchos otros usos, por ejemplo, la tecnología [NERF](https://www.matthewtancik.com/nerf) combina muchas técnicas para virtualizar objetos y espacios en 3D, con un propósito similar al de la fotogrametría, pero con unos resultados alucinantes.
+
+Otro ejemplo aunque sea un poco de soslayo (pero permiteme que busque más la inspiración que la ortodoxia en la clasificación) es el de [__Dall-E 2__](https://openai.com/dall-e-2/), no dejes de echar un vistazo a esta IA capaz de crear imagenes realistas de conceptos que no existen y que nunca ha visto antes. ¿Quieres una imagen de un astronauta montando en unicornio en un planeta con la forma de un aguacate y con el estilo de dibujo de Frank Frazetta? ¿O una imagen de dos osos de peluche cientificos mezclando componentes químicos chispeantes y disfrazados de cientifico loco estilo steampunk? ¡simplemente pídeselo!. Si no estamos viviendo en el futuro, no entiendo nada.
+
+![Teddy bears mixing sparkling chemicals as mad scientists steampunk](\wp-content\uploads\2022\05\20\dalle2.jpg)
 
 ### Speech
 
