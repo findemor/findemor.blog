@@ -24,6 +24,7 @@ Está claro que está por todas partes, así que he pensado en hacer un repaso d
 _Iré actualizando esta sección a medida que vaya escribiendo más capítulos sobre el tema_
 
 * [Introducción y clasificación](https://blog.findemor.es/2022-05-20-Inteligencia-artificial-introduccion/)
+* [Flujo de trabajo](https://blog.findemor.es/2022-06-09-Inteligencia-artificial-flujo-de-trabajo/)
 
 ## ¿Qué es la Inteligencia Artificial (IA)?
 
@@ -156,7 +157,6 @@ Se conoce así a las técnicas de IA aplicadas a la generación de voces sintét
 
 También se incluyen en esta categoría las tecnicas que permiten la acción inversa, es decir, identificar la voz humana y reconocer las palabras a partir de los sonidos (Voz a texto).
 
-## Próximamente
+## Flujo de trabajo
 
-En el próximo artículo hablaré sobre el flujo de trabajo para desarrollar un sistema de Inteligencia Artificial. 
-¡Nos vemos!
+En el [siguiente artículo](https://blog.findemor.es/2022-06-09-Inteligencia-artificial-flujo-de-trabajo/) puedes continuar la lectura, esta vez sobre el flujo de trabajo y los ingredientes principales para desarrollar un sistema de Inteligencia Artificial. 
