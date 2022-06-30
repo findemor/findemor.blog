@@ -13,7 +13,7 @@ tags:
   - Machine Learning
 ---
 
-Cuanto trabajamos con modelos de Inteligencia Artificial y Machine Learning, dejamos atrás la capacidad de saber con exactitud si los resultados que obtenemos son correctos o no, y nos adentramos en un mundo de grises donde hablamos más bien de probabilidades de acertar. En este post trato de resumir las principales técnicas con las que contamos para saber identificar si nuestro modelo de IA funciona suficientemente bien o si sería preferible lanzar una moneda al aire.
+Cuando trabajamos con modelos de Inteligencia Artificial y Machine Learning, dejamos atrás la capacidad de saber con exactitud si los resultados que obtenemos son correctos o no, y nos adentramos en un mundo de grises donde hablamos más bien de probabilidades de acertar. En este post trato de resumir las principales técnicas con las que contamos para saber identificar si nuestro modelo de IA funciona suficientemente bien o si sería preferible lanzar una moneda al aire.
 
 ## Índice de la serie de artículos
 
