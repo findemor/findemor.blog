@@ -22,6 +22,7 @@ _Iré actualizando esta sección a medida que vaya escribiendo más capítulos s
 
 * [Introducción y clasificación](https://blog.findemor.es/2022-05-20-Inteligencia-artificial-introduccion/)
 * [Flujo de trabajo](https://blog.findemor.es/2022-06-09-Inteligencia-artificial-flujo-de-trabajo/)
+* [Validar el modelo](https://blog.findemor.es/2022-06-09-Inteligencia-artificial-validar-el-modelo/)
 
 ## Ingredientes principales
 
@@ -82,7 +83,7 @@ Es solo un ejemplo y puede parecer un poco obvio, pero a menudo pueden escaparse
 
 ## Como saber si un modelo de IA es válido
 
-En la próxima publicación escribiré acerca de como saber si has acertado a la hora de escoger y depurar tus datos y los algoritmos de tu modelo de aprendizaje, es decir, cómo dar por válido el modelo de inteligencia artificial.
+En [el siguiente artículo](https://blog.findemor.es/2022-06-09-Inteligencia-artificial-validar-el-modelo/) puedes leer sobre cómo saber si has acertado a la hora de escoger y depurar tus datos y los algoritmos de tu modelo de aprendizaje, es decir, cómo dar por válido el modelo de inteligencia artificial.
 
 Nos vemos!
 
