@@ -3,8 +3,8 @@ title: 'Game design - Qué es un juego'
 date: 2022-07-15T01:00:00+00:00
 author: findemor
 layout: post
-image: /wp-content/uploads/2022/07/15/main_ufo.jpg
-share-img: /wp-content/uploads/2022/07/15/main_ufo.jpg
+image: /wp-content/uploads/2022/07/15/main_findemor_yt.png
+share-img: /wp-content/uploads/2022/07/15/main_findemor_yt.png
 categories:
   - Gamedev
   - Gamification
