@@ -22,6 +22,7 @@ _Iré actualizando esta sección a medida que vaya escribiendo más capítulos s
 * [Introducción y clasificación](https://blog.findemor.es/2022-05-20-Inteligencia-artificial-introduccion/)
 * [Flujo de trabajo](https://blog.findemor.es/2022-06-09-Inteligencia-artificial-flujo-de-trabajo/)
 * [Validar el modelo](https://blog.findemor.es/2022-06-30-Inteligencia-artificial-validar-el-modelo/)
+* [Análisis exploratorio](https://blog.findemor.es/2022-07-18-Inteligencia-artificial-analisis-exploratorio/)
 
 
 ## Precisión de las predicciones
@@ -144,6 +145,6 @@ Si la silueta promedio de alguno de los clusters es muy inferior al promedio glo
 
 ## Análisis exploratorio
 
-En la próxima publicación comenzaremos a adentrarnos en la parte técnica y aprenderemos lo esencial pare realizar el análisis exploratorio de los datos, lo que nos permitirá conocer nuestros datos y obtener las primeras intuiciones.
+En la [siguiente parte](https://blog.findemor.es/2022-07-18-Inteligencia-artificial-analisis-exploratorio/), nos adentramos en lo esencial pare realizar el análisis exploratorio de los datos, lo que nos permite conocerlos y obtener las primeras intuiciones.
 
 Nos vemos!
