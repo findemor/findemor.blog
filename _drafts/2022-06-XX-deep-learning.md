@@ -579,7 +579,9 @@ Es interesante conocer estas cosas que perdemos al no procesar el conjunto de da
 
 Lo ideal es que el tamaño del Mini-batch entre en la memoria del procesador que estemos empleando, de manera que la CPU tenga disponible todos los ejemplo de cada Mini-batch en cada iteración.
 
-Por esta razón, los valores que mejor suelen funcionar son __64, 128, 256 o 512__, y para escoger el adecuado podemos hacer los cálculos o simplemente probar.
+Por esta razón, los valores que mejor suelen funcionar son __32, 64, 128, 256 o 512__, y para escoger el adecuado podemos hacer los cálculos o simplemente probar.
+
+Sin embargo, en la práctica, se ha detectado que para que el modelo se comporte de forma estable, los mini-batches deberían tener un tamaño de entre 2 y 32 elementos, por lo que generalmente __32 es la opción favorita__ y de hecho es la que Keras establece por defecto.
 
 __En resumen:__
 
@@ -612,9 +614,37 @@ En la imagen a continuación vemos el recorrido del Gradient Descent (a la izqui
 
 [Créditos: Image from Researchgate.net](https://www.researchgate.net/figure/A-plot-of-the-gradient-descent-algorithm-left-and-the-stochastic-gradient-descent_fig1_303257470) publicación [Fast Online Training of L1 SVM by Gabriela Melki](https://www.researchgate.net/publication/303257470_Fast_Online_Training_of_L1_Support_Vector_Machines)
 
+### Momentum
 
+Gradient Descent with Momentum es una variación de Gradient Descent que consiste básicamente en aplicar la técnica conocida como Media Movil (Exponentially Weighted Moving Average o EWMA) para suavizar la curva que describe la función de error con cada iteración de variación de los parámetros de la red neuronal.
+
+Con EWMA es necesario añadir un hiperparámetro más al modelo, el término Beta, con un valor entre 0 y 1, que indica cuántos valores anteriores al actual se van a tener en cuenta para calcular la media (y por lo tanto suavizar) el valor actual, que luego será el que se emplee junto al valor Learning Rate para llegar al los valores óptimos de forma más directa, sin tantos "bandazos".
+
+Simplificando mucho, el número de resultados anteriores que se tendran en cuenta puede calcularse con la formula $\frac{1}{1 - \beta}$, por lo que para un valor de 0.9, se tendrán en cuenta los 10 valores anteriores.
+
+Podeis aprender más en estos enlaces sobre [Media móvil](https://es.wikipedia.org/wiki/Media_m%C3%B3vil) o [Momentum](https://ruder.io/optimizing-gradient-descent/index.html#momentum).
+
+### Root Mean Squared Propagation (RMSprop)
+
+Variación de Momentum con algunas diferencias en el cálculo de las actualizaciones de los parámetros de la red neuronal. RMSprop utiliza el cuadrado de los pesos durante el cálculo, pudiendo llegar un poco más rapido que Momentum al valor óptimo.
+
+Requiere un parametro adicional Épsilon, que suele ser muy pequeño (del orden de 10^-7) para evitar la división por 0 durant el proceso de actualización de los parámetros.
+
+En [este enlace](https://keras.io/api/optimizers/rmsprop/) podeis ver todos los parámetros que acepta la librería Keras para esta función de optimización, y en [este otro enlace](https://machinelearningmastery.com/gradient-descent-with-rmsprop-from-scratch/) se explica más en detalle.
+
+### Adaptive Movement Estimation (Adam)
+
+Es una combinación de las dos técnicas anteriores, Momentum y RMSprop, donde se emplea tanto el valor sin elevarlo al cuadrado y elevandolo como parte de la formula que adapta los parámetros de peso de la red neuronal.
+
+Emplear esta técnica hace que no exista una learning rate más adecuado, sino que habrá que hacer pruebas hasta encontrar el que mejor funcione.
+[El paper donde se especifica este algoritmo](https://arxiv.org/abs/1412.6980) se recomiendan además un valor de 0.9 para $\beta_1$ y 0.999 para $\beta_2$, así como un valor de épsilon de 10^-8. 
+
+En [este enlace](https://machinelearningmastery.com/adam-optimization-from-scratch/) hay una explicación completa del algoritmo.
 
 ### Qué función de optimización elegir
+
+![Visualizando funciones de optimización](https://i.imgur.com/NKsFHJb.gif)
+[Créditos: image from https://imgur.com/a/Hqolp#NKsFHJb](https://imgur.com/a/Hqolp#NKsFHJb)
 
 Vamos a resumir entonces las ventajas y desventajas de cada algoritmo:
 
@@ -625,8 +655,242 @@ Vamos a resumir entonces las ventajas y desventajas de cada algoritmo:
 * __Mini-Batch Gradient Descent__: _Adecuado en conjuntos grandes, de varios millones de elementos._
     * Procesa un subconjunto de datos en cada iteración, por lo que es __más rápida que la anterior en conjuntos muy grandes__.
     * Generalmente alcanza los __parámetros óptimos__ aunque en un camino un poco más largo.
-*  __Stochastic Gradient Descent__: _Adecuado cuando el conjunto de datos es inmenso y tenemos poca potencia de cómputo._  
+* __Stochastic Gradient Descent__: _Adecuado cuando el conjunto de datos es inmenso y tenemos poca potencia de cómputo._  
     * Procesa tan solo un elemento en cada iteración, __por lo que hace modificaciones de los parámetros de manera más rápida que las otras__.
     * Lo más probable es que __no encuentre los parametros óptimos__ pero si se acerque mucho a ellos.
+* __Momentum__: _Es más rápido que mini-batch pero aún capaz de encontrar valores óptimos_.
+    * Aplica EWMA para dirigirse a los parámetros óptimos de manera más directa.
+    * Requiere escoger y ajustar un hiperparámetro adicional Beta que indica cuantos valores anteriores se usaran para calcular la media. Valores altos podrian generar overfitting, pero valores muy bajos no aportarán ventajas de velocidad.
+    * Encuentra valores óptimos de manera más rápida.
+* __RMSprop__: _Más rápido que momentum_
+    * Require un valor adicional Epsilon del orden de 10^-7
+    * Optimiza más rápido que Momentum, aunque cada epoch es más lento porque requiere más cálculos.
+    * Al minimizar más rápido, es más propenso al overfitting temprano.
+* __Adam__: _Optimización de Momentum y RMSprop__
+    * Más rápido y eficaz alcanzando los valores óptimos (computacionalmente eficiente y con menos requisitos de memoria).
+    * Requiere varios hiperparámetros: beta 1, beta 2 y epsilon, que son los correspondientes de Momentum y RMSprop
+    * Tambien es propenso al overfitting por las mismas razones que los anteriores.
+
+# Tuning de hiperparámetros o hypertuning
+
+Como ya hemos visto, una red neuronal consiste básicamente en determinar cuales son los parámetros de peso para cada una de las neuronas tal que, dadas unas determinadas funciones de agregación y activación, consigamos que la red prediga con éxito el mayor número de veces.
+
+Pero aunque todo parezca estar centrado en determinar cual es el valor adecuado de estos parámetros (pesos), lo cierto es que a la hora de definir la arquitectura de la red neuronal estamos tomando otras muchas decisiones, y es a estos a los que __se denominan hiperparámetros del modelo__:
+
+* ¿Cuántas capas ocultas debe tener la red?*
+* ¿Cual es la conectividad o topología de la arquitectura de la red?
+* ¿Cuántas neuronas habrá en cada capa?
+* ¿Qué función de activación escogeremos para las capas intermedias, y cual para la output layer? $$Enlace
+* ¿Qué función de función de optimización es más adecuada para nuestro caso?  $$enlace
+* ¿Qué valor vamos a dar a los parámetros de cada algoritmo que empleemos: learning rate, beta, epsilon...?
+
+Tomar todas estas decisiones no es una tarea sencilla. Algunas de estas decisiones podemos asumirlas rápidamente en base a nuestro conocimiento y experiencia previa (por ejemplo, elegir una función sigmoide $$enlace frente a una softmax para un caso de clasificación binaria). Pero otras, como el número de capas o neuronas, o los valores de los parámetros para nuestra variante de Gradiente Descendende, pueden ser más dificiles de intuir.
+
+Escoger los hiperparámetros mediante prueba y error es un proceso tedioso conocido como __Hyperparameter tuning o Hypertuning__, precisamente por lo que fue creada una libreria de Python llamada [Keras Tuner](https://keras.io/keras_tuner/) que permite elegir los hiperparámetros óptimos para el modelo automáticamente. La librería trata de entrenar la red neuronal con distintos hiperparámetros para determinar aquellos que ofrecen mejores resultados. Lógicamente es un proceso costoso en tiempo y computación, por lo que aún así, sigue siendo recomendable acotar la búsqueda que realizará __Keras Tuner__ para reducir la exploración, y esto de nuevo debemos hacerlo en base a nuestro conocimiento y experiencia previa.
+
+## Ejemplo sencillo en de Hypertuning en Python con Keras-Tuner
+
+Empleando el mismo ejemplo que vimos en Keras anteriormente $$$enlace, vamos a mostrar como se adaptaría para encontrar automáticamente el valor adeucado de algunos hyperparametros usando __Keras Tuner__. 
+
+Nota: esto es solo un ejemplo del uso de la libreria, no me propongo encontrar realmente los valores óptimos.
+
+En primer lugar cargamos las librerias y preparamos los datos de manera parecida a como haciamos en el ejemplo del articulo anterior $$enlace
+
+```python
+import tensorflow as tf
+from tensorflow import keras
+import kerastuner as kt # pip install keras-tuner
+
+print("tensorflow version: ", tf.__version__)
+print("keras version:      ", keras.__version__)
+
+#tensorflow version:  2.9.1
+#keras version:       2.9.0
+
+# preparamos los datasets de entrenamiento, validacion y pruebas
+from tensorflow.keras import datasets
+from sklearn.model_selection import train_test_split
+
+mnist = datasets.mnist #clasico dataset de numeros escritos a mano
+
+(Xtrain, Ytrain), (Xtest, Ytest) = mnist.load_data()
+Xtest, Xvalidation, Ytest, Yvalidation = train_test_split(Xtest, Ytest, test_size = 0.5)
+
+#Normalizamos los datos si quisieramos mantenerlos en formato matriz de 28x28
+#Xtrain_prep = Xtrain.astype('float32') / 255.0
+#Xtest_prep = Xtest.astype('float32') / 255.0
+#Xvalidation_prep = Xvalidation.astype('float32') / 255.0
+
+# transformamos las matrices de 28*28 en vectores usando reshape
+# y normalizamos a valores entre 0 y 1
+Xtrain_prep = Xtrain.reshape((60000, 28*28))
+Xtrain_prep = Xtrain_prep.astype('float') / 255 #normalizamos los valores para que se mantengan en el rango de 0 a 1
+
+#hacemos lo mismo con el resto de conjuntos 
+Xtest_prep = Xtest.reshape((5000, 28*28))
+Xtest_prep = Xtest_prep.astype('float') / 255
+Xvalidation_prep = Xvalidation.reshape((5000, 28*28))
+Xvalidation_prep = Xvalidation_prep.astype('float') / 255
+```
+
+A continuación es donde empieza a haber diferencias. Keras Tuner necesita que declaremos una función que construya el modelo de la red a partir de unos hyperparametros que la propia librería irá modificando a medida que haga las diferentes pruebas.
+
+```python
+from keras import models
+from keras import layers
+
+## Se define una función que devuelve un modelo que usa los hiperparametros que se le entreguen
+def hypermodel(hyperparams):
+
+    # Nuevo modelo y input layer
+    network = models.Sequential()
+    network.add(layers.Input(shape=28*28)) #o si se lo entregasemos como matrices directamente sin vectorizar plano network.add(layers.Flatten(input_shape=(28,28)))
+
+    #rango del hypertuning
+
+    ## numero de neuronas de la primera capa oculta, le damos un nombre y decimos que va a ser un valor Integer, que probara desde 32 a 512, saltando de 32 en 32
+    hyperparams_neuronas = hyperparams.Int('neuronas', min_value = 32, max_value = 512, step = 32)
+    network.add(layers.Dense(hyperparams_neuronas, activation = 'relu')) #añadimos la capa pero usando este espacio de valores como parámetro
+
+    ## learning rate, le decimos que pruebe con las opciones que yo le entrego
+    hyperparams_learningrate = hyperparams.Choice('learningrate', values=[1e-1, 1e-2, 1e-3, 1e-4, 1e-5])
+
+    ## compilamos el modelo usando los hyperparametros de keras tuner
+    network.compile(
+        optimizer = keras.optimizers.SGD(learning_rate=hyperparams_learningrate), ## o keras.optimizers.Adam(learning_rate = hyperparams_learningrate),
+        loss=keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+        metrics   = ['accuracy']
+    )
+
+    return network
+```
+
+Tras esto, instanciamos el tuner de Keras Tuner. Hay varios disponibles que pueden consultarse en la documentación (Hyperband, BayesianOptimization, Sklearn y RandomSearch).
+Necesitamos establecer el valor de algunos parametros, como cual será la métrica objetivo que queremos optimizar y con la que se compararán entre si los resultados de las distintas pruebas, o los directorios que se crearán con el estado del trabajo de evaluación.
+
+```python
+
+cepochs = 10
+
+ktuner = kt.Hyperband(
+    hypermodel, # le pasamos la funcion generadora del modelo que hemos definido
+    objective = 'val_accuracy', # metrica que se utiliza para elegir los hiperparametros que mejor funcionan, en este caso accuracy de conjunto de validacion
+    factor = 3, # parametro especifico de Hyperband que actua sobre el numero de parametros que se van a evaluar por iteracion
+    max_epochs = cepochs,
+    directory = 'tuner_directory',
+    project_name = 'tuner_test_project'
+
+)
+```
+
+Finalmente lanzamos la búsqueda de los hiperparámetros óptimos (equivalente a hacer el _fit_ de los distintos modelos). Esto puede llevar bastante tiempo en función del número de combinaciones posibles, de hiperparámetros que estemos ecualizando, de la potencia de cómputo que tengamos disponible, y de la configuración del tuner.
+
+```python
+ktuner.search(
+    Xtrain_prep,
+    Ytrain,
+    epochs = cepochs,
+    validation_data = (Xvalidation_prep, Yvalidation)
+)
+```
+
+Una vez finalizado el proceso, podemos consultar el valor de los hiperparámetros más adecuados (óptimos) que el tuner haya podido encontrar:
+
+```python
+best_found_hyperparameters = ktuner.get_best_hyperparameters(num_trials=1)[0]
+
+print("neuronas en la hidden layer: ", best_found_hyperparameters.get('neuronas'))
+print("learning rate: ", best_found_hyperparameters.get('learningrate'))
+
+# neuronas en la hidden layer:  224
+# learning rate:  0.001
+```
+
+Por último entrenamos el modelo con estos parámetros para que podamos utilizarlo para realizar predicciones como habitualmente. Podriamos hacerlo definiendo manualmente el modelo introduciendo los parámetros óptimos que hemos encontrado antes, pero Keras Tuner proporciona la posibilidad de construir el modelo directamente con sus mejores parámetros:
+
+```python
+model = ktuner.hypermodel.build(best_found_hyperparameters)
+
+h = model.fit(
+    Xtrain_prep,
+    Ytrain,
+    epochs = cepochs,
+    validation_data = (Xtest_prep, Ytest)
+)
+```
+
+Y con esto tendríamos el mdelo preparado para ser guardado o utilizado.
+
+En los apartados a continuación voy a tratar de enunciar y describir cuales son otros hiperparametros muy habituales y cómo se podrían escoger sus valores, ya sea teóricamente o empiricamente empleando __Keras Tuner__.
+
+### Hiperparámetors del modelo
+
+Son aquellos que determinan la arquitectura del modelo, como el número de capas o neuronas en cada capa.
+
+* __Número de capas__:
+  * La input layer, por su propia naturaleza, siempre existirá, y la output layer lo hará en función del tipo de predicción que vayamos a realizar, por lo que no se necesita aplicar Keras Tuner para decidirlo.
+  * El número de capas intermedias (ocultas o hidden layers) si es un hiperparametro que puede ofrecer diferentes resultados en función de nuestras decisiones. 
+    * Los problemas sencillos podrán ser resueltos por una única hidden layer.
+    * Los problemas muy coplejos requeriran un mayor número de hidden layer, y consiguen mejores resultados pero a costa de una mayor dificultad y coste de entrenamiento. Además, las redes más profundas permiten aplicar técnicas de _transfer learning_, es decir, entrenar el modelo de manera general y luego reentrenar las últimas capas, capaces de detectar características muy especificas reutilizando el entrenamiento previo.
+
+* __Número de neuronas__:
+  * El número de neuronas de la input layer y de la output layer se determinan en función de los datos de entrada y del tipo de salida que deseamos, por lo que no se buscará un valor mediante Keras Tuner.
+  * Generalmente las capas intermedias tienen un número de neuronas cada vez menor, es decir, con forma de pirámide con muchas en las primeras capas y menos en las más profundas. El inconveniente que presenta este hecho es que para Keras Tuner esto significa probar muchas posibles combinaciones, lo que lo hace un proceso bastante lento. Afortunadamente se ha comprobado que en la práctica esta forma de pirámide arroja resultados muy poco mejores que simplemente elegir el mismo número de neuronas para todas las capas intermedias, por lo que podemos usar este pequeño truco para reducir el espacio de las pruebas y combinaciones que Keras Tuner deberá realizar.
+
+En el ejemplo a continuación vemos como podría implementarse con Keras Tuner esta optimización de la arquitectura:
+
+```python
+## como sería el numero de capas
+
+
+from keras import models
+from keras import layers
+
+## Se define una función que devuelve un modelo que usa los hiperparametros que se le entreguen
+def hypermodel(hyperparams):
+
+    # Nuevo modelo y input layer
+    network = models.Sequential()
+    network.add(layers.Input(shape=28*28)) 
+
+    # espacio del hiperparametro para el numero de neuronas
+    hyperparams_neuronas = hyperparams.Int('neuronas', min_value = 32, max_value = 512, step = 32)
+
+    # espacio del hiperparametro para el numero de capas
+    hyperparams_capas = hyperparams.Int('capas', min_value = 1, max_value = 5, step = 1)
+
+    ## Añadimos las capas intermedias en función del valor que el tuner tenga actualmente
+    for i in range(hyperparams_capas):
+        network.add(layers.Dense(hyperparams_neuronas, activation = 'relu'))
+
+    # incorporamos la output layer que en nuestro caso clasifica entre 10 posibilidades
+    network.add(layers.Dense(10, activation = 'softmax'))
+
+    ## compilamos el modelo usando los hyperparametros de keras tuner
+    network.compile(
+        optimizer = keras.optimizers.Adam(learning_rate=0.01),
+        loss=keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+        metrics   = ['accuracy']
+    )
+
+    return network
+```
+
+### Hiperparámetros del algoritmo
+
+Son los que afectan a la forma en que se comportan los algoritmos, como el learning rate o los parámetros que afectan a cada variante del Gradient Descent.
+
+* __Función de óptimización__: $$enlace En este enlace vimos algunas posibles funciones de optimización a nuestro alcance. Lo normal es escoger la más óptima para nuestro problema, por ejemplo Adam suele dar buenos resultados.
+* __Función de activación__: $$enlace En esta otro apartado hablabamos de qué función de activación es la más adecuada en cada caso, y por lo general por lo tanto no será necesario recurrir a Keras Tuner para escogerlo. A modo de resumen, generalmente emplearemos ReLU para todas las neuronas salvo para la _output layer_ que usará sigmoide, softmax, o ninguna en función del tipo de clasificación (o regresión). 
+* __Learning Rate__: $$enlace Este importante parámetro se emplea para determinar a que velocidad vamos a realizar modificaciones en los parametros en cada iteración de la función de optimización. Lo más habitual es empezar con valores muy pequeños e ir incrementandolo hasta valores superiores y ver que se sigue produciendo una convergencia en valores óptimos. Por esta razón, el espacio de búsqueda de hiperparámetro ira normalmente desde 10^-5 hasta 10.
+* __Tamaño del Mini-Batch__: $$enlace En este articulo anterior intenté explicar cuales son posibles tamaños adecuados para los mini-batches y como escogerlos, aunque en la práctica se ha visto que para que el modelo sea estable, deberíamos escoger mini-batches de 2 a 32 elementos.
+
+
+
+
+
+
 
  
+
+
