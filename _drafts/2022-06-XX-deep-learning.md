@@ -450,14 +450,14 @@ Como último paso, podemos exportar el modelo entrenado para poder emplearlo en 
 Lograr esto es tan facil como lanzar la siguiente instrucciön:
 
 ```python
-network.save("modelo_clasificacion_digitos"
+network.save("modelo_clasificacion_digitos.rna")
 ```
 
 El fichero generado puede ser importado en muchos otros sistemas, o en python usando estas instrucciones:
 
 ```python
 from tensorflow.keras.models import load_model
-modelo_pre_entrenado = load_model("modelo_clasificacion_digitos")
+modelo_pre_entrenado = load_model("modelo_clasificacion_digitos.rna")
 ```
 
 
@@ -885,12 +885,318 @@ Son los que afectan a la forma en que se comportan los algoritmos, como el learn
 * __Learning Rate__: $$enlace Este importante parámetro se emplea para determinar a que velocidad vamos a realizar modificaciones en los parametros en cada iteración de la función de optimización. Lo más habitual es empezar con valores muy pequeños e ir incrementandolo hasta valores superiores y ver que se sigue produciendo una convergencia en valores óptimos. Por esta razón, el espacio de búsqueda de hiperparámetro ira normalmente desde 10^-5 hasta 10.
 * __Tamaño del Mini-Batch__: $$enlace En este articulo anterior intenté explicar cuales son posibles tamaños adecuados para los mini-batches y como escogerlos, aunque en la práctica se ha visto que para que el modelo sea estable, deberíamos escoger mini-batches de 2 a 32 elementos.
 
+# Introducción a TensorFlow
+
+Keras $$$enlace, como ya vimos, es una API abstracta y de alto nivel para TensorFlow. Realmente casi todos los problemas que vamos a tener que resolver van a poderse implementar con Keras de manera más sencilla, pero si realmente tenemos que acudir al bajo nivel, bajar al barro a hacer cosas realmente personalizadas, o para donde Keras no llegue, para investigar en profundidad como funcionan las redes neuronales..., quizá tengamos que trabajar directamente con TensorFlow.
+
+TensorFlow nos da control total sobre cada elemento que compone la red neuronal, pero tambien requiere un conocimiento mucho mayor para poder aprovecharlo. Trabaja realmente realizando calculo numérico, como Numpy, pero preparado para ejecutarse directamente sobre GPUs (aunque puede funcionar también sobre CPUs y TPUs) y además hacerlo de manera distribuida. Aún así, vamos a ver algunos ejemplo de uso de TensorFlow.
+
+TensorFlow y Keras se utilizan conjuntamente, por lo que te recomiendo que antes de leer este articulo hayas leido este otro $$enlace de introducción a Keras.
+
+## El tensor
+
+__El tensor__ es la estructura básica que maneja Tensorflow y de donde recibe su nombre. Se podría definir como un array multidimensional, pero que puede tomar una gran variedad de valores, por ejemplo un número escalar.
+
+```python
+import tensorflow as tf
+
+tn = tf.constant(1) # un tensor puede ser un valor numérico
+tv = tf.constant([1., 2., 3.]) # un tensor puede ser un vector de valores float
+tm = tf.constant([[1, 2, 3], [4, 5, 6]]) ## un tensor puede ser una matriz de enteros
+```
+
+Los tensores son muy similares a sus equivalentes de Numpy, por lo que el acceso a los elementos del tensor es tambien muy parecido.
+
+```python
+tm[:, 0] #accede a toda la primera columna del tensor matriz
+tm[0, :] #accede a todos los elementos de la primera fila del tensor matriz
+```
+
+Del mismo modo las operaciones son también equivalentes a las que se pueden realizar con Numpy. 
+Sí que existe una diferencia notable en cuanto a la conversión de tipos, ya que los tensores de distintos tipos (por ejemplo, integer y float) no podrian operarse juntos, aunque Numpy y python si lo permiten.
+
+```python
+tms = tm + 1
+tms
+
+## resultado
+# <tf.Tensor: shape=(2, 3), dtype=int32, numpy=
+# array([[2, 3, 4],
+#       [5, 6, 7]])>
+```
+
+Los tensores pueden ser constantes o variables. Los constantes son inmutables, y no podremos modificar sus valores. Si necesitamos poder modificar los datos de la estructura Tensor podemos usar un tensor de tipo variable.
+
+```python
+tv = tf.Variable([1., 2., 3.])
+
+# modificamos su valor
+tv[1].assign(6.)
+
+## resultado
+# <tf.Variable 'UnreadVariable' shape=(3,) dtype=float32, numpy=array([1., 6., 3.], dtype=float32)>
+```
+
+## Ejemplo de implementación de una función de activación
+
+Lo interesante de TensorFlow es poder redefinir componentes para ajustar el comportamiento de la red neuronal totalmente a medida de nuestras necesidades. Así, algo habitual es utilizar Keras para la definición de arquitectura, entrenamiento, etc. reemplazando elementos específicos por deficiones personalizadas con tensores que peudan ser pasadas a Keras como hiperparámetros.
+
+Por ejemplo, si quisieramos emplear una función de activación que nosotros nos inventemos, bastaría con definirla en primer lugar (atención al hecho de que devuelve un Tensor):
+
+```python
+def mi_fn_activacion_personalizada(z):
+  return tf.math.log(tf.exp(z) * 2)
+```
+
+Y luego reemplazarla en el parámetro correspondiente de Keras:
+
+```python
+from tensorflow import keras
+
+layer = keras.layers.Dense(10, activation=mi_fn_activacion_personalizada)
+```
+
+Esto lo podremos hacer para cualquier parámetro de la red.
+
+## Ejemplo de implementación de una función de error
+
+Vamos a ver un ejemplo más complejo que el anterior, por ejemplo una implementación de la función de [error de Huber](https://en.wikipedia.org/wiki/Huber_loss) empleando TensorFlow.
+
+La función calcula el error entre el valor real de una observación y la predicción de un modelo de regresión de la manera siguiente:
+1. Calcula la diferencia entre el valor real y la predicción.
+2. Si la diferencia es menor o igual que un cierto valor umbral:
+  * El error será la diferencia al cuadrado dividido entre 2.
+3. Si es mayor que el valor umbral:
+  * El error será el valor umbral multiplicado por la diferencia, menos el valor umbral al cuadrado entre 2.
+
+Creamos entonces la función de pérdida de Huber:
+
+```python
+def def_huber_fn(umbral=1.0): #esta función es generadora, por lo que retorna un puntero a función
+  
+  def huber_fn(y_real, y_pred):
+    err = y_real - y_pred
+    is_greater = tf.abs(err) > umbral
+    
+    # calculamos ambas posibilidades
+    sqr_loss = tf.square(err) / 2
+    linear_loss =umbral * tf.abs(err) - umbral**2 / 2
+
+    return tf.where(is_greater, linear_loss, sqr_loss)
+  
+  return huber_fn
+```
+
+Podemos observar que es posible combinar notacion estandar de python, con la propia de TensorFlow (tf.abs, tf.square). Ahora representamos la función de pérdida de Huber que hemos definido:
+
+```python
+from matplotlib import pyplot as plt
+import numpy as np
+
+# construimos la función con un umbral estandar de 1.0
+huber_fn = def_huber_fn(1.0)
+
+# visualizamos su representación
+plt.figure(figsize=(10, 5.5))
+z = np.linspace(-4, 4, 200)
+plt.plot(z, huber_fn(0, z), "r-", linewidth=2)
+plt.gca().axvline(x=0, color='g')
+plt.axis([-4, 4, 0, 4])
+plt.grid(True)
+plt.xlabel("z")
+plt.show()
+```
+
+![Huber](rna_huber.png)
+
+Pues bien, emplear esta función personalizada de error, creada con TensorFlow, en un modelo de red neuronal artificial creada con Keras, es tan fácil como __especificar nuestra función generadora en el hyperparametro de la función de error__:
+
+```python
+network.compile(
+    loss      = def_huber_fn(1.0), #nuestra funcion personalizada
+    optimizer = 'sgd', #gradient descent
+    metrics   = ['mae'] #error cuadratico medio
+)
+```
+
+Una función de este tipo tambien podríamos emplearla, por ejemplo, como métrica personalizada:
+
+```python
+network.compile(
+  loss        = "mse", 
+  optimizer   = "sgd", 
+  metrics     = [def_huber_fn(1.0)] # nuestra metrica personalizada
+)
+```
+
+### Guardar el modelo con objetos personalizados
 
 
+Otra diferencia es a la hora de guardar el modelo en disco para exportarlo y utilizarlo en otros sistemas. Ya veiamos un ejemplo en este $$$otro enlace$$$, pero en este caso tenemos un objeto personalizado que debemos especificar a la hora de recuperar la información:
+
+```python
+## Guardar el modelo en el disco con un objeto personalizado
+network.save("con_huber_fn.rna")
+
+## Cargar el modelo desde el disco con objetos personalizados
+from tensorflow.keras.models import load_model
+modelo_pre_entrenado = load_model("con_huber_fn.rna", custom_objects = { "huber_fn": def_huber_fn(1.0) })
+```
+
+## Heredar la clase 
+
+En el caso anterior hemos visto lo que pasa cuando hay un objeto o un parámetro personalizado que se guarda junto al modelo, y es que a la hora de recuperarlo hemos tenido que disponer de la definición de la función y volver a indicarle el valor umbral (1.0 en nuestro caso, ya que no se está guardando). 
+
+Pues bien, existe una forma mejor de manejar este guardado de objetos que consiste en __heredar de la clase _tf.keras.*_ __.
+
+En el caso siguiente creamos un regularizador personalizado heredando la clase correspondiente de Keras, en este caso un regularizador. (Ejemplo extraido de [este enlace](https://notebooks.githubusercontent.com/view/ipynb?azure_maps_enabled=false&browser=chrome&color_mode=auto&commit=dac272a4e41aff62aac5d6769e0761502e0a67f3&device=unknown&enc_url=68747470733a2f2f7261772e67697468756275736572636f6e74656e742e636f6d2f616d6172616c63732f686f6d6c2f646163323732613465343161666636326161633564363736396530373631353032653061363766332f31325f637573746f6d5f6d6f64656c735f776974685f74662e6970796e62&enterprise_enabled=false&logged_in=false&nwo=amaralcs%2Fhoml&path=12_custom_models_with_tf.ipynb&platform=android&repository_id=228699860&repository_type=Repository&version=102))
+
+```python
+class MyL1Regularizer(tf.keras.regularizers.Regularizer):
+    def __init__(self, factor):
+        self.factor=factor ## nuestro parametro se almacenara como una propiedad de la clase
+    def __call__(self, weights):
+        return tf.reduce_sum(tf.abs(self.factor * weights))
+    def get_config(self):
+        return {'factor':self.factor}
+```
+
+Y lo utilizamos como un hiperparametro, como hemos visto anteriormente:
+
+```python
+from tensorflow import keras
+
+layer = keras.layers.Dense(10, activation=mi_fn_activacion_personalizada, kernel_regularizer = MyL1Regularizer(0.05))
+```
+
+Ahora, a diferencia de como veiamos en el caso anterior, __ no es necesario indicar el hiperparametro _factor_ __ al recuperar la información:
 
 
+```python
+## Guardar el modelo en el disco con un objeto personalizado
+network.save("guardar_con_objetos.rna")
+
+## Cargar el modelo desde el disco con objetos personalizados
+from tensorflow.keras.models import load_model
+modelo_pre_entrenado = load_model("guardar_con_objetos.rna", 
+  custom_objects = { 
+    "MyL1Regularizer": MyL1Regularizer, # no es necesario indicarle el valor 0.05
+    "mi_fn_activacion_personalizada": mi_fn_activacion_personalizada,
+  })
+```
+
+## Creación de una capa personalizada
+
+En algunas ocasiones, como cuando se trabaja con redes convolucionales (CNN), entre otros casos, podemos necesitar definir capas que realizan transformaciones personalizadas sobre los datos.
+
+Una forma sencilla de lograr esto con TensorFlow es crear una __capa lambda__, que recibe como parametro una función lamda. La función recibe un valor _X_, que es el valor de entrada (valor de salida de una capa anterior), y retorna un valor que será la entrada de la capa siguiente, como ocurre con cualquier otra capa o neurona estándar, pero con la diferencia de que no emplea otro parámetro (como el peso).
+
+Un ejemplo cualquier de implementación de capa sería el siguiente, donde se coge el valor de entrada y se devuelve su raiz cuadrada:
+
+```python
+import tensorflow as tf 
+mi_layer_personalizada = tf.keras.layers.Lambda(lambda x: tf.srqt(x))
+```
+
+Y luego podemos emplearla como parte de nuestra arquitectura de red neuronal cuando la definamos usando Keras:
+
+```python
+network = models.Sequential()
+network.add(layers.Dense(300, activation='relu', input_shape=(28*28,)))
+network.add(mi_layer_personalizada)
+network.add(layers.Dense(1))
+```
+
+### Conclusión
+
+Pues hasta aqui esta breve introducción a TensorFlow, que no tenía otro propósito más que permitirnos hacernos una idea de como se puede trabajar conjuntamente con otras APIs de alto nivel como Keras para completar aquellos aspectos a los que las librerias predefinidas no lleguen.
+
+Como decía al principio, es probable que la mayoría de los problemas a los que nos enfrentemos se puedan resolver utilizando unicamente Keras, pero está bien saber que siempre es posible bajar a un nivel más elemental y utilizar los tensores de TensorFlow para afinar tanto como queramos en nuestros modelos de aprendizaje y redes neuronales artificiales.
 
 
- 
+# Tips para modelos de Deep Learning
+
+Cuando trabajamos en la definición y entrenamiento de modelos de aprendizaje automático basados en redes neuronales artificiales, como por ejemplo son los modelos de Deep Learning, nos enfrentaremos a una serie de problemas que aparecen con mucha frecuencia.
+
+En esta sección trato de hacer un repaso de los más habituales y dar unas pinceladas sobre como podríamos afrontar su aparición.
+
+## Normalización
+
+Cuando trabajamos con algoritmos de aprendizaje automático (Machine Learning) y también por lo tanto cuando entrenamos redes neuronales, es conveniente siempre aplicar normalización a los datos de entrada para prevenir una serie de problemas que pueden ocurrir, y también ayudar a los algoritmos a converger en soluciones óptimas lo más rápido posible.
+
+En particular, cuando hablamos de normalización hablamos de aplicar dos transformaciones a las caracteristicas de nuestros datos de entrenamiento, de manera que como resultado de estas transformaciones todos los valores estén en rangos parecidos:
+
+1. __Centrar los datos: restando la media__ de todos los valores de una característica, a cada valor de la característica individualmente, conseguimos centrar los datos en torno al origen.
+2. __Llevar a la misma escala: normalizando la varianza__, cosa que conseguimos por ejemplo dividiendo cada valor de una característica entre un valor $\sigma^2$ donde $\sigma^2 = \frac{1}{m}\sum_{i=1}^m(x_i^2)$.
+
+Afortunadamente no es necesario preocuparse excesivamente de todo esto, ya que existen numerosas librerias que hacen esta normalización de manera mucho más robusta teniendo en cuenta las distintas casuísticas, como por ejemplo [Robust Scaler](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.RobustScaler.html).
+
+Eso si, es conveniente recordar que cuando aplicamos este tipo de normalización a nuestros datos, luego __necesitaremos aplicar exactamente la misma normalización__ (es decir, dividir entre los mismos términos) __a los datos de entrada de las nuevas observaciones__ que obtengamos cuando vayamos a generar una predicción, de otra forma le estaríamos entregando los valores en una escala diferente a la que usamos para entrenar el modelo y la predicción no sería correcta.
+
+## Overfitting
+
+Del _overfitting_ ya hemos hablado en varias ocasiones $$enlace, $$enlace ya que es muy frecuente que ocurra también en modelos de Machine Learning, no es algo particular de las redes neuronales artificiales.
+
+Para no repetirme, es mejor consultar esos articulos donde ya hable de ello, pero a modo de resumen, y concretando en el caso de las redes neuronales, podemos asumir que cuando la arquitectura de la red __tiene muchas capas ocultas y muchas neuronas, es posible que el modelo se adapte demasiado bien al conjunto de entrenamiento, pero realice malas predicciones de nuevas observaciones__. 
+
+O lo que es lo mismo, el error al predecir con datos con los que hemos entrenado al modelo sería 0 o casi 0, mientras que el error para nuevas observaciones (por ejemplo con el conjunto de pruebas) sería bastante más elevado o incluso creciente en cada _epoch_.
+
+Cuando esto ocurre, decimos que el modelo generaliza mal, o que el modelo recuerda los datos del entrenamiento pero no sabe predecir para nuevos casos.
+
+Para detectar (y resolver) los problemas de underfitting y overfitting, es esencial tener un número elevado de datos, y que esto sean de calidad. Lo normal es dividir estos datos disponibles en 3 subconjuntos (entrenamiento, validación y pruebas) para evitar que el modelo se ajuste a uno de los conjuntos en particular y seamos capaces de medir que tal generaliza el modelo. Te recomiendo la lectura de este otro articulo donde hablaba de esto y de los conjuntos de datos $$enlace-a-2022-06-30
+
+__Resumen:__
+
+* __Overfitting__: error pequeño en el conjunto de entrenamiento, error grande en el conjunto de pruebas 
+* __Underfitting__: error grande en el conjunto de entrenamiento
+
+### Tips para resolverlo
+
+#### Incorporar más datos de entrenamiento
+
+La solución ideal para resolver un problema de overfitting es entrenar el modelo con más datos. Si tenemos pocos datos, el proceso de entrenamiento no es consciente de que está "provocando" un error alto en "los huecos" entre las observaciones que le hemos entregado, por lo que rellenar esos espacios puede ayudar al entrenamiento a ajustarse bien a la distribución general de los datos.
+
+#### Data augmentation y datos sintéticos
+
+Si no es posible tener más datos de ejemplo de calidad, podemos aumentar los datos de entrenamiento creando nuevos datos a partir de los que tengamos, pero modificados. El ejemplo clasico es rotar las imagenes que se usan para entrenar un modelo, voltearlas, recortarlas... e incorporarlas transformadas al conjunto de datos.
+
+#### Modificar la arquitectura de la red
+
+Si tampoco fuese posible conseguir suficientes datos mediante data augmentation, puede que la solución sea reducir la complejidad del modelo, simplificando la arquitectura de la red con menos capas y/o menos neuronas. Esto hará que la función que se ajusta a los datos es menos flexible, por lo que impedimos que pueda sobreajustarse.
+
+  * Si tenemos un problema de underfitting, seria el planteamiento contrario: es probable que necesitemos un modelo más complejo, por lo que habría que incrementar el número de capas y/o neuronas para permitir más flexibilidad y que se ajuste a la ditribución de los datos.
+  * Lo adecuado es tener una arquitectura tal que el error sea bajo para los conjuntos de entrenamiento y validación, y también para el conjunto de pruebas (ya que si para el conjunto de pruebas fuese alto, estariamos ante un caso de overfitting en los subconjuntos de entrenamiento y validación).
+
+#### Regularización
+
+Las técnicas de regularización consisten en "engañar" al algoritmo de Gradient Descent, añadiendo un termino de penalización (regularización) a la función de error para que aunque el error se haya minimizado completamente, el valor que va a recibir va a ser un valor diferente. Casi todos las funciones que empleemos ya incluyen una forma de especificar este parámetro de regularización mediante distintas técnicas.
+  
+  * Las técnicas llamadas [L1 y L2](https://www.iartificial.net/regularizacion-lasso-l1-ridge-l2-y-elasticnet/) son habituales en técnicas de Machine Learning.
+  * En redes de __deep learning es frecuente utilizar el método [Frobenius norm](https://en.wikipedia.org/wiki/Matrix_norm#Frobenius_norm)__, que tiene en cuenta todos los parametros de cada capa en la formula de regularización. Hay una explicación detallada [en este video (en inglés)](https://www.youtube.com/watch?v=yJh8l9HKMGY).
 
 
+#### Dropout
+
+Para evitar que las neuronas de la red sean capaces de especializarse excesivamente y de este modo se produzca el overfitting, la técnica conocida como Dropout propone eliminar aleatoriamente neuronas de la red neuronal en cada iteración de entrenamiento (es decir, en cada pasada de _forward propagation_ y su correspondiente _backward propagation_ para actualizar los parámetros de peso de cada neurona).
+
+En este caso se suele definir un valor de probabilidad para cada capa, que representa la probabilidad de que cada una de sus neuronas desaparezca de la capa durante cada iteración.
+
+De este modo, en cada iteración, solo algunas neuronas habrán participado en el proceso, por lo que no podrán llegar a especializarse porque a veces les tocará participar y otras veces no, generando redes diferente en cada iteración de entrenamiento.
+
+En caso de utilizar esta técnica, cada tipo de problema puede requerir unos valores de probabilidad diferentes en cada capa; habrá problemas que se resuelvan mejor con valores de probabilidad altos, mientras que otros lo harán con valores más bajos.
+
+En [este enlace](https://keras.io/api/layers/regularization_layers/dropout/) teneis la documentación en Keras para realizar este tipo de regularización, y en [este otro](https://machinelearningmastery.com/dropout-regularization-deep-learning-models-keras/) un ejemplo de implementación en python.
+
+#### Early Stopping
+
+Como último recurso, si durante la evaluación del modelo observamos que en un determinado número de _epochs_ el error del conjunto de pruebas comienza a subir pese a que el del conjunto de entrenamiento sigue reduciendose, podemos crear un modelo deteniendo su entrenamiento en aquel _epoch_ en el que precisamente se produce esta situación, antes de que siga especializandose y se produzca realmente un overfitting problematico.
+
+![Early Stopping](rna_early_stopping.jpg)
+
+[Créditos: image from MachineLearningMastery.com](https://machinelearningmastery.com/how-to-stop-training-deep-neural-networks-at-the-right-time-using-early-stopping/)
+
+En [esta web](https://machinelearningmastery.com/how-to-stop-training-deep-neural-networks-at-the-right-time-using-early-stopping/) teneis más información sobre esta técnica.
+
+## Conclusion
+
+Estas son algunas de las técnicas y tips más frecuentes y habituales que podremos emplear para resolver problemas durante el entrenamiento. Espero que te resulten útiles, y si tienes alguna otra que quieras recomendar, o quieres destacar alguna que te haya ayudado especialmente, ¡déjala en los comentarios!.
