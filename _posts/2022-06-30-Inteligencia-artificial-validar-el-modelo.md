@@ -23,6 +23,9 @@ _Iré actualizando esta sección a medida que vaya escribiendo más capítulos s
 * [Flujo de trabajo](https://blog.findemor.es/2022-06-09-Inteligencia-artificial-flujo-de-trabajo/)
 * [Validar el modelo](https://blog.findemor.es/2022-06-30-Inteligencia-artificial-validar-el-modelo/)
 * [Análisis exploratorio](https://blog.findemor.es/2022-07-18-Inteligencia-artificial-analisis-exploratorio/)
+* __Algoritmos de Machine Learning__:
+  * __Supervisado__:
+    * [Árboles de decisión](https://blog.findemor.es/2022-09-05-Machine-Learning-Arboles-de-decision-y-random-forest/)
 
 
 ## Precisión de las predicciones

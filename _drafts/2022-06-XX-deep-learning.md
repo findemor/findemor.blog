@@ -1181,6 +1181,12 @@ Para evitar que las neuronas de la red sean capaces de especializarse excesivame
 
 En este caso se suele definir un valor de probabilidad para cada capa, que representa la probabilidad de que cada una de sus neuronas desaparezca de la capa durante cada iteración.
 
+```python
+# ejemplo aplicando dropout a una capa cualquiera
+model.add(layers.Dense(10, activation='relu'))
+model.add(layers.Dropout(0.4))
+```
+
 De este modo, en cada iteración, solo algunas neuronas habrán participado en el proceso, por lo que no podrán llegar a especializarse porque a veces les tocará participar y otras veces no, generando redes diferente en cada iteración de entrenamiento.
 
 En caso de utilizar esta técnica, cada tipo de problema puede requerir unos valores de probabilidad diferentes en cada capa; habrá problemas que se resuelvan mejor con valores de probabilidad altos, mientras que otros lo harán con valores más bajos.

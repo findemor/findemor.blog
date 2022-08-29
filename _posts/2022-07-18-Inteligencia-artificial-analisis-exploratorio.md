@@ -25,6 +25,9 @@ _Iré actualizando esta sección a medida que vaya escribiendo más capítulos s
 * [Flujo de trabajo](https://blog.findemor.es/2022-06-09-Inteligencia-artificial-flujo-de-trabajo/)
 * [Validar el modelo](https://blog.findemor.es/2022-06-30-Inteligencia-artificial-validar-el-modelo/)
 * [Análisis exploratorio](https://blog.findemor.es/2022-07-18-Inteligencia-artificial-analisis-exploratorio/)
+* __Algoritmos de Machine Learning__:
+  * __Supervisado__:
+    * [Árboles de decisión](https://blog.findemor.es/2022-09-05-Machine-Learning-Arboles-de-decision-y-random-forest/)
 
 ## Data Wrangling
 
@@ -144,8 +147,4 @@ Los objetivos principales del análisis exploratorio son:
 
 El análisis exploratorio también nos permite entender qué transformaciones de los conjuntos de datos son convenientes para poder aplicar análisis más complejos y, por supuesto, alimentar los algoritmos que permitirán implementar los Modelos de Aprendizaje de nuestra Inteligencia Artificial.
 
-## Modelos de aprendizaje no supervisado
-
-En la próxima publicación de esta serie comenzaremos a adentrarnos cada vez más en la parte técnica, empezando con los modelos de aprendizaje no supervisado que nos ayudarán a descubrir como se organizan nuestros datos.
-
-Nos vemos!
+Si te apetece echar un ojo a qué pinta tiene una implementación de un algoritmo de Machine Learning en Python, puedes ver el [siguiente post](https://blog.findemor.es/2022-09-05-Machine-Learning-Arboles-de-decision-y-random-forest/) donde encontrarás una implementación básica de algunos ejemplos con árboles de decisión, regresión y random forest.
