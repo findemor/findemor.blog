@@ -1,6 +1,6 @@
 ---
 title: 'Inteligencia Artificial - Árboles de decisión'
-date: 2022-09-05T01:00:00+00:00
+date: 2022-10-10T01:00:00+00:00
 author: findemor
 layout: post
 image: /wp-content/uploads/2022/07/18/main.png
@@ -27,7 +27,7 @@ _Iré actualizando esta sección a medida que vaya escribiendo más capítulos s
 * [Análisis exploratorio](https://blog.findemor.es/2022-07-18-Inteligencia-artificial-analisis-exploratorio/)
 * __Algoritmos de Machine Learning__:
   * __Supervisado__:
-    * [Árboles de decisión](https://blog.findemor.es/2022-09-05-Machine-Learning-Arboles-de-decision-y-random-forest/)
+    * [Árboles de decisión](https://blog.findemor.es/2022-10-10-Machine-Learning-Arboles-de-decision-y-random-forest/)
 
 ## Árboles de decisión
 
@@ -96,7 +96,7 @@ Y = train[var_objetivo]
 # Entrenamiento: 313
 # Test: 79
 ```
-![Dataset](/wp-content/uploads/2022/09/05/r_tabla.jpg)
+![Dataset](/wp-content/uploads/2022/10/10/r_tabla.jpg)
 
 A continuación calculamos el arbol de regresión:
 
@@ -120,7 +120,7 @@ df = test.copy()
 df["predicciones"] = predicciones
 df[["mpg","predicciones"]].head()
 ```
-![Predicciones](/wp-content/uploads/2022/09/05/r_pred.jpg)
+![Predicciones](/wp-content/uploads/2022/10/10/r_pred.jpg)
 
 También es posible representar el árbol exportandolo a una imagen:
 
@@ -138,7 +138,7 @@ file = open("./regression_tree.dot", "r")
 text = file.read()
 Source(text)
 ```
-![Predicciones](/wp-content/uploads/2022/09/05/r_output.jpg)
+![Predicciones](/wp-content/uploads/2022/10/10/r_output.jpg)
 
 
 Finalmente podemos hacer una validación del modelo midiendo el error:
@@ -230,7 +230,7 @@ print("Test: " + str(len(test)))
 
 data.head(3)
 ```
-![Dataset](/wp-content/uploads/2022/09/05/d_tabla.jpg)
+![Dataset](/wp-content/uploads/2022/10/10/d_tabla.jpg)
 
 Construimos y entrenamos el modelo del árbol de decisión
 
@@ -257,7 +257,7 @@ O incluso ver como se comporta mediante una [matriz de confusión](https://blog.
 # Examinamos la matriz de confusión
 pd.crosstab(test[var_objetivo], predicciones, rownames=["Real"], colnames=["Prediccion"])
 ```
-![Dataset](/wp-content/uploads/2022/09/05/d_matriz_confusion.jpg)
+![Dataset](/wp-content/uploads/2022/10/10/d_matriz_confusion.jpg)
 
 También ahora podríamos representar gráficamente el árbol de decisión generado:
 
@@ -276,7 +276,7 @@ file = open("./decision_tree.dot", "r")
 text = file.read()
 Source(text)
 ```
-![Dataset](/wp-content/uploads/2022/09/05/d_output.jpg)
+![Dataset](/wp-content/uploads/2022/10/10/d_output.jpg)
 
 Y hacer cross validation para evaluar la eficacia del modelo:
 

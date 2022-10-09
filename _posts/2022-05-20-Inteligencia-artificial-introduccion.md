@@ -29,7 +29,7 @@ _Iré actualizando esta sección a medida que vaya escribiendo más capítulos s
 * [Análisis exploratorio](https://blog.findemor.es/2022-07-18-Inteligencia-artificial-analisis-exploratorio/)
 * __Algoritmos de Machine Learning__:
   * __Supervisado__:
-    * [Árboles de decisión](https://blog.findemor.es/2022-09-05-Machine-Learning-Arboles-de-decision-y-random-forest/)
+    * [Árboles de decisión](https://blog.findemor.es/2022-10-10-Machine-Learning-Arboles-de-decision-y-random-forest/)
 
 ## ¿Qué es la Inteligencia Artificial (IA)?
 
