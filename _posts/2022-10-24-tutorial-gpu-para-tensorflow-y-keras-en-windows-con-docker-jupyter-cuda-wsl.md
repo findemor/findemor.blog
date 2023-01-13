@@ -43,11 +43,11 @@ Después instalalos normalmente siguiendo las instrucciones del propio instalado
 
 En PowerShell, ejecutar:
 
-> wls --install
+> wsl --install
 
 Si ya lo tenias instalado, o si quieres asegurarte, puedes probar a actualizarlo:
 
-> wsl --Update
+> wsl --update
 
 Establece la versión 2 como predeterminada para evitar problemas despues con las IPTABLES en Docker.
 
@@ -64,7 +64,7 @@ De nuevo en PowerShell:
 
 Asegurate de que tu distribución se ha instalado con la versión 2 de WSL, lo puedes comprobar con el siguiente comando:
 
-> wsl -l -o
+> wsl -l -v
 
 ### Paso 4. Iniciar sesión en Ubuntu
 
@@ -103,7 +103,8 @@ Con el siguiente comando podemos comprobar que docker está correctamente instal
 
 Si está en ejecución, perfecto, puedes pasar al __Paso 7__. si no fuese así, puede deberse a varias razones:
 
-__Posibilidad 1: El servicio no se ha iniciado automaticamente__
+
+__Posibilidad 2: El servicio no se ha iniciado automaticamente__
 
 Parece ser que en WSL a veces el servicio no arranca automaticamente, puedes probar reiniciando el demonio manualmente
 
@@ -111,16 +112,20 @@ Parece ser que en WSL a veces el servicio no arranca automaticamente, puedes pro
 
 O, como hice yo, iniciar una nueva ventana en la misma instalación de linux lanzando en PowerShell de nuevo el comando "wsl -d Ubuntu-20.04", y parando y relanzando el servicio desde ahí:
 
-> sudo service docker stop
+> sudo service docker stop  
 > sudo service docker start
 
-__Posibilidad 2: El servicio no se inicia por un problema con las IPTABLES y la red__
+__Posibilidad 2: Reiniciar__
+
+En serio, prueba a reiniciar y luego vuelve a ejecutar el service docker start anterior. A mi siempre me ha bastado con esto.
+
+__Posibilidad 3: El servicio no se inicia por un problema con las IPTABLES y la red__
 
 Mira el Paso 3 y usa el comando que aparece ahí para asegurarte de que estás usando la versión 2 de WSL.
 
-> wsl -l -o
+> wsl -l -v
 
-__Posibilidad 3: Alguna otra razón__
+__Posibilidad 4: Alguna otra razón__
 
 Pueden pasar muchas cosas, como que se esté intentando [ocupar una IP que en tu red esté ya en uso](https://forums.docker.com/t/wsl-cannot-connect-to-the-docker-daemon-at-unix-var-run-docker-sock-is-the-docker-daemon-running/116245/3) y eso impida que el servicio se inicie.
 WSL tiene algunos problemas en la forma en que maneja la red, y eso da bastante guerra al usar docker.
@@ -144,6 +149,15 @@ El resultado debería ser similar a este, donde se muestra nuestro dispositivo y
 6144 bodies, total time for 10 iterations: 5.173 ms
 = 72.969 billion interactions per second
 = 1459.382 single-precision GFLOP/s at 20 flops per interaction
+```
+
+También probé con otro portatil con una gráfica más potente y aquí puede verse la diferencia.
+
+```shell
+> Compute 7.5 CUDA device: [NVIDIA GeForce GTX 1650]
+16384 bodies, total time for 10 iterations: 25.335 ms
+= 105.955 billion interactions per second
+= 2119.095 single-precision GFLOP/s at 20 flops per interaction
 ```
 
 Si escribimos el comando:
