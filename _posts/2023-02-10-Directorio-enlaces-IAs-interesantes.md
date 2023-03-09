@@ -87,7 +87,7 @@ Crea musica libre
 * https://soundraw.io/  
 Crea musica sin derechos
 
-## Imágenes
+## Imagenes
 * https://illustroke.com/  
 Crea imágenes vectoriales a partir de texto.
 * https://www.patterned.ai/  
@@ -119,9 +119,9 @@ Genera contenido de marca a partir de texto
 * https://interiorai.com/  
 Diseña interiores con diferentes estilos
 
-### Edición de imágen
+### Edición de imagen
 * https://cleanup.pictures/  
-Elimina objetos, defecto, personas o textos de las imágenes
+Elimina objetos, defecto, personas o textos de las imagenes
 * https://imglarger.com/   
 Limpia, mejora y limpia fotos sin perder calidad
 * https://www.modyfi.io/  
