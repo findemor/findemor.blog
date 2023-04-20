@@ -169,6 +169,8 @@ Utiliza IA para hacer pruebas A/B
 ### Asistentes
 * https://chat.openai.com/chat  
 ChatGPT
+* [https://theveller.gumroad.com/l/ChatGPTPromptTemplates-byTheVeller](https://ignacio-velasquez.notion.site/ignacio-velasquez/500-ChatGPT-Prompt-Templates-d9541e901b2b4e8f800e819bdc0256da)
+500 Prompts para ChatGPT
 * https://ideasai.com/  
 Genera ideas acerca de productos y negocios
 
