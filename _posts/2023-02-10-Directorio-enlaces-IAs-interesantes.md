@@ -95,7 +95,19 @@ Genera patrones unicos
 * https://stockimg.ai/  
 Genera fotos de stock por IA
 * https://stockai.com/  
-Genera fotos gratuitas libres de derechos 
+Genera fotos gratuitas libres de derechos
+* Upscaling, aumentar tamaño de la imagen
+  * [https://www.img2go.com/](https://www.img2go.com/es/aumentar-imagen)  
+Aumentar tamaño de la imagen con IA
+  * [https://picwish.com/es/](https://picwish.com/es/)  
+  * [https://vanceai.com/](https://vanceai.com/image-enlarger/)
+  * [https://deep-image.ai/](https://deep-image.ai/)
+  * [https://imgupscaler.com/](https://imgupscaler.com/)
+  * [https://bigjpg.com/](https://bigjpg.com/)
+  * [https://waifu2x.io/](https://waifu2x.io/)
+* [https://zyro.com](https://zyro.com/es/herramientas/upscaler-de-imagenes)  
+Mejorar la calidad de una foto con IA
+
 
 ### Generadores de imagen
 * https://stablediffusionweb.com/  
@@ -209,8 +221,10 @@ Investigación de videojuegos y diseño
 
 ## Modelado
 
-* https://www.mirageml.com  
-Genera modelos 3D a partir de un mensaje
+* [https://www.mirageml.com](https://app.mirageml.com/generate#)  
+Genera modelos 3D a partir de un prompt
+* [https://www.app.kaedim3d.com](https://www.app.kaedim3d.com/login)  
+Genera modelos 3d a partir de imagenes de referencia
 
 ## Marcas y negocio
 
