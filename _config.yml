@@ -28,6 +28,7 @@ navbar-links:
   #  - Beautiful Jekyll: "http://deanattali.com/beautiful-jekyll/"
   #  - Learn markdown: "http://www.markdowntutorial.com/"
   #  - GitHub Pages: "https://pages.github.com/"
+  Games: "https://games.findemor.es"
   Blog: "https://blog.findemor.es"
   Sobre mi: "https://www.findemor.es"
 
@@ -92,7 +93,7 @@ social-network-links:
 #  xing: yourname
 #  stackoverflow: "3943160/daattali"
 #  snapchat: deanat78
-  instagram: findemor.nomedhel
+  instagram: findemor.es
   youtube: user/findemor
 #  spotify: yourname
 #  telephone: +14159998888
@@ -114,7 +115,7 @@ url-pretty: "findemor.es"  # eg. "deanattali.com/beautiful-jekyll"
 # --- Web Statistics Section --- #
 
 # Fill in your Google Analytics gtag.js ID to track your website using gtag
-gtag: "UA-9584202-6"
+gtag: "G-RR8PSM2ZBV"
 
 # Fill in your Google Analytics ID to track your website using GA
 #google_analytics: "UA-9584202-6"
